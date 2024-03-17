@@ -1,0 +1,30 @@
+{% extends 'vanilla_base.html' %}
+{% load static %}
+
+{% block css_link %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/auth/login.css' %}" />
+{% endblock %}
+
+{% block content %}
+
+    <div id="login-container">
+        <img src="{% static 'branding/logo.png' %}" alt="logo" />
+        <h1>Log in to ZED</h1>
+
+        {% if invalid_credentials == True %}
+          <p style="color:red;">
+            Invalid Credentials!
+          </p>
+        {% endif %}
+
+        <form action="{% url 'user:login' %}" method="POST">
+            {% csrf_token %}
+            <input type="text" placeholder="Username" name="username" />
+            <input type="password" placeholder="Password" name="password" />
+            <input type="submit" value="Log in" id="login-submit-btn" name="login_form_submit_btn" />
+        </form>
+
+        <p><a href="{% url 'user:signup' %}">Sign up for ZED</a></p>
+    </div>
+
+{% endblock %}

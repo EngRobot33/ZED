@@ -1,0 +1,83 @@
+{% extends 'vanilla_base.html' %}
+{% load static %}
+
+{% block css_link %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/auth/signup.css' %}" />
+{% endblock %}
+
+
+{% block content %}
+<!-- left part-->
+<div id="left-box">
+
+</div>
+
+<!-- right part -->
+<div id="right-box">
+  <img src="{% static 'branding/logo.png' %}" alt="logo" />
+  <h1>Happening now</h1>
+  <h3>Join ZED today.</h3>
+  <button id="signup-button">Sign up</button>
+  <button id="login-button"><a href="{% url 'user:login' %}">Log in</a></button>
+  <form action="{% url 'user:signup' %}" method="POST">
+    {% csrf_token %}
+  </form>
+
+  <p id="footer">ZED is a registered trademark of <a href="https://www.github.com/EngRobot33/">Hamed Khosravi</a>.
+  </p>
+</div>
+
+{% if invalid_credentials == True %}
+  <script>alert("Invalid Credentials!")</script>
+{% elif credentials_taken == True %}
+  <script>alert("Credentials are already taken!")</script>
+{% elif contains_space_in_credentials == True %}
+  <script>alert("Signup input cannot contain spaces!")</script>
+{% endif %}
+
+<!-- hidden signup form -->
+<div id="hidden-signup-bg-grey"></div>
+<div id="hidden-signup-form">
+  <button id="close-btn"><i class="ri-close-line"></i></button>
+  <div id="img-container">
+    <img src="{% static 'branding/logo.png' %}" alt="logo"/>
+  </div>
+  <form action="{% url 'user:signup' %}" method="POST">
+    {% csrf_token %}
+
+    <label>What's your email?</label>
+    <input type="text" placeholder="Enter your email." name="email"/>
+
+    <label>Create a password</label>
+    <input type="password" placeholder="Create a password." name="password"/>
+
+    <label>Confirm your password</label>
+    <input type="password" placeholder="Enter your password again." name="password_again"/>
+
+    <label>Create a username</label>
+    <input type="text" placeholder="Create a username." name="username"/>
+
+    <input id="signup-submit-btn" type="submit" value="Sign up" name="signup_submit_button" />
+
+  </form>
+</div>
+
+
+<script>
+  var open_signup_panel_btn = document.getElementById("signup-button");
+  var close_signup_panel_btn = document.getElementById("close-btn");
+  var signup_panel = document.getElementById("hidden-signup-form");
+  var signup_panel_bg = document.getElementById("hidden-signup-bg-grey");
+
+  open_signup_panel_btn.onclick = function() {
+    signup_panel.style.display = "block";
+    signup_panel_bg.style.display = "block";
+  }
+
+  close_signup_panel_btn.onclick = function() {
+    signup_panel.style.display = "none";
+    signup_panel_bg.style.display = "none";
+  }
+
+</script>
+{% endblock %}

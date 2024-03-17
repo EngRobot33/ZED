@@ -1,0 +1,589 @@
+* {
+  font-family: "Inter";
+}
+
+body {
+  padding: 0px;
+  margin: 0px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+
+}
+
+/* ------------ left part ------------ */
+#left-box {
+  background-color: #E5E8E8;
+  width: 50%;
+  position: fixed;
+  top:0;
+  left: 0;
+  bottom: 0;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("landing_img.jpg");
+}
+
+
+
+/* ------------ right part ------------ */
+#right-box {
+  width: 46%;
+  position: fixed;
+  top:0;
+  right: 0;
+  bottom: 0;
+  margin-top: 8vh;
+
+}
+
+#right-box img {
+  height: 40px;
+}
+
+#right-box h1 {
+  font-weight: 800;
+  font-size: 65px;
+  margin-top: 50px;
+}
+
+#right-box h3 {
+  font-weight: 800;
+  font-size: 35px;
+  margin-top: 30px;
+}
+
+#signup-button {
+  display: block;
+  background-color: black;
+  color: white;
+  border: 1px solid black;
+  font-size: 18px;
+  width: 60%;
+  padding: 10px 0px;
+  border-radius: 25px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+#signup-button:hover {
+  cursor: pointer;
+  transition: 0.2s;
+  background-color: black;
+}
+
+#login-button {
+  display: block;
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  font-size: 18px;
+  width: 60%;
+  padding: 10px 0px;
+  border-radius: 25px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+#login-button:hover {
+  transition: 0.2s;
+  background-color: white;
+  cursor: pointer !important;
+}
+
+#login-button a {
+  text-decoration: none;
+  color: black;
+  font-weight: 600;
+  padding: 2% 38%;
+}
+
+#footer {
+  position: fixed;
+  bottom: 0;
+  font-size: 13px;
+  color: grey;
+  width: 33%;
+  margin-bottom: 30px;
+}
+
+/* ------------- hidden signup form ------------ */
+#hidden-signup-bg-grey {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: black;
+  opacity: 0.5;
+  z-index: 9;
+  display: none;
+}
+
+#hidden-signup-form {
+  background-color: white;
+  z-index: 99;
+  width: 50%;
+  padding: 20px 0px;
+  padding-bottom: 40px;
+  position: absolute;
+  top:0;
+  left: 0;
+  margin-left:24%;
+  margin-top: 6vh;
+  border-radius: 10px;
+  display: none;
+}
+
+#close-btn {
+  position: absolute;
+  right: 0;
+  top:0;
+  background-color: transparent;
+  border: 1px solid transparent;
+  font-size: 20px;
+  margin-top: 5px;
+  margin-right: 3px;
+}
+
+#close-btn:hover {
+  cursor: pointer;
+}
+
+#img-container {
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#img-container img {
+  height: 40px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+#hidden-signup-form form {
+  width: 60%;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+
+#hidden-signup-form form label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 5px;
+  font-size: 15px;
+}
+
+#hidden-signup-form form input {
+  display: block;
+  margin-bottom: 10px;
+  width: 97%;
+  border: 1px solid #868686;
+  border-radius: 3px;
+  padding: 10px 5px;
+  font-size: 16px;
+}
+
+#hidden-signup-form form input:focus {
+  outline: none;
+  border-color: black;
+}
+
+#signup-submit-btn {
+  color: white;
+  background-color: black;
+  border: 1px solid black !important;
+  border-radius: 40px !important;
+  width: 50% !important;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+#signup-submit-btn:hover {
+  cursor: pointer;
+  background-color: black;
+  border-color: black;
+  transition: 0.2s;
+}
+
+
+
+/* Mobile Small  --------------------------------------------------------- */
+@media screen and (min-width: 0px) and (max-width: 320px) {
+  /* ------------ left part ------------ */
+  #left-box {
+    width: 100%;
+    position: absolute;
+    top:0;
+    left: 0;
+    bottom: 0;
+    right:0;
+    margin-top: 75vh;
+  }
+
+
+
+  /* ------------ right part ------------ */
+  #right-box {
+    width: 100%;
+    position: absolute;
+    top:0;
+    right: 0;
+    left:0;
+    margin-top: 0vh;
+    height: 80vh;
+  }
+
+  #right-box img {
+    height: 30px;
+    margin-top: 20px;
+    margin-left: 20px;
+  }
+
+  #right-box h1 {
+    font-size: 33px;
+    margin-left: 20px;
+    margin-top: 20px;
+  }
+
+  #right-box h3 {
+    font-size: 22px;
+    margin-top: 20px;
+    margin-left: 20px;
+  }
+
+  #signup-button {
+    font-size: 16px;
+    width: 85%;
+    margin-left: 20px;
+  }
+
+  #login-button {
+    font-size: 16px;
+    width: 85%;
+    margin-left: 20px;
+  }
+
+  #footer {
+    display: block;
+    position: relative;
+    width: 90%;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 11px;
+    margin-left: 10px;
+  }
+
+  /* ------------- hidden signup form ------------ */
+  #hidden-signup-form {
+    width: 90%;
+    padding: 20px 0px;
+    padding-bottom: 40px;
+    margin-left: 5%;
+    margin-top: 4vh;
+    display: none;
+  }
+
+  #img-container img {
+    height: 25px;
+  }
+
+  #hidden-signup-form form {
+    width: 85%;
+  }
+
+}
+
+
+/* Mobile Medium  --------------------------------------------------------- */
+@media screen and (min-width: 321px) and (max-width: 375px) {
+  /* ------------ left part ------------ */
+  #left-box {
+    width: 100%;
+    position: absolute;
+    top:0;
+    left: 0;
+    bottom: 0;
+    right:0;
+    margin-top: 75vh;
+  }
+
+
+
+  /* ------------ right part ------------ */
+  #right-box {
+    width: 100%;
+    position: absolute;
+    top:0;
+    right: 0;
+    left:0;
+    margin-top: 0vh;
+    height: 80vh;
+  }
+
+  #right-box img {
+    height: 30px;
+    margin-top: 20px;
+    margin-left: 20px;
+  }
+
+  #right-box h1 {
+    font-size: 33px;
+    margin-left: 20px;
+    margin-top: 20px;
+  }
+
+  #right-box h3 {
+    font-size: 22px;
+    margin-top: 20px;
+    margin-left: 20px;
+  }
+
+  #signup-button {
+    font-size: 16px;
+    width: 85%;
+    margin-left: 20px;
+  }
+
+  #login-button {
+    font-size: 16px;
+    width: 85%;
+    margin-left: 20px;
+  }
+
+  #footer {
+    display: block;
+    position: relative;
+    width: 90%;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 11px;
+    margin-left: 10px;
+  }
+
+  /* ------------- hidden signup form ------------ */
+  #hidden-signup-form {
+    width: 90%;
+    padding: 20px 0px;
+    padding-bottom: 40px;
+    margin-left: 5%;
+    margin-top: 4vh;
+    display: none;
+  }
+
+  #img-container img {
+    height: 25px;
+  }
+
+  #hidden-signup-form form {
+    width: 85%;
+  }
+
+}
+
+
+/* Mobile Large - --------------------------------------------------------- */
+@media screen and (min-width: 376px) and (max-width: 425px) {
+  /* ------------ left part ------------ */
+  #left-box {
+    width: 100%;
+    position: absolute;
+    top:0;
+    left: 0;
+    bottom: 0;
+    right:0;
+    margin-top: 75vh;
+  }
+
+
+
+  /* ------------ right part ------------ */
+  #right-box {
+    width: 100%;
+    position: absolute;
+    top:0;
+    right: 0;
+    left:0;
+    margin-top: 0vh;
+    height: 80vh;
+  }
+
+  #right-box img {
+    height: 30px;
+    margin-top: 20px;
+    margin-left: 20px;
+  }
+
+  #right-box h1 {
+    font-size: 33px;
+    margin-left: 20px;
+    margin-top: 20px;
+  }
+
+  #right-box h3 {
+    font-size: 22px;
+    margin-top: 20px;
+    margin-left: 20px;
+  }
+
+  #signup-button {
+    font-size: 16px;
+    width: 85%;
+    margin-left: 20px;
+  }
+
+  #login-button {
+    font-size: 16px;
+    width: 85%;
+    margin-left: 20px;
+  }
+
+  #footer {
+    display: block;
+    position: relative;
+    width: 90%;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 11px;
+    margin-left: 10px;
+  }
+
+  #footer a:link {
+    color: black;
+  }
+
+  #footer a:visited {
+    color: black;
+  }
+
+  /* ------------- hidden signup form ------------ */
+  #hidden-signup-form {
+    width: 90%;
+    padding: 20px 0px;
+    padding-bottom: 40px;
+    margin-left: 5%;
+    margin-top: 4vh;
+    display: none;
+  }
+
+  #img-container img {
+    height: 25px;
+  }
+
+  #hidden-signup-form form {
+    width: 85%;
+  }
+
+  #terms {
+    font-size: 11px;
+  }
+}
+
+
+/* Tablet - --------------------------------------------------------------- */
+@media screen and (min-width: 426px) and (max-width: 768px) {
+
+  /* ------------ left part ------------ */
+  #left-box {
+    width: 100%;
+    position: absolute;
+    top:0;
+    left: 0;
+    bottom: 0;
+    right:0;
+    margin-top: 75vh;
+  }
+
+
+
+  /* ------------ right part ------------ */
+  #right-box {
+    width: 100%;
+    position: absolute;
+    top:0;
+    right: 0;
+    left:0;
+    margin-top: 0vh;
+    height: 80vh;
+  }
+
+  #right-box img {
+    height: 30px;
+    margin-top: 20px;
+    margin-left: 40px;
+  }
+
+  #right-box h1 {
+    font-size: 45px;
+    margin-left: 40px;
+    margin-top: 40px;
+  }
+
+  #right-box h3 {
+    font-size: 35px;
+    margin-top: 20px;
+    margin-left: 40px;
+  }
+
+  #signup-button {
+    width: 50%;
+    margin-left: 40px;
+  }
+
+  #login-button {
+    width: 50%;
+    margin-left: 40px;
+  }
+
+  #footer {
+    display: block;
+    position: relative;
+    width: 50%;
+    margin-left: 20px;
+    margin-top: 20px;
+  }
+
+  /* ------------- hidden signup form ------------ */
+  #hidden-signup-form {
+    width: 90%;
+    padding: 20px 0px;
+    padding-bottom: 40px;
+    margin-left: 5%;
+    margin-top: 4vh;
+    display: none;
+  }
+
+  #img-container img {
+    height: 25px;
+  }
+
+  #hidden-signup-form form {
+    width: 85%;
+  }
+
+  #terms {
+    font-size: 11px;
+  }
+
+}
+
+
+/* Laptop ------------------------------------------------------------------ */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  /* nothing for now */
+}
+
+
+/* Laptop Large -------------------------------------------------------------*/
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+  /* nothing for now */
+}
+
+
+/* 4K Large Desktop ------------------------------------------------------- */
+@media screen and (min-width: 1441px) {
+
+}

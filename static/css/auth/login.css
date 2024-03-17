@@ -1,0 +1,144 @@
+#login-container {
+  width: 30%;
+  margin: 0 auto;
+  border: 1px solid transparent;
+  margin-top: 4vh;
+}
+
+#login-container img {
+  height: 35px;
+  margin-top: 0px;
+}
+
+#login-container h1 {
+  font-weight: 800;
+}
+
+
+#login-container form {
+
+}
+
+#login-container form input {
+  display: block;
+  border: 1px solid #C4CFD6;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  font-size: 18px;
+  padding: 18px 10px;
+  width: 85%;
+}
+
+#login-container form input:focus {
+  outline: none;
+  border-color: black;
+}
+
+#login-submit-btn {
+  border-radius: 20px !important;
+  border: 1px solid black !important;
+  background-color: black ;
+  color: white;
+  padding: 10px 5px !important;
+  text-align: center;
+  width: 90% !important;
+  margin-top: 20px !important;
+  margin-bottom: 20px !important;
+  font-weight: 600;
+}
+
+#login-submit-btn:hover {
+  cursor: pointer;
+  transition: 0.2s;
+  background-color: black !important;
+}
+
+#login-container p {
+  font-size: 15px;
+}
+
+#login-container p a {
+  text-decoration: none;
+  color: black;
+}
+
+#login-container p a:hover {
+  text-decoration: underline;
+}
+
+
+/* Mobile Small  --------------------------------------------------------- */
+@media screen and (min-width: 0px) and (max-width: 320px) {
+  #login-container {
+    width: 90%;
+    margin-top: 4vh;
+  }
+
+  #login-container img {
+    height: 30px;
+  }
+
+
+}
+
+
+/* Mobile Medium  --------------------------------------------------------- */
+@media screen and (min-width: 321px) and (max-width: 375px) {
+  #login-container {
+    width: 90%;
+    margin-top: 4vh;
+  }
+
+  #login-container img {
+    height: 30px;
+  }
+
+}
+
+
+/* Mobile Large - --------------------------------------------------------- */
+@media screen and (min-width: 376px) and (max-width: 425px) {
+  #login-container {
+    width: 90%;
+    margin-top: 4vh;
+  }
+
+  #login-container img {
+    height: 30px;
+  }
+
+}
+
+
+/* Tablet - --------------------------------------------------------------- */
+@media screen and (min-width: 426px) and (max-width: 768px) {
+
+  #login-container {
+    width: 50%;
+    margin-top: 4vh;
+  }
+
+  #login-container img {
+    height: 30px;
+  }
+
+
+}
+
+
+/* Laptop ------------------------------------------------------------------ */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  /* nothing for now */
+}
+
+
+/* Laptop Large -------------------------------------------------------------*/
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+  /* nothing for now */
+}
+
+
+/* 4K Large Desktop ------------------------------------------------------- */
+@media screen and (min-width: 1441px) {
+
+}
