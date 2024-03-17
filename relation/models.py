@@ -31,7 +31,7 @@ class Relation(BaseModel):
     class Meta:
         verbose_name = _("Relation")
         verbose_name_plural = _("Relations")
-        db_table = "Relation"
+        db_table = "relation"
 
     def __str__(self):
         return f'{self.follower} -> {self.following}'

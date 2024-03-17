@@ -33,7 +33,7 @@ class LikedPost(BaseModel):
     class Meta:
         verbose_name = _("LikedPost")
         verbose_name_plural = _("LikedPosts")
-        db_table = "LikedPost"
+        db_table = "liked_post"
 
     def __str__(self):
         return f'{self.liker} -> {self.post}'
@@ -62,7 +62,7 @@ class LikedComment(BaseModel):
     class Meta:
         verbose_name = _("LikedComment")
         verbose_name_plural = _("LikedComments")
-        db_table = "LikedComment"
+        db_table = "liked_comment"
 
     def __str__(self):
         return f'{self.liker} -> {self.comment}'
@@ -97,7 +97,7 @@ class LikeNotification(BaseModel):
     class Meta:
         verbose_name = _("LikeNotification")
         verbose_name_plural = _("LikeNotifications")
-        db_table = "LikeNotification"
+        db_table = "like_notification"
 
     def __str__(self):
         return f'{self.notifier} -> {self.notified}'

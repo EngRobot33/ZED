@@ -16,7 +16,7 @@ class Topic(BaseModel):
     class Meta:
         verbose_name = _("Topic")
         verbose_name_plural = _("Topics")
-        db_table = "Topic"
+        db_table = "topic"
 
     def __str__(self):
         return self.name
@@ -48,7 +48,7 @@ class Post(BaseModel):
     class Meta:
         verbose_name = _("Post")
         verbose_name_plural = _("Posts")
-        db_table = "Post"
+        db_table = "post"
 
     def __str__(self):
         content = str(self.content).split()[:5]
@@ -80,7 +80,7 @@ class Comment(BaseModel):
     class Meta:
         verbose_name = _("Comment")
         verbose_name_plural = _("Comments")
-        db_table = "Comment"
+        db_table = "comment"
 
     def __str__(self):
         content = str(self.content).split()[:5]
@@ -110,7 +110,7 @@ class Repost(BaseModel):
     class Meta:
         verbose_name = _("Repost")
         verbose_name_plural = _("Reposts")
-        db_table = "Repost"
+        db_table = "repost"
 
     def __str__(self):
         return f'{self.reposter} -> {self.post}'
