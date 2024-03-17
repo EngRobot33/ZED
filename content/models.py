@@ -33,14 +33,16 @@ class Post(BaseModel):
         verbose_name=_('post author'),
         on_delete=models.CASCADE,
         blank=True,
-        null=True
+        null=True,
+        related_name='posts',
     )
     topic = models.ForeignKey(
         Topic,
         verbose_name=_('post topic'),
         on_delete=models.CASCADE,
         blank=True,
-        null=True
+        null=True,
+        related_name='posts',
     )
 
     class Meta:
@@ -63,14 +65,16 @@ class Comment(BaseModel):
         verbose_name=_('commenter'),
         on_delete=models.CASCADE,
         blank=True,
-        null=True
+        null=True,
+        related_name='comments',
     )
     post = models.ForeignKey(
         Post,
         verbose_name=_('comment post'),
         on_delete=models.CASCADE,
         blank=True,
-        null=True
+        null=True,
+        related_name='comments',
     )
 
     class Meta:
@@ -84,21 +88,23 @@ class Comment(BaseModel):
         return f'{self.commenter} | {content}'
 
 
-class Repost(models.Model):
+class Repost(BaseModel):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     post = models.ForeignKey(
         Post,
         verbose_name=_('reposted post'),
         on_delete=models.CASCADE,
         blank=True,
-        null=True
+        null=True,
+        related_name='reposts',
     )
     reposter = models.ForeignKey(
         User,
         verbose_name=_('reposter'),
         on_delete=models.CASCADE,
         blank=True,
-        null=True
+        null=True,
+        related_name='reposts',
     )
 
     class Meta:

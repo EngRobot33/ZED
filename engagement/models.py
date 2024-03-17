@@ -18,14 +18,16 @@ class LikedPost(BaseModel):
         verbose_name=_('liked post'),
         on_delete=models.CASCADE,
         blank=True,
-        null=True
+        null=True,
+        related_name='liked_posts',
     )
     liker = models.ForeignKey(
         User,
         verbose_name=_('post liker'),
         on_delete=models.CASCADE,
         blank=True,
-        null=True
+        null=True,
+        related_name='liked_posts',
     )
 
     class Meta:
@@ -45,14 +47,16 @@ class LikedComment(BaseModel):
         verbose_name=_('liked comment'),
         on_delete=models.CASCADE,
         blank=True,
-        null=True
+        null=True,
+        related_name='liked_comments',
     )
     liker = models.ForeignKey(
         User,
         verbose_name=_('comment liker'),
         on_delete=models.CASCADE,
         blank=True,
-        null=True
+        null=True,
+        related_name='liked_comments',
     )
 
     class Meta:
@@ -72,7 +76,7 @@ class LikeNotification(BaseModel):
         on_delete=models.CASCADE,
         blank=True,
         null=True,
-        related_name='notified'
+        related_name='notifications_received',
     )
     notifier = models.ForeignKey(
         User,
@@ -80,13 +84,14 @@ class LikeNotification(BaseModel):
         on_delete=models.CASCADE,
         blank=True,
         null=True,
-        related_name='notifier'
+        related_name='notifications_sent',
     )
     post = models.ForeignKey(
         Post,
         on_delete=models.CASCADE,
         blank=True,
-        null=True
+        null=True,
+        related_name='like_notifications',
     )
 
     class Meta:
