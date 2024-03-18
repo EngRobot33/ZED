@@ -1,3 +1,6 @@
 from django.contrib import admin
+from .models import LikedPost, LikedComment, LikeNotification
 
-# Register your models here.
+admin.site.register(LikedPost)
+admin.site.register(LikedComment)
+admin.site.register(LikeNotification)
