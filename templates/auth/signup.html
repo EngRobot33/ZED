@@ -40,7 +40,7 @@
 <div id="hidden-signup-form">
   <button id="close-btn"><i class="ri-close-line"></i></button>
   <div id="img-container">
-    <img src="{% static 'branding/logo.png' %}" alt="logo"/>
+    <img src="{% static 'branding/logo.png' %}" alt="logo" style="width: 75px; height: 75px;"/>
   </div>
   <form action="{% url 'user:signup' %}" method="POST">
     {% csrf_token %}

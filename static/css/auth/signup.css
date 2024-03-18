@@ -71,7 +71,6 @@ h1, h2, h3, h4, h5, h6 {
 #signup-button:hover {
   cursor: pointer;
   transition: 0.2s;
-  background-color: black;
 }
 
 #login-button {
@@ -89,7 +88,6 @@ h1, h2, h3, h4, h5, h6 {
 
 #login-button:hover {
   transition: 0.2s;
-  background-color: white;
   cursor: pointer !important;
 }
 
@@ -204,8 +202,6 @@ h1, h2, h3, h4, h5, h6 {
 
 #signup-submit-btn:hover {
   cursor: pointer;
-  background-color: black;
-  border-color: black;
   transition: 0.2s;
 }
 

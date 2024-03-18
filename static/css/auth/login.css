@@ -50,7 +50,6 @@
 #login-submit-btn:hover {
   cursor: pointer;
   transition: 0.2s;
-  background-color: black !important;
 }
 
 #login-container p {
