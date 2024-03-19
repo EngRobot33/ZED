@@ -30,41 +30,42 @@ class SignupView(View):
         password = request.POST.get('password')
         password_again = request.POST.get('password_again')
         username = request.POST.get('username')
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
 
         contains_space_in_credentials = any(char.isspace() for char in (email + password + username))
 
-        if not contains_space_in_credentials:
-            if not all(request.POST.get(field) for field in ['email', 'password', 'password_again', 'username']):
+        if not contains_space_in_credentials and all([email, password, password_again, username, first_name, last_name]):
+            if username == password or password != password_again:
                 invalid_credentials = True
             else:
-                if username == password or password != password_again:
-                    invalid_credentials = True
+                try:
+                    existing_username = User.objects.get(username=username)
+                except ObjectDoesNotExist:
+                    existing_username = None
+
+                try:
+                    existing_email = User.objects.get(email=email)
+                except ObjectDoesNotExist:
+                    existing_email = None
+
+                if existing_username or existing_email:
+                    credentials_taken = True
                 else:
-                    try:
-                        existing_username = User.objects.get(username=username)
-                    except ObjectDoesNotExist:
-                        existing_username = None
-
-                    try:
-                        existing_email = User.objects.get(email=email)
-                    except ObjectDoesNotExist:
-                        existing_email = None
-
-                    if existing_username or existing_email:
-                        credentials_taken = True
+                    if len(password) < 8 or not any(char.isdigit() for char in password):
+                        invalid_credentials = True
                     else:
-                        if len(password) < 8 or not any(char.isdigit() for char in password):
-                            invalid_credentials = True
-                        else:
-                            new_user = User.objects.create_user(
-                                username=username,
-                                email=email,
-                                password=password
-                            )
-                            request.session['user_email'] = new_user.email
-                            request.session['user_username'] = new_user.username
-                            request.session['user_logged_in'] = True
-                            return HttpResponseRedirect('/')
+                        new_user = User.objects.create_user(
+                            username=username,
+                            first_name=first_name,
+                            last_name=last_name,
+                            email=email,
+                            password=password
+                        )
+                        request.session['user_email'] = new_user.email
+                        request.session['user_username'] = new_user.username
+                        request.session['user_logged_in'] = True
+                        return HttpResponseRedirect('/')
 
         data = {
             'invalid_credentials': invalid_credentials,
