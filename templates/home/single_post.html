@@ -1,0 +1,133 @@
+{% extends 'main_base.html' %}
+{% load static %}
+{% load home_filters %}
+
+{% block css_link %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/home/single_post.css' %}" />
+{% endblock %}
+
+{% block content %}
+{% with page="0" %}
+
+<!-- header/back button -->
+<div id="single-post-header">
+    <p><a href="{% url 'content:home' page %}"><span class="fa fa-arrow-left"></span></a></p>
+    <h4>post</h4>
+</div>
+
+
+<!-- post content -->
+<div id="single-post-content-container">
+  <div id="single-post-content-container-top">
+    <div id="single-post-content-container-top-left-box">
+      {% if current_post.user.profile_photo %}
+        <div id="single-post-content-top-profile-photo" style="background-image:url('{{ current_post.user.profile_photo.url }}')"></div>
+      {% else %}
+        <div id="single-post-content-top-profile-photo"></div>
+      {% endif %}
+    </div>
+    <div id="single-post-content-container-top-right-box">
+      <a href="{% url 'content:other_user_profile' current_post.user.username %}">
+        <h3>{{ current_post.user.first_name }} {{ current_post.user.last_name }}</h3>
+        <p>@{{ current_post.user.username }}</p>
+      </a>
+    </div>
+  </div>
+  <div id="single-post-content-container-middle">
+    <p id="single-post-content-content">
+      {{ current_post.content|linebreaks }}
+    </p>
+
+    {% if current_post.image %}
+      <div id="single-post-content-img" style="background-image:url('{{ current_post.image.url }}')"></div>
+    {% endif %}
+
+    <p id="single-post-content-bottom"><span id="single-post-content-date">{{ current_post.created_time }}</span> <span id="single-post-content-dot" class="fa fa-circle"></span> <span id="single-post-content-likes"><b>{{ current_post.like_count }}</b> likes</span></p>
+  </div>
+</div>
+
+<!-- post operations -->
+<div id="single-post-operations">
+  <form method="POST" action="{% url 'content:single_post' current_post.id %}">
+    {% csrf_token %}
+    <input type="submit" value="&#128153;" name="single_post_like_submit_btn" />
+  </form>
+
+  <button id="hidden-panel-open-btn"><span class="fa fa-comment"></span></button>
+
+</div>
+
+<div id="hidden-single-post-comment-form-bg"></div>
+<div id="hidden-single-post-comment-form">
+  <div id="hidden-single-post-comment-form-header">
+      <button id="hidden-panel-close-btn"><span class="fa fa-close"></span></button>
+  </div>
+  <div id="hidden-single-post-comment-form-container">
+    <div id="hidden-single-post-comment-form-container-left-box">
+      <div id="hidden-single-post-comment-form-container-profile-photo" style="background-image:url('{% static 'test/test.jpg' %}')"></div>
+    </div>
+    <div id="hidden-single-post-comment-form-container-right-box">
+      <form method="POST" action="{% url 'content:single_post' current_post.id %}">
+          {% csrf_token %}
+          <textarea placeholder="Post your reply ..." name="reply_content"></textarea>
+          <input type="submit" value="Reply" name="single_post_reply_submit_btn" />
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  let hidden_comment_bg = document.getElementById("hidden-single-post-comment-form-bg");
+  let hidden_comment_panel = document.getElementById("hidden-single-post-comment-form");
+  let hidden_comment_panel_open_btn = document.getElementById("hidden-panel-open-btn");
+  let hidden_comment_panel_close_btn = document.getElementById("hidden-panel-close-btn");
+
+  hidden_comment_panel_open_btn.onclick = function() {
+    hidden_comment_bg.style.display = "block";
+    hidden_comment_panel.style.display = "block";
+  }
+
+  hidden_comment_panel_close_btn.onclick = function() {
+    hidden_comment_bg.style.display = "none";
+    hidden_comment_panel.style.display = "none";
+  }
+</script>
+
+<!-- post comments -->
+<div id="post-comments-container">
+
+  {% for comment in current_post_comments %}
+    <div id="post-comment-cell">
+      <div id="post-comment-cell-left">
+        {% if comment.commenter.profile_photo %}
+          <div id="post-comment-cell-left-profile-photo" style="background-image:url('{{ comment.commentor.profile_photo.url }}')"></div>
+        {% else %}
+          <div id="post-comment-cell-left-profile-photo" ></div>
+        {% endif %}
+      </div>
+      <div id="post-comment-cell-right">
+        <p id="post-comment-cell-header-p"><a href="{% url 'content:other_user_profile' comment.commenterusername %}">{{ comment.commenter.first_name }} {{ comment.commenter.last_name }}</a> <span class="post-comment-header-p-date">@{{ comment.commenter.username }} · {{ comment.created_time }}</span></p>
+        <p id="post-comment-cell-header-reply-p">Replying to <a href="{% url 'content:other_user_profile' current_post.user.username %}">@{{ current_post.user.username }}</a></p>
+        <p id="post-comment-cell-content-p">{{ comment.content|linebreaks }}</p>
+        <div id="post-comment-cell-right-bottom">
+          <form action="{% url 'content:single_post' current_post.id %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" value="{{ comment.id }}" name="comment_id" />
+            <input type="submit" value="&#128153;" name="single_post_comment_like_submit_btn" />
+          </form>
+          <p id="comment-like-count">{{ comment.like_count }}</p>
+        </div>
+      </div>
+    </div><!--/cell-->
+  {% endfor %}
+
+
+</div><!-- /cell-container-->
+
+
+<!-- post replies -->
+
+
+
+{% endwith %}
+{% endblock %}

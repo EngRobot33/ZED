@@ -1,0 +1,573 @@
+#single-post-header {
+  border-bottom: 1px solid #EBEEF0;
+}
+
+#single-post-header p {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+#single-post-header a {
+  text-decoration: none;
+  color: black;
+  font-size: 20px;
+  font-weight: 700;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+#single-post-header a i {
+
+}
+
+#single-post-header h4 {
+  margin: 0px;
+  display: inline-block;
+  font-size: 20px;
+  vertical-align: middle;
+  font-weight: 000;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* ----------------- single-post-content-container ------------------ */
+#single-post-content-container {
+
+  width: 95%;
+  height: auto;
+  margin: 0 auto;
+}
+
+#single-post-content-img {
+  width: 100%;
+  border-radius: 12px;
+  height: 350px;
+  background-color: lightgrey;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#single-post-content-container-top {
+  margin-top: 10px;
+}
+
+#single-post-content-container-top-left-box {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#single-post-content-top-profile-photo {
+  height: 45px;
+  width: 45px;
+  background-color: lightgrey;
+  border-radius: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#single-post-content-container-top-right-box {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 10px;
+}
+
+#single-post-content-container-top-right-box a {
+  text-decoration: none;
+  color: black;
+}
+
+#single-post-content-container-top-right-box a h3 {
+  margin: 0px !important;
+  font-size: 16px !important;
+}
+
+#single-post-content-container-top-right-box p {
+  margin: 0px !important;
+  color: grey !important;
+  font-size: 15px !important;
+  margin-top: 5px;
+}
+
+#single-post-content-container-middle {
+
+}
+
+#single-post-content-content {
+  font-size: 22px;
+  margin-bottom: 0px;
+}
+
+#single-post-content-bottom {
+
+  margin-top: 20px;
+  border-bottom: 1px solid #EBEEF0;
+  padding-bottom: 10px;
+}
+
+#single-post-content-date {
+  color: grey;
+  font-size: 16px;
+}
+
+#single-post-content-dot {
+  font-size: 5px;
+  color: grey;
+  vertical-align: middle;
+  margin: 0px 7px;
+}
+
+#single-post-content-likes {
+
+}
+
+/* -------------------- post operations  ---------------------------- */
+#single-post-operations {
+  width: 95%;
+  height: auto;
+  margin: 0 auto;
+  border-bottom: 1px solid #EBEEF0;
+  padding-bottom: 5px;
+  margin-top: -15px;
+}
+
+#single-post-operations form {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#single-post-operations form input {
+  background-color: transparent;
+  border: 1px solid transparent;
+  font-size: 20px;
+  border-radius: 25px;
+  padding: 5px 10px;
+}
+
+#single-post-operations form input:hover {
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#single-post-operations button {
+  background-color: transparent;
+  border: 1px solid transparent;
+  font-size: 22px;
+  position: relative;
+  padding: 8px 10px;
+  color: #BDC3C7;
+  margin-left: 12%;
+  border-radius: 25px;
+}
+
+#single-post-operations button:hover {
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#hidden-single-post-comment-form-bg {
+  position: fixed;
+  top:0;
+  left: 0;
+  right: 0;
+  bottom:0;
+  background-color: black;
+  z-index: 999;
+  opacity: 0.5;
+  display: none;
+}
+
+#hidden-single-post-comment-form {
+  z-index: 9999;
+  position: fixed;
+  top:0;
+  left: 0;
+  width: 50%;
+  margin-left: 25%;
+  background-color: white;
+  height: auto;
+  margin-top: 10vh;
+  border-radius: 10px;
+  padding-bottom: 40px;
+  display: none;
+}
+
+#hidden-single-post-comment-form-header {
+  padding: 10px 0px;
+  border-bottom: 1px solid #EBEEF0;
+  margin-bottom: 10px;
+}
+
+#hidden-single-post-comment-form-header button {
+  margin-top: 0px;
+  margin-left: 10px;
+  background-color: transparent;
+  border: 1px solid transparent;
+  font-size: 20px;
+  color: black;
+  border-radius: 25px;
+
+}
+
+#hidden-single-post-comment-form-header button:hover {
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#hidden-single-post-comment-form-container {
+  height: auto;
+}
+
+#hidden-single-post-comment-form-container-left-box {
+  width: 20%;
+  display: inline-block;
+  vertical-align: top;
+  height: auto;
+}
+
+#hidden-single-post-comment-form-container-profile-photo {
+  height: 50px;
+  width: 50px;
+  background-color: lightgrey;
+  border-radius: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0 auto;
+}
+
+#hidden-single-post-comment-form-container-right-box {
+  border: 1px solid transparent;
+  width: 78%;
+  display: inline-block;
+  vertical-align: top;
+  height: auto;
+}
+
+#hidden-single-post-comment-form-container-right-box form {
+
+}
+
+#hidden-single-post-comment-form-container-right-box form textarea {
+  width: 95%;
+  border: 1px solid transparent;
+  font-size: 20px;
+  height: 150px;
+}
+
+#hidden-single-post-comment-form-container-right-box form textarea:focus {
+  outline: none;
+}
+
+#hidden-single-post-comment-form-container-right-box form input {
+  position: absolute;
+  right:0;
+  bottom:0;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  background-color: black;
+  color: white;
+  border: 1px solid black;
+  font-size: 16px;
+  padding: 5px 15px;
+  border-radius: 25px;
+}
+
+#hidden-single-post-comment-form-container-right-box form input:hover {
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+/* -------------------- post comments  ------------------------------ */
+#post-comments-container {
+}
+
+#post-comment-cell {
+  border-bottom: 1px solid #EBEEF0;
+  height: auto;
+  padding: 10px 0px;
+}
+
+#post-comment-cell-left {
+  display: inline-block;
+  vertical-align: top;
+  width: 12%;
+}
+
+#post-comment-cell-left-profile-photo {
+  height: 45px;
+  width: 45px;
+  background-color: lightgrey;
+  border-radius: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0 auto;
+}
+
+#post-comment-cell-left-vertical-line {
+  border-left: 2px solid #C4CFD6;
+  height: 50px;
+  text-align: center;
+  margin: 0 auto;
+  width: 1px;
+  margin-top: 5px;
+  border-radius: 10px;
+}
+
+#post-comment-cell-right {
+  display: inline-block;
+  vertical-align: top;
+  width: 85%;
+}
+
+#post-comment-cell-header-p {
+  margin: 0px;
+  color: #5B7183 !important;
+  font-size: 15px;
+}
+
+#post-comment-cell-header-p a {
+  font-weight: 700;
+  color: black;
+  text-decoration: none;
+  margin-right: 3px;
+}
+
+#post-comment-header-p-date {
+  color: #F7F7F7 !important;
+}
+
+#post-comment-cell-header-reply-p {
+  margin: 0px;
+  margin-top: 3px;
+  font-size: 15px;
+  color: #5B7183 !important;
+}
+
+#post-comment-cell-header-reply-p a {
+  color: black;
+  text-decoration: none;
+}
+
+#post-comment-cell-content-p {
+  font-size: 15px;
+  margin-top: 7px;
+  margin-bottom: 7px;
+}
+
+#post-comment-cell-right-bottom {
+  padding: 0px !important;
+  margin-top: -10px;
+  height: auto;
+}
+
+#post-comment-cell-right-bottom form {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#post-comment-cell-right-bottom form input {
+  background-color: transparent;
+  border: 1px solid transparent;
+  font-size: 17px;
+  border-radius: 25px;
+  padding: 5px 10px;
+  margin-right: -8px;
+}
+
+#post-comment-cell-right-bottom form input:hover {
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#comment-like-count {
+  display: inline-block;
+  font-size: 15px;
+  vertical-align: middle;
+}
+
+/* Mobile Small  --------------------------------------------------------- */
+@media screen and (min-width: 0px) and (max-width: 320px) {
+  #single-post-header {
+    display: none;
+  }
+
+  /* ----------------- single-post-content-container ------------------ */
+  #single-post-content-container {
+    width: 90%;
+    padding-top: 5px;
+  }
+
+  /* -------------------- post operations  ---------------------------- */
+
+  #hidden-single-post-comment-form {
+    width: 90%;
+    margin-left: 5%;
+  }
+
+  #hidden-single-post-comment-form-container-left-box {
+    width: 20%;
+  }
+
+  #hidden-single-post-comment-form-container-profile-photo {
+    height: 35px;
+    width: 35px;
+  }
+
+  #hidden-single-post-comment-form-container-right-box {
+    width: 75%;
+  }
+
+  #hidden-single-post-comment-form-container-right-box form textarea {
+    font-size: 16px;
+  }
+
+  /* -------------------- post comments  ------------------------------ */
+
+  #post-comment-cell-left {
+    width: 15%;
+  }
+
+  #post-comment-cell-left-profile-photo {
+    height: 35px;
+    width: 35px;
+  }
+
+  #post-comment-cell-right {
+    width: 82%;
+  }
+
+}
+
+
+/* Mobile Medium  --------------------------------------------------------- */
+@media screen and (min-width: 321px) and (max-width: 375px) {
+  #single-post-header {
+    display: none;
+  }
+
+  /* ----------------- single-post-content-container ------------------ */
+  #single-post-content-container {
+    width: 90%;
+    padding-top: 5px;
+  }
+
+  /* -------------------- post operations  ---------------------------- */
+
+  #hidden-single-post-comment-form {
+    width: 90%;
+    margin-left: 5%;
+  }
+
+  #hidden-single-post-comment-form-container-left-box {
+    width: 20%;
+  }
+
+  #hidden-single-post-comment-form-container-profile-photo {
+    height: 35px;
+    width: 35px;
+  }
+
+  #hidden-single-post-comment-form-container-right-box {
+    width: 75%;
+  }
+
+  #hidden-single-post-comment-form-container-right-box form textarea {
+    font-size: 16px;
+  }
+
+  /* -------------------- post comments  ------------------------------ */
+
+  #post-comment-cell-left {
+    width: 15%;
+  }
+
+  #post-comment-cell-left-profile-photo {
+    height: 35px;
+    width: 35px;
+  }
+
+  #post-comment-cell-right {
+    width: 82%;
+  }
+}
+
+
+/* Mobile Large - --------------------------------------------------------- */
+@media screen and (min-width: 376px) and (max-width: 425px) {
+  #single-post-header {
+    display: none;
+  }
+
+  /* ----------------- single-post-content-container ------------------ */
+  #single-post-content-container {
+    width: 90%;
+    padding-top: 5px;
+  }
+
+  /* -------------------- post operations  ---------------------------- */
+
+  #hidden-single-post-comment-form {
+    width: 90%;
+    margin-left: 5%;
+  }
+
+  #hidden-single-post-comment-form-container-left-box {
+    width: 20%;
+  }
+
+  #hidden-single-post-comment-form-container-profile-photo {
+    height: 35px;
+    width: 35px;
+  }
+
+  #hidden-single-post-comment-form-container-right-box {
+    width: 75%;
+  }
+
+  #hidden-single-post-comment-form-container-right-box form textarea {
+    font-size: 16px;
+  }
+
+  /* -------------------- post comments  ------------------------------ */
+
+  #post-comment-cell-left {
+    width: 15%;
+  }
+
+  #post-comment-cell-left-profile-photo {
+    height: 35px;
+    width: 35px;
+  }
+
+  #post-comment-cell-right {
+    width: 82%;
+  }
+}
+
+
+/* Tablet - --------------------------------------------------------------- */
+@media screen and (min-width: 426px) and (max-width: 768px) {
+
+
+}
+
+
+/* Laptop ------------------------------------------------------------------ */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  /* nothing for now */
+}
+
+
+/* Laptop Large -------------------------------------------------------------*/
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+  /* nothing for now */
+}
+
+
+/* 4K Large Desktop ------------------------------------------------------- */
+@media screen and (min-width: 1441px) {
+
+}

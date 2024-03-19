@@ -1,0 +1,354 @@
+#home-banner {
+  border-bottom: 1px solid #EBEEF0;
+}
+
+#home-banner h1 {
+  margin: 0px;
+  font-size: 20px;
+  font-weight: 800;
+  margin-left: 20px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+#home-post-form {
+  border-bottom: 1px solid #EBEEF0;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+#home-post-form-left-part {
+  width: 15%;
+  vertical-align: top;
+  display: inline-block;
+  text-align: center;
+}
+
+#home-post-form-left-part-profile-photo {
+  height: 45px;
+  width: 45px;
+  background-color: lightgrey;
+  border-radius: 50%;
+  text-align: center;
+  margin: 0 auto;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#home-post-form-right-part {
+  width: 82%;
+  vertical-align: top;
+  display: inline-block;
+}
+
+#home-post-form-right-part form {
+
+}
+
+#home-post-form-right-part form textarea {
+  width: 95%;
+  border: 0px;
+  border-bottom: 1px solid #EBEEF0;
+  font-size: 16px;
+  height: 100px;
+  margin-bottom: 10px;
+}
+
+#home-post-form-right-part form textarea:focus {
+  outline: none;
+}
+
+#home-post-submit-btn {
+  float: right;
+  margin-right: 20px;
+  margin-top: -5px;
+  color: white;
+  background-color: black;
+  border: 1px solid black;
+  padding: 5px 14px;
+  border-radius: 25px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+#home-post-submit-btn:hover {
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+
+#home-post-form-right-part form label {
+  font-size: 24px;
+  color: black;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 5px;
+  border-radius: 50%;
+}
+
+#home-post-form-right-part form label:hover {
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+
+#home-post-file-input {
+  display: none;
+
+}
+
+#small-diviser {
+  border-bottom: 1px solid #EBEEF0;
+  height: 10px;
+  background-color: #F7F9FA;
+}
+
+
+/* ------------------------- post cell ------------------------- */
+#post-cell-container {
+
+}
+
+#post-cell {
+  border-bottom: 1px solid #EBEEF0;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+#post-cell:hover {
+  transition: 0.2s;
+}
+
+#post-cell-left-part {
+  width: 15%;
+  vertical-align: top;
+  display: inline-block;
+  text-align: center;
+}
+
+#post-cell-left-part-profile-photo {
+  height: 45px;
+  width: 45px;
+  background-color: lightgrey;
+  border-radius: 50%;
+  text-align: center;
+  margin: 0 auto;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#post-cell-right-part {
+  width: 82%;
+  vertical-align: top;
+  display: inline-block;
+}
+
+#post-cell-right-part p {
+  margin: 0px;
+  margin-bottom: 12px;
+  font-size: 15px;
+}
+
+#post-cell-header {
+  margin-bottom: 5px !important;
+}
+
+#post-cell-header a {
+  color: black;
+  text-decoration: none;
+}
+
+#post-cell-header a:hover {
+  text-decoration: underline;
+}
+
+#post-cell-header {
+  color: grey;
+}
+
+#post-image {
+  width: 93%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: #E5E8E8;
+  height: 280px;
+  border-radius: 15px;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#post-cell-right-part-bottom-links {
+  border: 1px solid transparent;
+}
+
+#post-cell-right-part-bottom-links form {
+  display: inline-block;
+  width: 28%;
+}
+
+#post-cell-right-part-bottom-links form input {
+  display: inline-block;
+  background-color: transparent;
+  border: 1px solid transparent;
+  font-size: 16px;
+  color: grey;
+  padding: 5px 5px;
+  padding-left: 9px !important;
+}
+
+#post-cell-right-part-bottom-links form input:hover {
+  transition: 0.1s;
+  cursor: pointer;
+  border-radius: 25px;
+
+}
+
+#post-cell-right-part-bottom-links form p {
+  display: inline-block;
+  margin-top: 10px;
+  color: grey;
+  position: absolute;
+  font-size: 14px;
+  margin-left: 3px;
+}
+
+#reposted-link {
+  color: #5B7183;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 14px;
+  margin: 0px;
+  margin-bottom: 12px;
+  margin-top: 5px;
+  margin-left: 4%;
+}
+
+#reposted-link a {
+  text-decoration: none;
+  color: #5B7183;
+  font-weight: 700;
+}
+
+#reposted-link a:hover {
+  text-decoration: underline;
+}
+
+
+#pagination-container {
+  margin-top: 30px;
+  margin-bottom: 100px;
+  text-align: center;
+}
+
+#pagination-container a {
+  text-decoration: none;
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+  font-size: 22px;
+  padding: 10px 20px;
+  border-radius: 25px;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+#pagination-container a:hover {
+  transition: 0.2s;
+}
+
+
+/* Mobile Small  --------------------------------------------------------- */
+@media screen and (min-width: 0px) and (max-width: 320px) {
+  #home-banner {
+    display: none;
+  }
+
+  #home-banner h1 {
+    display: none;
+  }
+
+  #home-post-form {
+    display: none;
+  }
+
+  #small-diviser {
+    display: none;
+  }
+
+}
+
+
+/* Mobile Medium  --------------------------------------------------------- */
+@media screen and (min-width: 321px) and (max-width: 375px) {
+  #home-banner {
+    display: none;
+  }
+
+  #home-banner h1 {
+    display: none;
+  }
+
+  #home-post-form {
+    display: none;
+  }
+
+  #small-diviser {
+    display: none;
+  }
+
+}
+
+
+/* Mobile Large - --------------------------------------------------------- */
+@media screen and (min-width: 376px) and (max-width: 425px) {
+
+  #home-banner {
+    display: none;
+  }
+
+  #home-banner h1 {
+    display: none;
+  }
+
+  #home-post-form {
+    display: none;
+  }
+
+  #small-diviser {
+    display: none;
+  }
+
+
+}
+
+
+/* Tablet - --------------------------------------------------------------- */
+@media screen and (min-width: 426px) and (max-width: 768px) {
+
+
+}
+
+
+/* Laptop ------------------------------------------------------------------ */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  /* nothing for now */
+}
+
+
+/* Laptop Large -------------------------------------------------------------*/
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+  /* nothing for now */
+}
+
+
+/* 4K Large Desktop ------------------------------------------------------- */
+@media screen and (min-width: 1441px) {
+
+}

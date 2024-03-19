@@ -1,0 +1,97 @@
+{% extends 'main_base.html' %}
+{% load static %}
+{% load home_filters %}
+
+{% block css_link %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/home/home.css' %}" />
+{% endblock %}
+
+{% block content %}
+{% with page="0" %}
+
+<!-- banner -->
+<div id="home-banner">
+    <h1>Home</h1>
+</div>
+
+<!-- post form -->
+<div id="home-post-form">
+  <div id="home-post-form-left-part">
+    {% if current_user.profile_photo %}
+      <div id="home-post-form-left-part-profile-photo" style="background-image:url('{{ current_user.profile_photo.url }}')"></div>
+    {% else %}
+      <div id="home-post-form-left-part-profile-photo"></div>
+    {% endif %}
+  </div>
+  <div id="home-post-form-right-part">
+    <form action="{% url 'content:home' page %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <textarea placeholder="What's happening?" name="post_content"></textarea>
+        <label for="home-post-file-input"><i class="ri-image-add-line"></i></label>
+        <input id="home-post-file-input" type="file" name="post_image" />
+        <input id="home-post-submit-btn" type="submit" value="Post" name="home_page_post_form_submit_btn" />
+    </form>
+  </div>
+</div>
+
+<div id="small-diviser"></div>
+
+
+<!-- all posts listing -->
+<div id="post-cell-container">
+
+  {% for post in post_feed %}
+
+    <div id="post-cell">
+
+      <div id="post-cell-left-part">
+        {% if post.author.profile_photo %}
+          <div id="post-cell-left-part-profile-photo" style="background-image:url('{{ post.author.profile_photo.url }}')"></div>
+        {% else %}
+          <div id="post-cell-left-part-profile-photo"></div>
+        {% endif %}
+      </div>
+      <div id="post-cell-right-part">
+        <p id="post-cell-header"><b><a href="{% url 'content:other_user_profile' post.author.username %}">{{ post.author.first_name }} {{ post.author.last_name }}</a></b> @{{ post.author.username }} · {{ post.created_time }}</p>
+        <p>{{ post.content|linebreaks }}</p>
+
+        {% if post.image %}
+          <div id="post-image" style="background-image:url('{{ post.image.url }}')"></div>
+        {% endif %}
+
+        <div id="post-cell-right-part-bottom-links">
+          <form id="post-cell-comment-form" action="{% url 'content:home' page %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" value="{{ post.id }}" name="hidden_post_id" />
+            <input type="submit" value="&#128262;" name="post_cell_comment_submit_btn"/>
+            <p>{{ post.comment_count }}</p>
+          </form>
+
+          <form id="post-cell-like-form" action="{% url 'content:home' page %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" value="{{ post.id }}" name="hidden_post_id" />
+            <input type="submit" value="&#128156;" name="post_cell_like_submit_btn" />
+            <p>{{ post.like_count }}</p>
+          </form>
+        </div>
+      </div><!-- /right-part -->
+    </div><!--/cell -->
+
+  {% endfor %}
+
+
+  <!-- pagination -->
+  <div id="pagination-container">
+    {% if current_page <= 0 %}
+      <a href="{% url 'content:home' next_page %}"><span class="fa fa-caret-right"></span></a>
+    {% elif current_page > 0%}
+      <a href="{% url 'content:home' previous_page %}"><span class="fa fa-caret-left"></span></a>
+      <a href="{% url 'content:home' next_page %}"><span class="fa fa-caret-right"></span></a>
+    {% endif %}
+
+  </div>
+
+</div><!--/container -->
+
+{% endwith %}
+{% endblock %}
