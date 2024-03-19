@@ -19,7 +19,7 @@ def left_nav_post_form_processing(request, current_user):
 
 
 def mobile_post_form_processing(request, current_user):
-    if request.POST.get('mobile_hidden_tweet_submit_btn'):
+    if request.POST.get('mobile_hidden_post_submit_btn'):
         post_content = request.POST.get('post_content')
         post_image = request.FILES.get('post_image')
 
