@@ -116,7 +116,7 @@ class LoginView(View):
 
 
 class LogoutView(View):
-    def post(self, request):
+    def get(self, request):
         if 'user_email' in request.session:
             del request.session['user_email']
             del request.session['user_username']
