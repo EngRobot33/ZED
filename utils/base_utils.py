@@ -43,5 +43,4 @@ def get_random_topics():
 def get_random_follow_suggestions(current_user):
     following_users = Relation.objects.filter(follower__id=current_user.id).values_list('following__id', flat=True)
     random_suggestions = User.objects.exclude(id__in=following_users).exclude(id=current_user.id).order_by('?')[:5]
-    print(random_suggestions)
     return list(random_suggestions)
