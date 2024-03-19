@@ -1,0 +1,363 @@
+#profile-header {
+  border-bottom: 1px solid #EBEEF0;
+}
+
+#profile-header h3 {
+  margin: 0px;
+  font-size: 20px;
+  font-weight: 800;
+  margin-left: 20px;
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+#profile-header p {
+  color: grey;
+  margin: 0px;
+  margin-left: 20px;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+/* ----- banner ----*/
+#profile-banner-container {
+
+}
+
+#profile-banner {
+  background-color: #EBEEF0;
+  width: 100%;
+  height: 160px;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#profile-banner-bottom-part {
+
+}
+
+#profile-banner-bottom-part form {
+  float: right;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+#follow-submit-btn {
+  color: black;
+  border: 1px solid black;
+  text-decoration: none;
+  padding: 7px 15px;
+  border-radius: 25px;
+  font-weight: 700;
+  font-size: 16px;
+  background-color: transparent;
+}
+
+#follow-submit-btn:hover {
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#profile-photo {
+  background-color: lightgrey;
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  position: absolute;
+  margin-top: -80px;
+  margin-left: 20px;
+  border: 4px solid white;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#clear {
+  clear: both;
+}
+
+#profile-banner-bottom-part a {
+  float: right;
+  color: black;
+  border: 1px solid black;
+  text-decoration: none;
+  padding: 7px 15px;
+  border-radius: 25px;
+  font-weight: 700;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+#profile-banner-bottom-part a:hover {
+  transition: 0.2s;
+}
+
+
+/* ----- bio ----*/
+#profile-bio {
+  width: 94%;
+  margin: 0 auto;
+  margin-top: 40px;
+}
+
+#profile-bio-other-user {
+  width: 94%;
+  margin: 0 auto;
+  margin-top: 90px;
+}
+
+#profile-bio h3 {
+  margin: 0px;
+  margin-top: 10px;
+  font-weight: 800;
+}
+
+#bio-username {
+  color: grey;
+  margin: 0px;
+}
+
+#bio-bio {
+  margin: 0px;
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+
+#bio-date {
+  margin: 0px;
+  color: grey;
+  margin-bottom: 15px;
+}
+
+#bio-followers {
+  margin: 0px;
+  color: grey;
+}
+
+#bio-followers b {
+  margin-right: 4px;
+  color: black;
+}
+
+#right-space {
+  margin-right: 20px;
+}
+
+/* ----- navigation ----*/
+#profile-nav {
+  margin-top: 30px;
+  border-bottom: 1px solid #EBEEF0;
+  padding-bottom: 5px;
+}
+
+#profile-nav a {
+  width: 50%;
+  text-decoration: none;
+  color: black;
+  font-weight: 800;
+  border-bottom: 3px solid black;
+  border-radius: 2px;
+  padding-bottom: 5px;
+}
+
+#profile-nav p {
+  margin: 3px;
+  margin-left: 20px;
+}
+
+
+/* ----- tweets ----*/
+#post-cell {
+  border-bottom: 1px solid #EBEEF0;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+#post-cell:hover {
+  transition: 0.2s;
+}
+
+#post-cell-left-part {
+  width: 15%;
+  vertical-align: top;
+  display: inline-block;
+  text-align: center;
+}
+
+#post-cell-left-part-profile-photo {
+  height: 45px;
+  width: 45px;
+  background-color: lightgrey;
+  border-radius: 50%;
+  text-align: center;
+  margin: 0 auto;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#post-cell-right-part {
+  width: 82%;
+  vertical-align: top;
+  display: inline-block;
+}
+
+#post-cell-right-part p {
+  margin: 0px;
+  margin-bottom: 12px;
+  font-size: 15px;
+}
+
+#post-cell-header {
+  margin-bottom: 5px !important;
+}
+
+#post-cell-header a {
+  color: black;
+  text-decoration: none;
+}
+
+#post-cell-header a:hover {
+  text-decoration: underline;
+}
+
+#post-cell-header {
+  color: grey;
+}
+
+#post-image {
+  width: 93%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: #E5E8E8;
+  height: 280px;
+  border-radius: 15px;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#post-cell-right-part-bottom-links {
+  border: 1px solid transparent;
+}
+
+#post-cell-right-part-bottom-links form {
+  display: inline-block;
+  width: 28%;
+}
+
+#post-cell-right-part-bottom-links form input {
+  display: inline-block;
+  background-color: transparent;
+  border: 1px solid transparent;
+  font-size: 16px;
+  color: grey;
+  padding: 5px 5px;
+  padding-left: 9px !important;
+}
+
+#post-cell-right-part-bottom-links form input:hover {
+  transition: 0.1s;
+  cursor: pointer;
+  border-radius: 25px;
+
+}
+
+#post-cell-right-part-bottom-links form p {
+  display: inline-block;
+  margin-top: 10px;
+  color: grey;
+  position: absolute;
+  font-size: 14px;
+  margin-left: 3px;
+}
+
+
+/* Mobile Small  --------------------------------------------------------- */
+@media screen and (min-width: 0px) and (max-width: 320px) {
+  #profile-header {
+    display: none;
+  }
+
+
+  #profile-banner {
+    height: 100px;
+  }
+
+  #profile-photo {
+    height: 100px;
+    width: 100px;
+    margin-top: -40px;
+    margin-left: 5px;
+  }
+}
+
+
+/* Mobile Medium  --------------------------------------------------------- */
+@media screen and (min-width: 321px) and (max-width: 375px) {
+  #profile-header {
+    display: none;
+  }
+
+
+  #profile-banner {
+    height: 100px;
+  }
+
+  #profile-photo {
+    height: 100px;
+    width: 100px;
+    margin-top: -40px;
+    margin-left: 5px;
+  }
+}
+
+
+/* Mobile Large - --------------------------------------------------------- */
+@media screen and (min-width: 376px) and (max-width: 425px) {
+  #profile-header {
+    display: none;
+  }
+
+
+  #profile-banner {
+    height: 100px;
+  }
+
+  #profile-photo {
+    height: 100px;
+    width: 100px;
+    margin-top: -40px;
+    margin-left: 5px;
+  }
+}
+
+
+/* Tablet - --------------------------------------------------------------- */
+@media screen and (min-width: 426px) and (max-width: 768px) {
+
+
+}
+
+
+/* Laptop ------------------------------------------------------------------ */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  /* nothing for now */
+}
+
+
+/* Laptop Large -------------------------------------------------------------*/
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+  /* nothing for now */
+}
+
+
+/* 4K Large Desktop ------------------------------------------------------- */
+@media screen and (min-width: 1441px) {
+
+}

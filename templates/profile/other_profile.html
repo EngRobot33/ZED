@@ -1,0 +1,106 @@
+{% extends 'main_base.html' %}
+{% load static %}
+
+{% block css_link %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/profile/profile.css' %}" />
+{% endblock %}
+
+{% block content %}
+{% with page="0" %}
+
+<!-- header -->
+<div id="profile-header">
+  <h3>{{ other_user.first_name }} {{ other_user.last_name }}</h3>
+  <p>{{posts_count}} Posts</p>
+</div>
+
+<!-- banner and profile photo -->
+<div id="profile-banner-container">
+  {% if other_user.banner_photo %}
+    <div id="profile-banner" style="background-image:url('{{ other_user.banner_photo.url }}')"></div>
+  {% else %}
+    <div id="profile-banner"></div>
+  {% endif %}
+
+  <div id="profile-banner-bottom-part">
+      {% if other_user_profile.profile_photo %}
+        <div id="profile-photo" style="background-image:url('{{ other_user.profile_photo.url }}')"></div>
+      {% else %}
+        <div id="profile-photo"></div>
+      {% endif %}
+
+      <div id="clear"></div>
+      <form method="POST" action="{% url 'content:other_user_profile' other_user.username %}">
+          {% csrf_token %}
+          {% if already_follower == False %}
+            <input type="submit" id="follow-submit-btn" value="Follow" name="other_user_profile_follow_submit_btn" />
+          {% else %}
+            <input type="submit" id="follow-submit-btn" value="Following" name="other_user_profile_follow_submit_btn" />
+          {% endif %}
+      </form>
+      <div id="clear"></div>
+  </div>
+
+</div>
+
+<!-- bio -->
+<div id="profile-bio">
+  <h3>{{ other_user.first_name }} {{ other_user.last_name }}</h3>
+  <p id="bio-username">@{{ other_user.username }}</p>
+
+  <p id="bio-bio">{{ other_user.bio }}</p>
+
+  <p id="bio-date">{{ other_user.created_time }}</p>
+
+  <p id="bio-followers"><b>{{followings_count}}</b>Following <span id="right-space"></span> <b>{{followers_count}}</b>Followers</p>
+</div>
+
+
+<!-- navigation -->
+<div id="profile-nav">
+  <p><a href="{% url 'content:other_user_profile' other_user.username %}">Posts</a></p>
+</div>
+
+
+<!-- posts -->
+
+{% for post in posts %}
+  <div id="post-cell">
+    <div id="post-cell-left-part">
+      {% if post.author.profile_photo %}
+        <div id="post-cell-left-part-profile-photo" style="background-image:url('{{ post.author.profile_photo.url }}')"></div>
+      {% else %}
+        <div id="post-cell-left-part-profile-photo"></div>
+      {% endif %}
+    </div>
+
+    <div id="post-cell-right-part">
+      <p id="post-cell-header"><b><a href="{% url 'content:other_user_profile' other_user.username %}">{{ post.author.first_name }} {{ post.author.last_name }}</a></b> @{{ post.author.username }} · {{ post.created_time }}</p>
+      <p>{{ post.content|linebreaks }}</p>
+
+      {% if post.image %}
+        <div id="post-image" style="background-image:url('{{ post.image.url }}')"></div>
+      {% endif %}
+
+      <div id="post-cell-right-part-bottom-links">
+        <form id="post-cell-comment-form" method="POST" action="{% url 'content:other_user_profile' other_user.username %}" >
+          {% csrf_token %}
+          <input type="hidden" value="{{ post.id }}" name="hidden_post_id" />
+          <input type="submit" value="&#128262;" name="other_profile_post_comment_form_submit_btn"/>
+          <p>{{ post.comment_count }}</p>
+        </form>
+
+        <form id="post-cell-like-form" method="POST">
+          {% csrf_token %}
+          <input type="hidden" value="{{ post.id }}" name="hidden_post_id" />
+          <input type="submit" value="&#128156;" name="other_profile_post_like_form_submit_btn" />
+          <p>{{ post.like_count }}</p>
+        </form>
+      </div>
+
+    </div>
+  </div>
+{% endfor %}
+
+{% endwith %}
+{% endblock %}

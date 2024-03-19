@@ -82,7 +82,7 @@ def home(request, page):
 
     post_feed = []
 
-    posts = Post.objects.all().order_by("-id")
+    posts = Post.objects.all().order_by('-created_time')
 
     if followings is not None:
         for post in posts:
@@ -200,11 +200,121 @@ def explore(request):
 
 
 def profile(request):
-    ...
+    current_user = get_current_user(request)
+
+    if current_user is None:
+        return HttpResponseRedirect('/auth/signup/')
+
+    random_topics = get_random_topics()
+    random_follow_suggestions = get_random_follow_suggestions(current_user)
+
+    posts = Post.objects.filter(author=current_user).order_by('-created_time')
+    followers = Relation.objects.filter(following=current_user)
+    followings = Relation.objects.filter(follower=current_user)
+
+    if request.POST.get('profile_post_comment_submit_btn'):
+        current_post_id = request.POST.get('hidden_post_id')
+        return HttpResponseRedirect('/post/' + str(current_post_id) + '/')
+
+    if request.POST.get('profile_post_like_submit_btn'):
+        current_post_id = request.POST.get('hidden_post_id')
+        current_post = Post.objects.get(id=current_post_id)
+        LikedPost.objects.create(
+            post=current_post,
+            liker=current_user
+        )
+        current_post.like_count += 1
+        current_post.save()
+        LikeNotification.objects.create(
+            notified=current_post.author,
+            notifier=current_user,
+            post=current_post,
+        )
+
+        return HttpResponseRedirect('/tweet/' + str(current_post.id) + '/')
+
+    data = {
+        'current_user': current_user,
+        'random_follow_suggestions': random_follow_suggestions,
+        'random_topics': random_topics,
+        'posts': posts,
+        'posts_count': len(posts),
+        'followers_count': len(followers),
+        'followings_count': len(followings)
+    }
+
+    return render(request, 'profile/profile.html', data)
 
 
 def other_user_profile(request, other_user_username):
-    ...
+    current_user = get_current_user(request)
+
+    if current_user is None:
+        return HttpResponseRedirect('/auth/signup/')
+
+    random_topics = get_random_topics()
+
+    random_follow_suggestions = get_random_follow_suggestions(current_user)
+
+    other_user = get_object_or_404(User, username=other_user_username)
+    if other_user is None:
+        return HttpResponseRedirect("/")
+
+    posts = Post.objects.filter(author=other_user).order_by('-created_time')
+    followers = Relation.objects.filter(following=other_user)
+    followings = Relation.objects.filter(follower=other_user)
+
+    already_follower = False
+
+    if request.POST.get('other_user_profile_follow_submit_btn'):
+        is_follower = Relation.objects.filter(
+            following=other_user,
+            follower=current_user,
+        )
+        if is_follower is None or is_follower == [] or bool(is_follower) == False:
+            Relation.objects.create(
+                following=other_user,
+                follower=current_user,
+            )
+            return HttpResponseRedirect('/profile/' + other_user.username + '/')
+        else:
+            already_follower = True
+
+    if request.POST.get('other_profile_post_comment_form_submit_btn'):
+        current_post_id = request.POST.get('hidden_post_id')
+        return HttpResponseRedirect('/post/' + str(current_post_id) + '/')
+
+    if request.POST.get('other_profile_post_like_form_submit_btn'):
+        current_post_id = request.POST.get('hidden_post_id')
+        current_post = Post.objects.get(id=current_post_id)
+        LikedPost.objects.create(
+            post=current_post,
+            liker=current_user
+        )
+        current_post.like_count += 1
+        current_post.save()
+
+        LikeNotification.objects.create(
+            notified=current_post.author,
+            notifier=current_user,
+            post=current_post,
+        )
+
+        return HttpResponseRedirect('/post/' + str(current_post.id) + '/')
+
+    data = {
+        'current_user': current_user,
+        'other_user': other_user,
+        'random_follow_suggestions': random_follow_suggestions,
+        'random_topics': random_topics,
+        'posts': posts,
+        'posts_count': len(posts),
+        'followers_count': len(followers),
+        'followings_count': len(followings),
+        'already_follower': already_follower,
+    }
+
+    return render(request, 'profile/other_profile.html', data)
 
 
 def settings(request):
