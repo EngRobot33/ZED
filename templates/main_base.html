@@ -62,7 +62,7 @@
     </div>
 
     <div id="hidden-logout-panel">
-      <p><a href="{% url 'user:logout' %}">Log out @{{ current_user }}</a></p>
+      <p><a href="{% url 'user:logout' %}">Log out @{{ current_user.username }}</a></p>
     </div>
 
     <script>

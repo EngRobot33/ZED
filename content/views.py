@@ -121,7 +121,7 @@ def home(request, page):
         return HttpResponseRedirect('/post/' + str(current_post.id) + '/')
 
     data = {
-        'current_basic_user': current_user,
+        'current_user': current_user,
         'random_follow_suggestions': random_follow_suggestions,
         'random_topics': random_topics,
         'post_feed': post_feed,
