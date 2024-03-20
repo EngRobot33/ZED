@@ -1,0 +1,45 @@
+{% extends 'main_base.html' %}
+{% load static %}
+{% load home_filters %}
+
+{% block css_link %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/search/search.css' %}" />
+{% endblock %}
+
+{% block content %}
+{% with page="0" %}
+
+<!-- header -->
+<div id="search-header">
+    <h3>Search</h3>
+</div>
+
+{% if searched_users %}
+  <!-- Iterate over each searched user -->
+  {% for searched_user in searched_users %}
+    <div id="search-cell">
+      <div id="search-cell-left-part">
+        {% if searched_user.profile_photo %}
+          <div id="search-cell-profile-photo" style="background-image:url('{{ searched_user.profile_photo.url }}')"></div>
+        {% else %}
+          <div id="search-cell-profile-photo"></div>
+        {% endif %}
+      </div>
+      <div id="search-cell-middle-part">
+        <p id="search-name"><a href="{% url 'content:other_user_profile' searched_user.username %}"><b>{{ searched_user.first_name }} {{ searched_user.last_name }}</b></a></p>
+        <p id="search-username"><a href="{% url 'content:other_user_profile' searched_user.username %}">@{{ searched_user.username }}</a></p>
+        <p id="search-bio">{{ searched_user.bio }}</p>
+      </div>
+      <div id="search-cell-right-part">
+        <a href="{% url 'content:other_user_profile' searched_user.username %}">View</a>
+      </div>
+    </div>
+  {% endfor %}
+{% else %}
+  <p id="no-search-text">We couldn't find anyone with that name!</p>
+{% endif %}
+
+
+
+{% endwith %}
+{% endblock %}

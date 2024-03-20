@@ -1,5 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
+from django.core.exceptions import ObjectDoesNotExist
+from django.db.models import Q
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 
@@ -380,8 +382,30 @@ def settings(request):
     return render(request, 'settings/settings.html', data)
 
 
+@login_required
 def search(request, query):
-    ...
+    current_user = get_current_user(request)
+
+    if current_user is None:
+        return HttpResponseRedirect('/auth/signup/')
+
+    random_topics = get_random_topics()
+
+    random_follow_suggestions = get_random_follow_suggestions(current_user)
+
+    try:
+        searched_users = User.objects.filter(Q(first_name__icontains=query) | Q(last_name__icontains=query)).exclude(id=current_user.id)
+    except ObjectDoesNotExist:
+        searched_users = None
+
+    data = {
+        'current_user': current_user,
+        'random_follow_suggestions': random_follow_suggestions,
+        'random_topics': random_topics,
+        'searched_users': searched_users,
+    }
+
+    return render(request, 'search/search.html', data)
 
 
 def topic_explore(request, topic, page):

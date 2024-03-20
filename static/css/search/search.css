@@ -1,0 +1,247 @@
+#search-header {
+  border-bottom: 1px solid #EBEEF0;
+}
+
+#search-header h3 {
+  margin: 0px;
+  font-size: 20px;
+  font-weight: 800;
+  margin-left: 20px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+#search-cell {
+  width: 100%;
+  border-bottom: 1px solid #EBEEF0;
+  padding: 10px 0px;
+}
+
+#search-cell-left-part {
+  width: 15%;
+  display: inline-block;
+  vertical-align: top;
+  height: auto;
+  text-align: center;
+}
+
+#search-cell-profile-photo {
+  height: 45px;
+  width: 45px;
+  background-color: lightgrey;
+  border-radius: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0 auto;
+
+}
+
+#search-cell-middle-part {
+  width: 67%;
+  display: inline-block;
+  vertical-align: top;
+  height: auto;
+}
+
+#search-cell-middle-part p {
+  margin: 0px;
+  margin-bottom: 3px;
+}
+
+#search-name a {
+  text-decoration: none !important;
+  color: black !important;
+  font-size: 15px;
+}
+
+#search-username a {
+  text-decoration: none !important;
+  text-decoration: none;
+  color: #5B7183;
+  font-size: 15px;
+}
+
+#search-bio {
+  font-size: 15px;
+}
+
+#search-cell-right-part {
+  width: 12%;
+  display: inline-block;
+  vertical-align: top;
+  height: auto;
+  padding-top: 8px;
+  text-align: center;
+}
+
+#search-cell-right-part a {
+  font-weight: 800;
+  color: black;
+  border: 1px solid black;
+  background-color: transparent;
+  border-radius: 25px;
+  padding: 5px 20px;
+  text-decoration: none;
+}
+
+#search-cell-right-part a:hover {
+  transition: 0.2s;
+}
+
+#no-search-text {
+  color: grey;
+  width: 95%;
+  margin: 0 auto;
+  margin-top: 15px;
+}
+
+/* Mobile Small  --------------------------------------------------------- */
+@media screen and (min-width: 0px) and (max-width: 320px) {
+  #search-header h3 {
+    display: none;
+  }
+
+  #search-cell-left-part {
+    width: 15%;
+  }
+
+  #search-cell-profile-photo {
+    height: 30px;
+    width: 30px;
+  }
+
+  #search-cell-middle-part {
+    width: 67%;
+  }
+
+  #search-name a {
+    font-size: 14px;
+  }
+
+  #search-username a {
+    font-size: 14px;
+  }
+
+  #search-bio {
+    font-size: 14px;
+  }
+
+  #search-cell-right-part {
+    width: 12%;
+  }
+
+  #search-cell-right-part a {
+    padding: 5px 0px;
+  }
+
+}
+
+
+/* Mobile Medium  --------------------------------------------------------- */
+@media screen and (min-width: 321px) and (max-width: 375px) {
+  #search-header h3 {
+    display: none;
+  }
+
+  #search-cell-left-part {
+    width: 15%;
+  }
+
+  #search-cell-profile-photo {
+    height: 30px;
+    width: 30px;
+  }
+
+  #search-cell-middle-part {
+    width: 67%;
+  }
+
+  #search-name a {
+    font-size: 14px;
+  }
+
+  #search-username a {
+    font-size: 14px;
+  }
+
+  #search-bio {
+    font-size: 14px;
+  }
+
+  #search-cell-right-part {
+    width: 12%;
+  }
+
+  #search-cell-right-part a {
+    padding: 5px 0px;
+  }
+
+}
+
+
+/* Mobile Large - --------------------------------------------------------- */
+@media screen and (min-width: 376px) and (max-width: 425px) {
+  #search-header h3 {
+    display: none;
+  }
+
+  #search-cell-left-part {
+    width: 15%;
+  }
+
+  #search-cell-profile-photo {
+    height: 30px;
+    width: 30px;
+  }
+
+  #search-cell-middle-part {
+    width: 67%;
+  }
+
+  #search-name a {
+    font-size: 14px;
+  }
+
+  #search-username a {
+    font-size: 14px;
+  }
+
+  #search-bio {
+    font-size: 14px;
+  }
+
+  #search-cell-right-part {
+    width: 12%;
+  }
+
+  #search-cell-right-part a {
+    padding: 5px 0px;
+  }
+
+}
+
+
+/* Tablet - --------------------------------------------------------------- */
+@media screen and (min-width: 426px) and (max-width: 768px) {
+
+
+}
+
+
+/* Laptop ------------------------------------------------------------------ */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  /* nothing for now */
+}
+
+
+/* Laptop Large -------------------------------------------------------------*/
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+  /* nothing for now */
+}
+
+
+/* 4K Large Desktop ------------------------------------------------------- */
+@media screen and (min-width: 1441px) {
+
+}
