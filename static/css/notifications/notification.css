@@ -1,0 +1,120 @@
+#notification-header {
+  border-bottom: 1px solid #EBEEF0;
+}
+
+#notification-header h3 {
+  margin: 0px;
+  font-size: 20px;
+  font-weight: 800;
+  margin-left: 20px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+#notification-cell {
+  border-bottom: 1px solid #EBEEF0;
+  padding: 15px 0px;
+}
+
+#notification-cell-left-part {
+  width: 10%;
+  text-align: center;
+  display: inline-block;
+  vertical-align: top;
+  height: auto;
+}
+
+#notification-cell-left-part span {
+  color: black;
+}
+
+#notification-cell-right-part {
+  width: 88%;
+  text-align: left;
+  display: inline-block;
+  vertical-align: top;
+  height: auto;
+}
+
+#notification-cell-right-part p {
+  margin: 0px;
+}
+
+#notification-cell-right-part p a {
+  text-decoration: none;
+  color: black;
+}
+
+
+/* Mobile Small  --------------------------------------------------------- */
+@media screen and (min-width: 0px) and (max-width: 320px) {
+  #notification-header {
+    display: none;
+  }
+
+  #notification-cell-left-part {
+    width: 20%;
+  }
+
+  #notification-cell-right-part {
+    width: 75%;
+  }
+
+}
+
+
+/* Mobile Medium  --------------------------------------------------------- */
+@media screen and (min-width: 321px) and (max-width: 375px) {
+  #notification-header {
+    display: none;
+  }
+
+  #notification-cell-left-part {
+    width: 20%;
+  }
+
+  #notification-cell-right-part {
+    width: 75%;
+  }
+}
+
+
+/* Mobile Large - --------------------------------------------------------- */
+@media screen and (min-width: 376px) and (max-width: 425px) {
+  #notification-header {
+    display: none;
+  }
+
+  #notification-cell-left-part {
+    width: 20%;
+  }
+
+  #notification-cell-right-part {
+    width: 75%;
+  }
+}
+
+
+/* Tablet - --------------------------------------------------------------- */
+@media screen and (min-width: 426px) and (max-width: 768px) {
+
+
+}
+
+
+/* Laptop ------------------------------------------------------------------ */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  /* nothing for now */
+}
+
+
+/* Laptop Large -------------------------------------------------------------*/
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+  /* nothing for now */
+}
+
+
+/* 4K Large Desktop ------------------------------------------------------- */
+@media screen and (min-width: 1441px) {
+
+}

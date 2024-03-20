@@ -149,7 +149,7 @@ def single_post(request, post_id):
 
     current_post_likes = LikedPost.objects.filter(post=current_post)
 
-    current_post_comments = Comment.objects.filter(tweet=current_post).order_by('-id')
+    current_post_comments = Comment.objects.filter(post=current_post).order_by('-created_time')
 
     if request.POST.get('single_post_like_submit_btn'):
         current_post.like_count += 1

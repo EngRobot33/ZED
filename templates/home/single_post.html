@@ -20,16 +20,16 @@
 <div id="single-post-content-container">
   <div id="single-post-content-container-top">
     <div id="single-post-content-container-top-left-box">
-      {% if current_post.user.profile_photo %}
-        <div id="single-post-content-top-profile-photo" style="background-image:url('{{ current_post.user.profile_photo.url }}')"></div>
+      {% if current_post.author.profile_photo %}
+        <div id="single-post-content-top-profile-photo" style="background-image:url('{{ current_post.author.profile_photo.url }}')"></div>
       {% else %}
         <div id="single-post-content-top-profile-photo"></div>
       {% endif %}
     </div>
     <div id="single-post-content-container-top-right-box">
-      <a href="{% url 'content:other_user_profile' current_post.user.username %}">
-        <h3>{{ current_post.user.first_name }} {{ current_post.user.last_name }}</h3>
-        <p>@{{ current_post.user.username }}</p>
+      <a href="{% url 'content:other_user_profile' current_post.author.username %}">
+        <h3>{{ current_post.author.first_name }} {{ current_post.author.last_name }}</h3>
+        <p>@{{ current_post.author.username }}</p>
       </a>
     </div>
   </div>
@@ -50,7 +50,7 @@
 <div id="single-post-operations">
   <form method="POST" action="{% url 'content:single_post' current_post.id %}">
     {% csrf_token %}
-    <input type="submit" value="&#128153;" name="single_post_like_submit_btn" />
+    <input type="submit" value="&#128156;" name="single_post_like_submit_btn" />
   </form>
 
   <button id="hidden-panel-open-btn"><span class="fa fa-comment"></span></button>
@@ -106,14 +106,14 @@
         {% endif %}
       </div>
       <div id="post-comment-cell-right">
-        <p id="post-comment-cell-header-p"><a href="{% url 'content:other_user_profile' comment.commenterusername %}">{{ comment.commenter.first_name }} {{ comment.commenter.last_name }}</a> <span class="post-comment-header-p-date">@{{ comment.commenter.username }} · {{ comment.created_time }}</span></p>
-        <p id="post-comment-cell-header-reply-p">Replying to <a href="{% url 'content:other_user_profile' current_post.user.username %}">@{{ current_post.user.username }}</a></p>
+        <p id="post-comment-cell-header-p"><a href="{% url 'content:other_user_profile' comment.commenter.username %}">{{ comment.commenter.first_name }} {{ comment.commenter.last_name }}</a> <span class="post-comment-header-p-date">@{{ comment.commenter.username }} · {{ comment.created_time }}</span></p>
+        <p id="post-comment-cell-header-reply-p">Replying to <a href="{% url 'content:other_user_profile' current_post.author.username %}">@{{ current_post.author.username }}</a></p>
         <p id="post-comment-cell-content-p">{{ comment.content|linebreaks }}</p>
         <div id="post-comment-cell-right-bottom">
           <form action="{% url 'content:single_post' current_post.id %}" method="POST">
             {% csrf_token %}
             <input type="hidden" value="{{ comment.id }}" name="comment_id" />
-            <input type="submit" value="&#128153;" name="single_post_comment_like_submit_btn" />
+            <input type="submit" value="&#128156;" name="single_post_comment_like_submit_btn" />
           </form>
           <p id="comment-like-count">{{ comment.like_count }}</p>
         </div>

@@ -85,7 +85,7 @@
       <form id="post-cell-like-form" method="POST" action="{% url 'content:profile' %}">
         {% csrf_token %}
         <input type="hidden" value="{{ post.id }}" name="hidden_post_id" />
-        <input type="submit" value="&#128153;" name="profile_post_like_submit_btn" />
+        <input type="submit" value="&#128156;" name="profile_post_like_submit_btn" />
         <p>{{ post.like_count }}</p>
       </form>
     </div>

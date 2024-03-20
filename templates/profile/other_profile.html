@@ -23,7 +23,7 @@
   {% endif %}
 
   <div id="profile-banner-bottom-part">
-      {% if other_user_profile.profile_photo %}
+      {% if other_user.profile_photo %}
         <div id="profile-photo" style="background-image:url('{{ other_user.profile_photo.url }}')"></div>
       {% else %}
         <div id="profile-photo"></div>
