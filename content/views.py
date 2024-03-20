@@ -318,7 +318,60 @@ def other_user_profile(request, other_user_username):
 
 
 def settings(request):
-    ...
+    current_user = get_current_user(request)
+
+    if current_user is None:
+        return HttpResponseRedirect('/auth/signup/')
+
+    random_topics = get_random_topics()
+
+    random_follow_suggestions = get_random_follow_suggestions(current_user)
+
+    if request.POST.get('settings_submit_form_btn'):
+        profile_photo = request.FILES.get('profile_photo')
+        banner_photo = request.FILES.get('banner_photo')
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        bio = request.POST.get('bio')
+
+        settings_changed = False
+
+        if profile_photo:
+            current_user.profile_photo = profile_photo
+            settings_changed = True
+
+        if banner_photo:
+            current_user.banner_photo = banner_photo
+            settings_changed = True
+
+        if first_name:
+            current_user.first_name = first_name
+            settings_changed = True
+
+        if last_name:
+            current_user.last_name = last_name
+            settings_changed = True
+
+        if bio:
+            current_user.bio = bio
+            settings_changed = True
+
+        if settings_changed:
+            current_user.save()
+            return HttpResponseRedirect('/profile/')
+        else:
+            empty_input = True
+    else:
+        empty_input = False
+
+    data = {
+        'current_user': current_user,
+        'random_follow_suggestions': random_follow_suggestions,
+        'random_topics': random_topics,
+        'empty_input': empty_input,
+    }
+
+    return render(request, 'settings/settings.html', data)
 
 
 def search(request, query):

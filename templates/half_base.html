@@ -1,0 +1,246 @@
+{% load static %}
+
+<html lang="en">
+  <head>
+    <title>ZED</title>
+
+    <!-- Meta Info -->
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="ZED" />
+
+    <!-- FAVICON -->
+    <link rel="icon" href="{% static 'branding/logo.png' %}" />
+
+    <!-- GOOGLE FONTS -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,700|Prata" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Literata&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sawarabi+Mincho" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- FONT AWSOME -->
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+    <!-- REMIX ICON -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+
+
+    <!-- BASE CSS LINKS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main_base.css' %}" />
+
+    {% block css_link %}
+
+    {% endblock %}
+
+  </head>
+
+  <body>
+    {% with page="0" %}
+
+    <!-- left navigation -->
+    <div id="left-navigation">
+      <p><a href="{% url 'content:home' page %}"><img src="{% static 'branding/logo.png' %}" alt="logo.txt" style="width: 40px; height: 40px;"/></a></p>
+      <p><a href="{% url 'content:home' page %}"><i class="ri-home-2-line" style="font-size: 30px;"></i></a></p>
+      <p><a href="{% url 'content:explore' %}"><i class="ri-hashtag" style="font-size: 30px;"></i></a></p>
+      <p><a href="{% url 'engagement:notification' %}"><i class="ri-notification-4-line" style="font-size: 30px;"></i></a></p>
+      <p><a href="{% url 'content:profile' %}"><i class="ri-user-2-line" style="font-size: 30px;"></i></a></p>
+      <p><a href="{% url 'content:settings' %}"><i class="ri-settings-5-line" style="font-size: 30px;"></i></a></p>
+
+      <button id="post-panel-open-btn"><i class="ri-add-line"></i></button>
+
+      {% if current_basic_user_profile.profile_photo  %}
+        <div id="profile-photo-left-nav" style="background-image: url('{{ current_user.profile_photo.url }}');"></div>
+      {% else %}
+        <div id="profile-photo-left-nav"></div>
+      {% endif %}
+
+
+    </div>
+
+    <div id="hidden-logout-panel">
+      <p><a href="{% url 'user:logout' %}">Log out @{{ current_user.username }}</a></p>
+    </div>
+
+    <script>
+      let hidden_logout_panel = document.getElementById("hidden-logout-panel");
+      let hidden_logout_panel_toggle = document.getElementById("profile-photo-left-nav");
+
+      hidden_logout_panel_toggle.onclick = function() {
+
+        if (hidden_logout_panel.style.display == "block") {
+          hidden_logout_panel.style.display = "none";
+        } else {
+          hidden_logout_panel.style.display = "block";
+        }
+      }
+    </script>
+
+    <div id="hidden-post-panel-bg"></div>
+    <div id="hidden-post-panel">
+      <div id="hidden-post-panel-header">
+        <button id="post_panel_close_btn"><i class="ri-close-fill"></i></button>
+      </div>
+      <div id="hidden-post-panel-form-container">
+        <div id="hidden-post-panel-form-container-left-box">
+          <div id="profile-photo-hidden-panel" style="background-image: url('{% static 'test/test.jpg' %}');"></div>
+        </div>
+        <div id="hidden-post-panel-form-container-right-box">
+          <form method="POST" action="{% url 'content:home' page %}" enctype="multipart/form-data">
+              {% csrf_token %}
+              <textarea placeholder="What's happening?" name="post_content"></textarea>
+              <div id="horizontal-line"></div>
+              <label for="hidden_post_panel_img" name="post_image"><i class="ri-image-add-line"></i></label>
+              <input type="file" id="hidden_post_panel_img" name="post_image" />
+              <input type="submit" value='Tweet' id="hidden_panel_post_submit_btn" name="hidden_panel_post_submit_btn" />
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let hidden_panel = document.getElementById("hidden-post-panel");
+      let hidden_panel_bg = document.getElementById("hidden-post-panel-bg");
+      let hidden_panel_open_btn = document.getElementById("post-panel-open-btn");
+      let hidden_panel_close_btn = document.getElementById("post_panel_close_btn");
+
+      hidden_panel_open_btn.onclick = function() {
+        hidden_panel.style.display = "block";
+        hidden_panel_bg.style.display = "block";
+      }
+
+      hidden_panel_close_btn.onclick = function() {
+        hidden_panel.style.display = "none";
+        hidden_panel_bg.style.display = "none";
+      }
+    </script>
+
+    <!-- mobile - top and hidden navigation -->
+
+    <div id="temporary-top-mobile-nav">
+      {% if current_user.profile_photo  %}
+      <div id="profile-photo-mobile-left-nav-opener" style="background-image: url('{{ current_user.profile_photo.url }}');"></div>
+      {% else %}
+        <div id="profile-photo-mobile-left-nav-opener"></div>
+      {% endif %}
+
+      <div id="temporary-top-mobile-nav-logo">
+        <img src="{% static 'branding/logo.png' %}" alt='logo' />
+      </div>
+
+    </div>
+
+    <div id="hidden-mobile-left-nav-bg"></div>
+    <div id="hidden-mobile-left-nav">
+      <div id="hidden-mobile-left-nav-header">
+        <h4>Account Info</h4>
+        <button id="hidden-mobile-left-nav-close-btn"><i class="ri-close-line"></i></button>
+      </div>
+      <div id="hidden-mobile-nav-links">
+        <a href="{% url 'content:home' page %}"><i class="ri-home-2-line"></i> Home</a>
+        <a href="{% url 'content:explore' %}"><i class="ri-hashtag"></i> Explore</a>
+        <a href="{% url 'engagement:notification' %}"><i class="ri-notification-4-line"></i> Notifications</a>
+        <a href="{% url 'content:profile' %}"><i class="ri-user-2-line"></i> Profile</a>
+        <a href="{% url 'content:settings' %}"><i class="ri-settings-5-line"></i> Settings</a>
+        <a href="{% url 'user:logout' %}" id="mobile-logout-btn"><i class="ri-logout-box-line"></i> Log out</a>
+      </div>
+    </div>
+
+    <script>
+      hidden_moblie_left_nav = document.getElementById("hidden-mobile-left-nav");
+      hidden_moblie_left_nav_bg = document.getElementById("hidden-mobile-left-nav-bg");
+      hidden_mobile_left_nav_open_btn = document.getElementById("profile-photo-mobile-left-nav-opener");
+      hidden_mobile_left_nav_close_btn = document.getElementById("hidden-mobile-left-nav-close-btn");
+
+      hidden_mobile_left_nav_open_btn.onclick = function() {
+        hidden_moblie_left_nav.style.display = "block";
+        hidden_moblie_left_nav_bg.style.display = "block";
+      }
+
+      hidden_mobile_left_nav_close_btn.onclick = function() {
+        hidden_moblie_left_nav.style.display = "none";
+        hidden_moblie_left_nav_bg.style.display = "none";
+      }
+
+    </script>
+
+    <!-- content block container -->
+    <div id="half-base-content-container">
+      {% block content %}
+
+      {% endblock %}
+    </div>
+
+
+    <!-- mobile bottom navigation -->
+
+    <div id="mobile-bottom-nav-post-panel-open-btn">
+      <i class="ri-leaf-line"></i>
+    </div>
+
+    <div id="hidden-mobile-post-panel">
+      <div id="hidden-mobile-post-panel-header">
+        <button id="mobile-hidden-post-close-btn"><i class="ri-arrow-left-line"></i></button>
+        <form action="{% url 'content:home' page %}" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <input type="submit" value="Tweet" id="hidden-mobile-post-submit-btn" name="mobile_hidden_post_submit_btn" />
+
+          <div id="hidden-mobile-post-panel-horizontal-line"></div>
+
+          {% if current_user.profile_photo %}
+          <div id="hidden-mobile-post-panel-profile-photo" style="background-image: url('{{ current_user.profile_photo.url }}');"></div>
+          {% else %}
+            <div id="hidden-mobile-post-panel-profile-photo" ></div>
+          {% endif %}
+
+
+          <textarea placeholder="What's happening?" name="post_content"></textarea>
+
+          <label for="hidden-post-panel-img-input"><i class="ri-image-add-line"></i></label>
+          <input type="file" id="hidden-post-panel-img-input" name="post_image" />
+
+        </form>
+      </div>
+    </div>
+
+    <div id="mobile-bottom-navigation">
+      <div id="mobile-bottom-col">
+        <a href="{% url 'content:home' page %}"><i class="ri-home-2-line"></i></a>
+      </div>
+      {% with foo="foo" %}
+      <div id="mobile-bottom-col">
+        <a href="{% url 'content:search' foo %}"><i class="ri-search-line"></i></a>
+      </div>
+      {% endwith %}
+      <div id="mobile-bottom-col">
+        <a href="{% url 'engagement:notification' %}"><i class="ri-notification-4-line"></i></a>
+      </div>
+      <div id="mobile-bottom-col">
+        <a href="{% url 'content:profile' %}"><i class="ri-user-2-line"></i></a>
+      </div>
+    </div>
+
+
+    <script>
+
+      let hidden_mobile_post_panel = document.getElementById("hidden-mobile-post-panel");
+      let hidden_mobile_post_panel_open = document.getElementById("mobile-bottom-nav-post-panel-open-btn");
+      let hidden_mobile_post_panel_close = document.getElementById("mobile-hidden-post-close-btn");
+
+      hidden_mobile_post_panel_open.onclick = function() {
+        hidden_mobile_post_panel.style.display = "block";
+      }
+
+      hidden_mobile_post_panel_close.onclick = function() {
+        hidden_mobile_post_panel.style.display = "none";
+      }
+
+    </script>
+
+
+    {% endwith %}
+  </body>
+</html>

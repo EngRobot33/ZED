@@ -1,0 +1,255 @@
+/*----- settings left part --- */
+
+#setting-left-part {
+  width: 38%;
+  border-right: 1px solid #EBEEF0;
+  display: inline-block;
+  vertical-align: top;
+  height: 100vh;
+}
+
+#left-part-header {
+  border-bottom: 1px solid #C4CFD6;
+  margin: 0px;
+
+}
+
+#left-part-header h3 {
+  font-weight: 800;
+  margin-left: 15px;
+}
+
+#left-part-link {
+  padding-bottom: 15px !important;
+  border-bottom: 1px solid #EBEEF0;
+}
+
+#left-part-link:hover {
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#left-part-link a {
+  text-decoration: none;
+  color: black;
+  margin-left: 15px;
+}
+
+#left-part-link span {
+  float: right;
+  margin-right: 15px;
+  margin-bottom: 10px;
+}
+
+/*----- settings right part --- */
+
+#settings-right-part {
+  width: 58%;
+  border-right: 1px solid #EBEEF0;
+  display: inline-block;
+  vertical-align: top;
+  height: 100vh;
+  margin-left: -1%;
+}
+
+#right-part-header {
+  border-bottom: 1px solid #C4CFD6;
+  margin: 0px;
+}
+
+#right-part-header h3 {
+  font-weight: 800;
+  margin-left: 20px;
+}
+
+#profile-settings {
+  width: 93%;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+
+#profile-settings form {
+
+}
+
+#profile-settings form input {
+  display: block;
+  margin-bottom: 5px;
+  width: 100%;
+  padding: 5px;
+  font-size: 16px;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+}
+
+#profile-settings form input:focus {
+  outline: none;
+  border-color: black;
+}
+
+#profile-settings form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 800;
+
+}
+
+#profile-settings form textarea {
+  display: block;
+  margin-bottom: 5px;
+  width: 100%;
+  padding: 5px;
+  font-size: 16px;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+  height: 100px;
+}
+
+#profile-settings form textarea:focus {
+  outline: none;
+  border-color: black;
+}
+
+
+#save-btn {
+  color: white !important;
+  background-color: black !important;
+  border: 1px solid black !important;
+  border-radius: 25px !important;
+  margin-top: 20px !important;
+}
+
+#save-btn:hover {
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+
+/* Mobile Small  --------------------------------------------------------- */
+@media screen and (min-width: 0px) and (max-width: 320px) {
+  /*----- settings left part --- */
+
+  #setting-left-part {
+    display: none;
+  }
+
+  /*----- settings right part --- */
+
+  #settings-right-part {
+    width: 100%;
+    border-right: 0px;
+    height: auto;
+    margin-left: 0%;
+  }
+
+  #right-part-header {
+    border-bottom: 1px solid #C4CFD6;
+    margin: 0px;
+  }
+
+  #right-part-header h3 {
+    font-weight: 800;
+    margin-left: 20px;
+  }
+
+  #profile-settings {
+    width: 80%;
+    margin-top: 10px;
+    margin-right: 12%;
+  }
+}
+
+
+/* Mobile Medium  --------------------------------------------------------- */
+@media screen and (min-width: 321px) and (max-width: 375px) {
+  /*----- settings left part --- */
+
+  #setting-left-part {
+    display: none;
+  }
+
+  /*----- settings right part --- */
+
+  #settings-right-part {
+    width: 100%;
+    border-right: 0px;
+    height: auto;
+    margin-left: 0%;
+  }
+
+  #right-part-header {
+    border-bottom: 1px solid #C4CFD6;
+    margin: 0px;
+  }
+
+  #right-part-header h3 {
+    font-weight: 800;
+    margin-left: 20px;
+  }
+
+  #profile-settings {
+    width: 80%;
+    margin-top: 10px;
+    margin-right: 12%;
+  }
+}
+
+
+/* Mobile Large - --------------------------------------------------------- */
+@media screen and (min-width: 376px) and (max-width: 425px) {
+  /*----- settings left part --- */
+
+  #setting-left-part {
+    display: none;
+  }
+
+  /*----- settings right part --- */
+
+  #settings-right-part {
+    width: 100%;
+    border-right: 0px;
+    height: auto;
+    margin-left: 0%;
+  }
+
+  #right-part-header {
+    border-bottom: 1px solid #C4CFD6;
+    margin: 0px;
+  }
+
+  #right-part-header h3 {
+    font-weight: 800;
+    margin-left: 20px;
+  }
+
+  #profile-settings {
+    width: 80%;
+    margin-top: 10px;
+    margin-right: 12%;
+  }
+}
+
+
+/* Tablet - --------------------------------------------------------------- */
+@media screen and (min-width: 426px) and (max-width: 768px) {
+
+
+}
+
+
+/* Laptop ------------------------------------------------------------------ */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  /* nothing for now */
+}
+
+
+/* Laptop Large -------------------------------------------------------------*/
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+  /* nothing for now */
+}
+
+
+/* 4K Large Desktop ------------------------------------------------------- */
+@media screen and (min-width: 1441px) {
+
+}

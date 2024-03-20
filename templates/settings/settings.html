@@ -1,0 +1,58 @@
+{% extends 'half_base.html' %}
+{% load static %}
+
+{% block css_link %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/settings/settings.css' %}" />
+{% endblock %}
+
+{% block content %}
+{% with page="0" %}
+
+<!-- left navigation -->
+<div id="setting-left-part">
+
+  <div id="left-part-header">
+    <h3>Settings</h3>
+  </div>
+
+  <p id="left-part-link"><a href="{% url 'content:settings' %}" >Profile Settings <span class="fa fa-caret-right"></span></a></p>
+
+</div>
+
+
+<!-- right content -->
+<div id="settings-right-part">
+
+  <div id="right-part-header">
+    <h3>Profile Settings</h3>
+  </div>
+
+  <div id="profile-settings">
+
+    <form method="POST" action="{% url 'content:settings' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label>Profile Photo</label>
+        <input type="file" name="profile_photo" />
+
+        <label>Banner Photo</label>
+        <input type="file" name="banner_photo" />
+
+        <label>First Name</label>
+        <input type="text" placeholder="e.g. John Doe" name="first_name" />
+
+        <label>Last Name</label>
+        <input type="text" placeholder="e.g. John Doe" name="last_name" />
+
+        <label>Bio</label>
+        <textarea placeholder="..." name="bio"></textarea>
+
+        <input type="submit" value="Save" id="save-btn" name="settings_submit_form_btn" />
+    </form>
+
+  </div>
+
+</div>
+
+
+{% endwith %}
+{% endblock %}
