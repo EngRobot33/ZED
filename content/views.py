@@ -1,4 +1,5 @@
 from django.contrib.auth import get_user_model
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 
@@ -21,6 +22,7 @@ def index(request):
         return HttpResponseRedirect('/home/0/')
 
 
+@login_required
 def home(request, page):
     current_user = get_current_user(request)
 
@@ -135,6 +137,7 @@ def home(request, page):
     return render(request, 'home/home.html', data)
 
 
+@login_required
 def single_post(request, post_id):
     current_user = get_current_user(request)
 
@@ -199,6 +202,7 @@ def explore(request):
     ...
 
 
+@login_required
 def profile(request):
     current_user = get_current_user(request)
 
@@ -246,6 +250,7 @@ def profile(request):
     return render(request, 'profile/profile.html', data)
 
 
+@login_required
 def other_user_profile(request, other_user_username):
     current_user = get_current_user(request)
 
@@ -317,6 +322,7 @@ def other_user_profile(request, other_user_username):
     return render(request, 'profile/other_profile.html', data)
 
 
+@login_required
 def settings(request):
     current_user = get_current_user(request)
 

@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
@@ -8,6 +9,7 @@ from utils.base_utils import left_nav_post_form_processing, mobile_post_form_pro
 from utils.session_utils import get_current_user
 
 
+@login_required
 def notification(request):
     current_user = get_current_user(request)
 
