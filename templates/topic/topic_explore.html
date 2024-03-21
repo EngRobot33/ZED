@@ -1,0 +1,76 @@
+{% extends 'main_base.html' %}
+{% load static %}
+{% load home_filters %}
+
+{% block css_link %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/topic/topic_explore.css' %}" />
+{% endblock %}
+
+{% block content %}
+{% with page="0" %}
+
+<!-- header -->
+<div id="topic-header">
+    <h3>Topic</h3>
+</div>
+
+<!-- topic name banner -->
+<div id="topic-name-banner">
+  <p><i class="ri-message-2-fill"></i></p>
+  <h1>{{ current_topic.name|title }}</h1>
+</div>
+
+{% for post in post_feed %}
+  <!-- posts -->
+  <div id="post-cell">
+    <div id="post-cell-left-part">
+      {% if post.author.profile_photo %}
+        <div id="post-cell-left-part-profile-photo" style="background-image:url('{{ post.author.profile_photo.url }}')"></div>
+      {% else %}
+        <div id="post-cell-left-part-profile-photo"></div>
+      {% endif %}
+    </div>
+
+    <div id="post-cell-right-part">
+      <p id="post-cell-header"><b><a href="{% url 'content:other_user_profile' post.author.username %}">{{ post.author.first_name }} {{ post.author.last_name }}</a></b> @{{ post.author.username }} · {{ post.created_time }}</p>
+      <p>{{ post.content|linebreaks }}</p>
+
+      {% if post.image %}
+        <div id="post-image" style="background-image:url('{{ post.image.url }}')"></div>
+      {% endif %}
+
+      <div id="post-cell-right-part-bottom-links">
+        <form id="post-cell-comment-form" method="POST" action="{% url 'content:topic_explore' topic=current_topic.name|urlencode page=current_page %}">
+          {% csrf_token %}
+          <input type="hidden" value="{{ post.id }}" name="hidden_post_id" />
+          <input type="submit" value="&#128262;" name="single_topic_explore_post_cell_comment_submit_btn"/>
+          <p>{{ post.comment_count }}</p>
+        </form>
+
+        <form id="post-cell-like-form" method="POST" action="{% url 'content:topic_explore' current_topic.name current_page %}">
+          {% csrf_token %}
+          <input type="hidden" value="{{ post.id }}" name="hidden_post_id" />
+          <input type="submit" value="&#128156;" name="single_topic_explore_post_cell_like_submit_btn" />
+          <p>{{ post.like_count }}</p>
+        </form>
+      </div>
+
+    </div>
+  </div><!--/cell-->
+{% endfor %}
+
+
+<!-- pagination -->
+<div id="pagination-container">
+  {% if current_page <= 0 %}
+    <a href="{% url 'content:topic_explore' current_topic.name next_page %}"><span class="fa fa-caret-right"></span></a>
+  {% elif current_page > 0%}
+    <a href="{% url 'content:topic_explore' current_topic.name previous_page %}"><span class="fa fa-caret-left"></span></a>
+    <a href="{% url 'content:topic_explore' current_topic.name next_page %}"><span class="fa fa-caret-right"></span></a>
+  {% endif %}
+
+</div>
+
+
+{% endwith %}
+{% endblock %}

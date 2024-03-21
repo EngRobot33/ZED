@@ -1,0 +1,57 @@
+{% extends 'main_base.html' %}
+{% load static %}
+{% load home_filters %}
+
+{% block css_link %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/home/home.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/topic/explore.css' %}" />
+{% endblock %}
+
+{% block content %}
+
+{% for topic in random_topics %}
+  <div id="topic-header-box-container">
+    <p><i class="ri-message-2-fill"></i></p>
+    <h3><a href="{% url 'content:topic_explore' topic=topic.name|urlencode page=0 %}">{{ topic.name }}</a></h3>
+  </div>
+
+  {% for post in topics_posts|get_key_value:topic.id %}
+    <div id="post-cell">
+
+      <div id="post-cell-left-part">
+        {% if post.author.profile_photo %}
+          <div id="post-cell-left-part-profile-photo" style="background-image:url('{{ post.author.profile_photo.url }}')"></div>
+        {% else %}
+          <div id="post-cell-left-part-profile-photo"></div>
+        {% endif %}
+      </div>
+      <div id="post-cell-right-part">
+        <p id="post-cell-header"><b><a href="{% url 'content:other_user_profile' post.author.username %}">{{ post.author.first_name }} {{ post.author.last_name }}</a></b> @{{ post.author.username }} · {{ post.created_time }}</p>
+        <p>{{ post.content|linebreaks }}</p>
+
+        {% if post.image %}
+          <div id="post-image" style="background-image:url('{{ post.image.url }}')"></div>
+        {% endif %}
+
+        <div id="post-cell-right-part-bottom-links">
+          <form id="post-cell-comment-form" action="{% url 'content:home' page %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" value="{{ post.id }}" name="hidden_post_id" />
+            <input type="submit" value="&#128262;" name="post_cell_comment_submit_btn"/>
+            <p>{{ post.comment_count }}</p>
+          </form>
+
+          <form id="post-cell-like-form" action="{% url 'content:home' page %}" method="POST">
+            {% csrf_token %}
+            <input type="hidden" value="{{ post.id }}" name="hidden_post_id" />
+            <input type="submit" value="&#128156;" name="post_cell_like_submit_btn" />
+            <p>{{ post.like_count }}</p>
+          </form>
+        </div>
+      </div><!-- /right-part -->
+    </div><!--/cell -->
+  {% endfor %}
+
+{% endfor %}
+
+{% endblock %}

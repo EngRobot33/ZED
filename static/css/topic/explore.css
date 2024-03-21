@@ -1,0 +1,25 @@
+#topic-header-box-container {
+  border-bottom: 1px solid #EBEEF0;
+}
+
+#topic-header-box-container p {
+  display: inline-block;
+  margin: 0px;
+  margin-left: 5%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#topic-header-box-container p i {
+  color: black;
+  font-size: 20px;
+}
+
+#topic-header-box-container h3 {
+  display: inline-block;
+  vertical-align: middle;
+  font-weight: 800;
+  margin: 0px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+}

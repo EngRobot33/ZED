@@ -1,0 +1,247 @@
+#topic-header {
+  border-bottom: 1px solid #EBEEF0;
+}
+
+#topic-header h3 {
+  margin: 0px;
+  font-size: 20px;
+  font-weight: 800;
+  margin-left: 20px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+#topic-name-banner {
+  border-bottom: 1px solid #EBEEF0;
+}
+
+#topic-name-banner h1 {
+  margin: 0px;
+  font-size: 35px;
+  font-weight: 800;
+  margin-left: 5px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  display: inline-block;
+}
+
+#topic-name-banner p {
+  display: inline-block;
+  font-size: 33px;
+  color: black;
+  vertical-align: middle;
+  margin-left: 20px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+/* ---------------------------- post cell ------------------------- */
+
+#post-cell {
+  border-bottom: 1px solid #EBEEF0;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+
+#post-cell:hover {
+  transition: 0.2s;
+}
+
+#post-cell-left-part {
+  width: 15%;
+  vertical-align: top;
+  display: inline-block;
+  text-align: center;
+}
+
+#post-cell-left-part-profile-photo {
+  height: 45px;
+  width: 45px;
+  background-color: lightgrey;
+  border-radius: 50%;
+  text-align: center;
+  margin: 0 auto;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#post-cell-right-part {
+  width: 82%;
+  vertical-align: top;
+  display: inline-block;
+}
+
+#post-cell-right-part p {
+  margin: 0px;
+  margin-bottom: 12px;
+  font-size: 15px;
+}
+
+#post-cell-header {
+  margin-bottom: 5px !important;
+}
+
+#post-cell-header a {
+  color: black;
+  text-decoration: none;
+}
+
+#post-cell-header a:hover {
+  text-decoration: underline;
+}
+
+#post-cell-header {
+  color: grey;
+}
+
+#post-image {
+  width: 93%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: #E5E8E8;
+  height: 280px;
+  border-radius: 15px;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#post-cell-right-part-bottom-links {
+  border: 1px solid transparent;
+}
+
+#post-cell-right-part-bottom-links form {
+  display: inline-block;
+  width: 28%;
+}
+
+#post-cell-right-part-bottom-links form input {
+  display: inline-block;
+  background-color: transparent;
+  border: 1px solid transparent;
+  font-size: 16px;
+  color: grey;
+  padding: 5px 5px;
+  padding-left: 9px !important;
+}
+
+#post-cell-right-part-bottom-links form input:hover {
+  transition: 0.1s;
+  cursor: pointer;
+  border-radius: 25px;
+
+}
+
+#post-cell-right-part-bottom-links form p {
+  display: inline-block;
+  margin-top: 10px;
+  color: grey;
+  position: absolute;
+  font-size: 14px;
+  margin-left: 3px;
+}
+
+#pagination-container {
+  margin-top: 30px;
+  margin-bottom: 100px;
+  text-align: center;
+}
+
+#pagination-container a {
+  text-decoration: none;
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+  font-size: 22px;
+  padding: 10px 20px;
+  border-radius: 25px;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+#pagination-container a:hover {
+  transition: 0.2s;
+}
+
+
+
+
+
+/* Mobile Small  --------------------------------------------------------- */
+@media screen and (min-width: 0px) and (max-width: 320px) {
+  #topic-header {
+    display: none;
+  }
+
+  #topic-name-banner h1 {
+    font-size: 25px;
+  }
+
+  #topic-name-banner p {
+    font-size: 23px;
+    margin-left: 5px;
+  }
+}
+
+
+/* Mobile Medium  --------------------------------------------------------- */
+@media screen and (min-width: 321px) and (max-width: 375px) {
+  #topic-header {
+    display: none;
+  }
+
+  #topic-name-banner h1 {
+    font-size: 25px;
+  }
+
+  #topic-name-banner p {
+    font-size: 23px;
+    margin-left: 5px;
+  }
+}
+
+
+/* Mobile Large - --------------------------------------------------------- */
+@media screen and (min-width: 376px) and (max-width: 425px) {
+  #topic-header {
+    display: none;
+  }
+
+  #topic-name-banner h1 {
+    font-size: 25px;
+  }
+
+  #topic-name-banner p {
+    font-size: 23px;
+    margin-left: 5px;
+  }
+}
+
+
+/* Tablet - --------------------------------------------------------------- */
+@media screen and (min-width: 426px) and (max-width: 768px) {
+
+
+}
+
+
+/* Laptop ------------------------------------------------------------------ */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  /* nothing for now */
+}
+
+
+/* Laptop Large -------------------------------------------------------------*/
+@media screen and (min-width: 1025px) and (max-width: 1440px) {
+  /* nothing for now */
+}
+
+
+/* 4K Large Desktop ------------------------------------------------------- */
+@media screen and (min-width: 1441px) {
+
+}

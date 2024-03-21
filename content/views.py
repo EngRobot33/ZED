@@ -5,7 +5,7 @@ from django.db.models import Q
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 
-from content.models import Post, Comment
+from content.models import Post, Comment, Topic
 from engagement.models import LikedPost, LikeNotification
 from relation.models import Relation
 from utils.base_utils import left_nav_post_form_processing, mobile_post_form_processing, get_random_topics, \
@@ -200,10 +200,6 @@ def single_post(request, post_id):
     return render(request, 'home/single_post.html', data)
 
 
-def explore(request):
-    ...
-
-
 @login_required
 def profile(request):
     current_user = get_current_user(request)
@@ -237,7 +233,7 @@ def profile(request):
             post=current_post,
         )
 
-        return HttpResponseRedirect('/tweet/' + str(current_post.id) + '/')
+        return HttpResponseRedirect('/post/' + str(current_post.id) + '/')
 
     data = {
         'current_user': current_user,
@@ -408,5 +404,95 @@ def search(request, query):
     return render(request, 'search/search.html', data)
 
 
+@login_required
+def explore(request):
+    current_user = get_current_user(request)
+
+    if current_user is None:
+        return HttpResponseRedirect('/auth/signup/')
+
+    random_topics = get_random_topics()
+
+    random_follow_suggestions = get_random_follow_suggestions(current_user)
+
+    topics_posts = {}
+
+    for topic in random_topics:
+        topics_post_query = Post.objects.filter(topic=topic)[:10]
+        topics_posts[topic.id] = topics_post_query
+
+    data = {
+        'current_user': current_user,
+        'random_follow_suggestions': random_follow_suggestions,
+        'random_topics': random_topics,
+        'topics_posts': topics_posts,
+    }
+
+    return render(request, 'topic/explore.html', data)
+
+
+@login_required
 def topic_explore(request, topic, page):
-    ...
+    current_user = get_current_user(request)
+
+    if current_user is None:
+        return HttpResponseRedirect('/auth/signup/')
+
+    random_topics = get_random_topics()
+
+    random_follow_suggestions = get_random_follow_suggestions(current_user)
+
+    try:
+        current_topic = Topic.objects.get(name=topic)
+    except ObjectDoesNotExist:
+        current_topic = None
+
+    current_page = page
+    previous_page = page - 1
+    next_page = page + 1
+
+    post_records_starting_point = current_page * 46
+    post_records_ending_point = post_records_starting_point + 46
+
+    try:
+        post_feed = Post.objects.filter(topic=current_topic).order_by('-created_time')
+    except ObjectDoesNotExist:
+        post_feed = None
+
+    post_feed = post_feed[post_records_starting_point:post_records_ending_point]
+
+    if request.POST.get('single_topic_explore_post_cell_comment_submit_btn'):
+        current_post_id = request.POST.get('hidden_post_id')
+        return HttpResponseRedirect('/post/' + str(current_post_id) + '/')
+
+    if request.POST.get('single_topic_explore_post_cell_like_submit_btn'):
+        current_post_id = request.POST.get('hidden_post_id')
+        current_post = Post.objects.get(id=current_post_id)
+
+        LikedPost.objects.create(
+            post=current_post,
+            liker=current_user
+        )
+        current_post.like_count += 1
+        current_post.save()
+
+        LikeNotification.objects.create(
+            notified=current_post.author,
+            notifier=current_user,
+            post=current_post,
+        )
+
+        return HttpResponseRedirect('/post/' + str(current_post_id) + '/')
+
+    data = {
+        'current_user': current_user,
+        'random_follow_suggestions': random_follow_suggestions,
+        'random_topics': random_topics,
+        'current_topic': current_topic,
+        'current_page': current_page,
+        'previous_page': previous_page,
+        'next_page': next_page,
+        'post_feed': post_feed,
+    }
+
+    return render(request, 'topic/topic_explore.html', data)
