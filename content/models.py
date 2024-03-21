@@ -1,7 +1,9 @@
+import re
 import uuid
 
 from django.contrib.auth import get_user_model
 from django.db import models
+from django.db.models import Q
 from django.utils.translation import gettext_lazy as _
 
 from utils.models import BaseModel
@@ -22,7 +24,7 @@ class Topic(BaseModel):
         return self.name
 
     def save(self, *args, **kwargs):
-        self.name = str(self.name).replace(' ', '-')
+        self.name = str(self.name).lower().replace(' ', '-')
         super().save(*args, **kwargs)
 
 
@@ -40,12 +42,10 @@ class Post(BaseModel):
         null=True,
         related_name='posts',
     )
-    topic = models.ForeignKey(
+    topic = models.ManyToManyField(
         Topic,
         verbose_name=_('post topic'),
-        on_delete=models.CASCADE,
         blank=True,
-        null=True,
         related_name='posts',
     )
 
@@ -58,6 +58,20 @@ class Post(BaseModel):
         content = str(self.content).split()[:5]
         content = ' '.join(content)
         return f'{self.author} | {content}'
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+
+        hashtags = re.findall(r'#\w+', str(self.content))
+
+        for hashtag in hashtags:
+            topic_queryset = Topic.objects.filter(name__iexact=hashtag)
+
+            if topic_queryset.exists():
+                self.topic.add(*topic_queryset)
+            else:
+                new_topic = Topic.objects.create(name=hashtag)
+                self.topic.add(new_topic)
 
 
 class Comment(BaseModel):
