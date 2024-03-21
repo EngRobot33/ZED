@@ -9,7 +9,7 @@ from content.models import Post, Comment, Topic
 from engagement.models import LikedPost, LikeNotification
 from relation.models import Relation
 from utils.base_utils import left_nav_post_form_processing, mobile_post_form_processing, get_random_topics, \
-    get_random_follow_suggestions
+    get_random_follow_suggestions, toggle_like_post, toggle_like_comment
 from utils.session_utils import get_current_user
 
 User = get_user_model()
@@ -113,15 +113,9 @@ def home(request, page):
     if request.POST.get('post_cell_like_submit_btn'):
         current_post_id = request.POST.get('hidden_post_id')
         current_post = Post.objects.get(id=current_post_id)
-        LikedPost.objects.create(
-            post=current_post,
-            liker=current_user
-        )
-        LikeNotification.objects.create(
-            notified=current_post.author,
-            notifier=current_user,
-            post=current_post,
-        )
+
+        toggle_like_post(current_user, current_post)
+
         return HttpResponseRedirect('/post/' + str(current_post.id) + '/')
 
     data = {
@@ -157,13 +151,8 @@ def single_post(request, post_id):
     current_post_comments = Comment.objects.filter(post=current_post).order_by('-created_time')
 
     if request.POST.get('single_post_like_submit_btn'):
-        current_post.like_count += 1
-        current_post.save()
-        LikeNotification.objects.create(
-            notified=current_post.author,
-            notifier=current_user,
-            post=current_post,
-        )
+        toggle_like_post(current_user, current_post)
+
         return HttpResponseRedirect('/post/' + str(current_post.id) + '/')
 
     if request.POST.get('single_post_reply_submit_btn'):
@@ -183,8 +172,9 @@ def single_post(request, post_id):
     if request.POST.get('single_post_comment_like_submit_btn'):
         comment_id = request.POST.get('comment_id')
         comment = Comment.objects.get(id=comment_id)
-        comment.like_count += 1
-        comment.save()
+
+        toggle_like_comment(current_user, comment)
+
         return HttpResponseRedirect('/post/' + str(current_post.id) + '/')
 
     data = {
@@ -221,17 +211,8 @@ def profile(request):
     if request.POST.get('profile_post_like_submit_btn'):
         current_post_id = request.POST.get('hidden_post_id')
         current_post = Post.objects.get(id=current_post_id)
-        LikedPost.objects.create(
-            post=current_post,
-            liker=current_user
-        )
-        current_post.like_count += 1
-        current_post.save()
-        LikeNotification.objects.create(
-            notified=current_post.author,
-            notifier=current_user,
-            post=current_post,
-        )
+
+        toggle_like_post(current_user, current_post)
 
         return HttpResponseRedirect('/post/' + str(current_post.id) + '/')
 
@@ -274,7 +255,7 @@ def other_user_profile(request, other_user_username):
             following=other_user,
             follower=current_user,
         )
-        if is_follower is None or is_follower == [] or bool(is_follower) == False:
+        if is_follower is None or is_follower == [] or bool(is_follower) is False:
             Relation.objects.create(
                 following=other_user,
                 follower=current_user,
@@ -290,18 +271,8 @@ def other_user_profile(request, other_user_username):
     if request.POST.get('other_profile_post_like_form_submit_btn'):
         current_post_id = request.POST.get('hidden_post_id')
         current_post = Post.objects.get(id=current_post_id)
-        LikedPost.objects.create(
-            post=current_post,
-            liker=current_user
-        )
-        current_post.like_count += 1
-        current_post.save()
 
-        LikeNotification.objects.create(
-            notified=current_post.author,
-            notifier=current_user,
-            post=current_post,
-        )
+        toggle_like_post(current_user, current_post)
 
         return HttpResponseRedirect('/post/' + str(current_post.id) + '/')
 
@@ -469,18 +440,7 @@ def topic_explore(request, topic, page):
         current_post_id = request.POST.get('hidden_post_id')
         current_post = Post.objects.get(id=current_post_id)
 
-        LikedPost.objects.create(
-            post=current_post,
-            liker=current_user
-        )
-        current_post.like_count += 1
-        current_post.save()
-
-        LikeNotification.objects.create(
-            notified=current_post.author,
-            notifier=current_user,
-            post=current_post,
-        )
+        toggle_like_post(current_user, current_post)
 
         return HttpResponseRedirect('/post/' + str(current_post_id) + '/')
 
