@@ -28,6 +28,10 @@ DEBUG = config('DEBUG', False)
 ALLOWED_HOSTS = []
 
 
+CUSTOM_MIDDLEWARES = [
+    "config.middlewares.rate_limiter.RateLimiterMiddleware",
+]
+
 # Application definition
 
 DJANGO_APPS = [
@@ -55,6 +59,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    *CUSTOM_MIDDLEWARES,
 ]
 
 ROOT_URLCONF = 'config.urls'
