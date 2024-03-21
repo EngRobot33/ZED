@@ -14,7 +14,7 @@ class RateLimiterHandler:
     USER_REQUEST_COUNT:str = "user_reqcount_{0}"
     USER_LAST_REQUEST_TIME:str = "user_lastreqtime_{0}"
 
-    MESSAGE_TOO_MANY_REQUESTS:str = "تعداد درخواست های بیش از حد است طی 1 دقیقه دیگر تلاش کنید"
+    MESSAGE_TOO_MANY_REQUESTS:str = "you have sent too many requests , please try again in a minute later"
 
     redis_connection_error_counter:int = 0
 
