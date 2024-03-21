@@ -21,6 +21,10 @@ class Topic(BaseModel):
     def __str__(self):
         return self.name
 
+    def save(self, *args, **kwargs):
+        self.name = str(self.name).replace(' ', '-')
+        super().save(*args, **kwargs)
+
 
 class Post(BaseModel):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
