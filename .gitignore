@@ -348,6 +348,12 @@ poetry.toml
 # ruff
 .ruff_cache/
 
+#node modules
+node_modules/
+
+#vscode setting
+.vscode/*
+
 # LSP config files
 pyrightconfig.json
 
