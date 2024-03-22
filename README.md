@@ -56,6 +56,10 @@ DEBUG = 'Project debug status'
 ```
 python3 manage.py migrate
 ```
+* Then make sure that Redis is actually running on your machine:
+```
+redis-server
+```
 * That's finished! Now you can run the project:
 ```
 python3 manage.py runserver
