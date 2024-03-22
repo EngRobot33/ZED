@@ -30,12 +30,12 @@
       {% endif %}
 
       <div id="clear"></div>
-      <form method="POST" action="{% url 'content:other_user_profile' other_user.username %}">
+      <form method="POST" action="{% if already_follower == False %} {% url 'content:other_user_profile' other_user.username %} {% else %} {% url 'content:actionunfollow' other_user.username %} {% endif %}">
           {% csrf_token %}
           {% if already_follower == False %}
-            <input type="submit" id="follow-submit-btn" value="Follow" name="other_user_profile_follow_submit_btn" />
+            <input type="submit" id="follow-submit-btn" value="Follow" name="other_user_profile_follow_submit_btn" class="btn-follow"/>
           {% else %}
-            <input type="submit" id="follow-submit-btn" value="Following" name="other_user_profile_follow_submit_btn" />
+            <input type="submit" id="follow-submit-btn" value="Following" name="other_user_profile_follow_submit_btn" class="btn-unfollow" title="UnFollow"/>
           {% endif %}
       </form>
       <div id="clear"></div>
