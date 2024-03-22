@@ -4,6 +4,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import Q
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
+from django.views import View
 
 from content.models import Post, Comment, Topic
 from engagement.models import LikedPost, LikeNotification
@@ -456,3 +457,22 @@ def topic_explore(request, topic, page):
     }
 
     return render(request, 'topic/topic_explore.html', data)
+
+
+class ActionUnFollowView(View):
+
+    def post(self,request,followed_user_username:str):
+
+        current_user = get_current_user(request)
+
+        found_user = get_object_or_404(User,username = followed_user_username)
+
+        relation_exists:bool = Relation.objects.filter(
+            follower = current_user,
+            following = found_user
+        ).exists()
+
+        if relation_exists:
+            Relation.objects.filter(follower = current_user,following = found_user).delete()
+
+        return HttpResponseRedirect("/profile/" + followed_user_username + "/")

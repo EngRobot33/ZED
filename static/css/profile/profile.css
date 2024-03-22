@@ -361,3 +361,8 @@
 @media screen and (min-width: 1441px) {
 
 }
+
+.btn-unfollow:hover{
+  color: red !important;
+  border-radius: 10px !important;
+}
