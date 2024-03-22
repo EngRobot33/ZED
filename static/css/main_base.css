@@ -1,5 +1,5 @@
 * {
-  font-family: "Inter";
+  font-family: 'Inter';
 }
 
 body {
@@ -7,14 +7,10 @@ body {
   margin: 0px;
 }
 
-h1, h2, h3, h4, h5, h6 {
-
-}
-
 /* ----------------- left navigation ----------------- */
 
 #left-navigation {
-  border-right: 1px solid #EBEEF0;
+  border-right: 1px solid #ebeef0;
   position: fixed;
   top: 0;
   bottom: 0;
@@ -54,20 +50,20 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #post-panel-open-btn {
-    padding: 0 1px;
-    display: block;
-    text-align: center;
-    margin-right: 33px;
-    margin-top: 20px;
-    font-size: 35px;
-    color: white;
-    background-color: black;
-    border: 1px solid black;
-    float: right;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    line-height: 50px;
+  padding: 0 1px;
+  display: block;
+  text-align: center;
+  margin-right: 33px;
+  margin-top: 20px;
+  font-size: 35px;
+  color: white;
+  background-color: black;
+  border: 1px solid black;
+  float: right;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
 }
 
 #post-panel-open-btn:focus {
@@ -92,7 +88,6 @@ h1, h2, h3, h4, h5, h6 {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-
 }
 
 #profile-photo-left-nav:hover {
@@ -104,13 +99,13 @@ h1, h2, h3, h4, h5, h6 {
   height: auto;
   width: 20%;
   position: fixed;
-  bottom:0;
+  bottom: 0;
   z-index: 99;
   border-radius: 10px;
   margin-bottom: 7%;
-  -webkit-box-shadow: 0px 0px 14px -5px rgba(0,0,0,0.75);
-  -moz-box-shadow: 0px 0px 14px -5px rgba(0,0,0,0.75);
-  box-shadow: 0px 0px 14px -5px rgba(0,0,0,0.75);
+  -webkit-box-shadow: 0px 0px 14px -5px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 14px -5px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 14px -5px rgba(0, 0, 0, 0.75);
   margin-left: 7.5%;
   padding: 0px;
   display: none;
@@ -121,11 +116,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #hidden-logout-panel p a {
-    color: black;
-    text-decoration: none;
-    font-weight: 300;
-    display: block;
-    padding: 20px 20px;
+  color: black;
+  text-decoration: none;
+  font-weight: 300;
+  display: block;
+  padding: 20px 20px;
 }
 
 #hidden-logout-panel p a:hover {
@@ -138,7 +133,7 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 99;
   background-color: black;
   opacity: 0.3;
-  top:0;
+  top: 0;
   left: 0;
   right: 0;
   bottom: 0;
@@ -161,10 +156,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #hidden-post-panel-header {
-  border-bottom: 1px solid #C4CFD6;
+  border-bottom: 1px solid #c4cfd6;
   width: 100%;
   padding: 0px;
-
 }
 
 #hidden-post-panel-header button {
@@ -189,7 +183,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #hidden-post-panel-form-container {
-
 }
 
 #hidden-post-panel-form-container-left-box {
@@ -219,7 +212,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #hidden-post-panel-form-container-right-box form {
-
 }
 
 #hidden-post-panel-form-container-right-box form textarea {
@@ -230,7 +222,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #horizontal-line {
-  border-bottom: 1px solid #EBEEF0;
+  border-bottom: 1px solid #ebeef0;
   width: 100%;
   margin-bottom: 10px;
 }
@@ -288,7 +280,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ----------------- right navigation ----------------- */
 #right-navigation {
-  border-left: 1px solid #EBEEF0;
+  border-left: 1px solid #ebeef0;
   position: fixed;
   top: 0;
   bottom: 0;
@@ -306,29 +298,27 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #right-nav-search-container form {
-
 }
 
 #right-nav-search-container input {
   vertical-align: middle;
   display: inline-block;
-
 }
 
 #search-submit-btn {
   font-size: 15px;
   border-radius: 25px 0px 0px 25px;
-  border: 2px solid #EBEEF0;
-  background-color: #EBEEF0;
+  border: 2px solid #ebeef0;
+  background-color: #ebeef0;
   padding: 7px 7px;
 }
 
 #search-text-input {
-  border: 2px solid #EBEEF0;
+  border: 2px solid #ebeef0;
   font-size: 15px;
   padding: 10px 0px;
   border-radius: 0px 25px 25px 0px;
-  background-color: #EBEEF0;
+  background-color: #ebeef0;
   margin-left: -5px;
   width: 80%;
 }
@@ -341,7 +331,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 75%;
   margin-left: 6%;
   margin-top: 10px;
-  background-color: #F7F9FA;
+  background-color: #f7f9fa;
   border-radius: 10px;
 }
 
@@ -358,7 +348,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #trends-horizontal-line {
-  border-bottom: 1px solid #EBEEF0;
+  border-bottom: 1px solid #ebeef0;
   width: 100%;
   margin-top: -5px;
   margin-bottom: 10px;
@@ -370,7 +360,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #trends-cell {
-  border-bottom: 1px solid #EBEEF0;
+  border-bottom: 1px solid #ebeef0;
   padding-bottom: 10px;
   margin-bottom: 10px;
 }
@@ -397,7 +387,6 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 4px;
   margin-bottom: 4px;
   font-size: 16px;
-
 }
 
 /* ------ who to follow ------*/
@@ -405,7 +394,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 75%;
   margin-left: 6%;
   margin-top: 10px;
-  background-color: #F7F9FA;
+  background-color: #f7f9fa;
   border-radius: 10px;
   margin-bottom: 10px;
 }
@@ -416,7 +405,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #who-to-follow-header {
-    padding: 0px 0px;
+  padding: 0px 0px;
 }
 
 #who-to-follow-header h3 {
@@ -428,7 +417,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #who-to-follow-horizontal-line {
-  border-bottom: 1px solid #EBEEF0;
+  border-bottom: 1px solid #ebeef0;
   width: 100%;
   margin-top: -5px;
   margin-bottom: 10px;
@@ -456,7 +445,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #who-to-follow-cell {
   padding: 10px 0px;
-  border-bottom: 1px solid #EBEEF0;
+  border-bottom: 1px solid #ebeef0;
 }
 
 #who-to-follow-cell-center-part {
@@ -480,7 +469,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #who-to-follow-cell-right-part form {
-
 }
 
 #who-to-follow-cell-right-part form input {
@@ -504,9 +492,8 @@ h1, h2, h3, h4, h5, h6 {
   width: 75%;
   margin-left: 6%;
   margin-top: 10px;
-  background-color: #F7F9FA;
+  background-color: #f7f9fa;
   border-radius: 10px;
-
 }
 
 #topics-to-follow-header {
@@ -523,7 +510,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #topics-horizontal-line {
-  border-bottom: 1px solid #EBEEF0;
+  border-bottom: 1px solid #ebeef0;
   width: 100%;
   margin-top: -5px;
   margin-bottom: 10px;
@@ -536,7 +523,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #topics-to-follow-cell {
   padding: 15px 0px;
-  border-bottom: 1px solid #EBEEF0;
+  border-bottom: 1px solid #ebeef0;
 }
 
 #topics-to-follow-cell:hover {
@@ -557,15 +544,14 @@ h1, h2, h3, h4, h5, h6 {
   color: grey;
 }
 
-
 /* ---------------------------- mobile  --------------------------------*/
 #temporary-top-mobile-nav {
-  border-bottom: 1px solid #C4CFD6;
+  border-bottom: 1px solid #c4cfd6;
   display: none;
   text-align: center;
   position: fixed;
-  top:0;
-  left:0;
+  top: 0;
+  left: 0;
   right: 0;
   height: 50px;
   z-index: 99;
@@ -597,11 +583,9 @@ h1, h2, h3, h4, h5, h6 {
   position: absolute;
   left: 0;
 
-
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-
 }
 
 #profile-photo-mobile-left-nav-opener:hover {
@@ -620,7 +604,7 @@ h1, h2, h3, h4, h5, h6 {
   background-color: black;
   opacity: 0.3;
   position: fixed;
-  top:0;
+  top: 0;
   left: 0;
   bottom: 0;
   right: 0;
@@ -632,16 +616,16 @@ h1, h2, h3, h4, h5, h6 {
   transition: 0.5s;
   background-color: white;
   position: fixed;
-  top:0;
+  top: 0;
   left: 0;
-  bottom:0;
+  bottom: 0;
   width: 85%;
   z-index: 999;
   display: none;
 }
 
 #hidden-mobile-left-nav-header {
-  border-bottom: 1px solid #C4CFD6;
+  border-bottom: 1px solid #c4cfd6;
 }
 
 #hidden-mobile-left-nav-header h4 {
@@ -656,7 +640,7 @@ h1, h2, h3, h4, h5, h6 {
 #hidden-mobile-left-nav-header button {
   position: absolute;
   right: 0;
-  top:0;
+  top: 0;
   color: black;
   background-color: white;
   border: 1px solid transparent;
@@ -694,9 +678,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #mobile-logout-btn {
-  border-top: 1px solid #C4CFD6;
+  border-top: 1px solid #c4cfd6;
 }
-
 
 #mobile-bottom-navigation {
   border-top: 1px solid lightgrey;
@@ -757,21 +740,20 @@ h1, h2, h3, h4, h5, h6 {
 
 #hidden-mobile-post-panel {
   position: absolute;
-  top:0;
-  left:0;
-  right:0;
-  bottom:0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background-color: white;
   z-index: 9999 !important;
   display: none;
 }
 
 #hidden-mobile-post-panel-header {
-
 }
 
 #hidden-mobile-post-panel-horizontal-line {
-  border-bottom: 1px solid #C4CFD6;
+  border-bottom: 1px solid #c4cfd6;
 }
 
 #hidden-mobile-post-panel-header button {
@@ -789,13 +771,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #hidden-mobile-post-panel-header form {
-
 }
 
 #hidden-mobile-post-submit-btn {
   position: absolute;
-  top:0;
-  right:0;
+  top: 0;
+  right: 0;
   background-color: black;
   border: 1px solid black;
   color: white;
@@ -835,7 +816,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 70%;
   height: 150px;
   border: 0px;
-  border-bottom: 1px solid #E5E8E8;
+  border-bottom: 1px solid #e5e8e8;
 }
 
 #hidden-mobile-post-panel-header form textarea:focus {
@@ -853,7 +834,6 @@ h1, h2, h3, h4, h5, h6 {
   float: right;
   margin-top: 8px;
 }
-
 
 /* Mobile Small  --------------------------------------------------------- */
 @media screen and (min-width: 0px) and (max-width: 320px) {
@@ -890,10 +870,7 @@ h1, h2, h3, h4, h5, h6 {
   #mobile-bottom-nav-post-panel-open-btn {
     display: block;
   }
-
-
 }
-
 
 /* Mobile Medium  --------------------------------------------------------- */
 @media screen and (min-width: 321px) and (max-width: 375px) {
@@ -930,9 +907,7 @@ h1, h2, h3, h4, h5, h6 {
   #mobile-bottom-nav-post-panel-open-btn {
     display: block;
   }
-
 }
-
 
 /* Mobile Large - --------------------------------------------------------- */
 @media screen and (min-width: 376px) and (max-width: 425px) {
@@ -968,14 +943,10 @@ h1, h2, h3, h4, h5, h6 {
   #mobile-bottom-nav-post-panel-open-btn {
     display: block;
   }
-
-
 }
-
 
 /* Tablet - --------------------------------------------------------------- */
 @media screen and (min-width: 426px) and (max-width: 768px) {
-
   /* ----------------- main content container ----------------- */
   #content-container {
     margin-left: 14%;
@@ -991,23 +962,18 @@ h1, h2, h3, h4, h5, h6 {
   #right-navigation {
     display: none;
   }
-
 }
-
 
 /* Laptop ------------------------------------------------------------------ */
 @media screen and (min-width: 769px) and (max-width: 1024px) {
   /* nothing for now */
 }
 
-
 /* Laptop Large -------------------------------------------------------------*/
 @media screen and (min-width: 1025px) and (max-width: 1440px) {
   /* nothing for now */
 }
 
-
 /* 4K Large Desktop ------------------------------------------------------- */
 @media screen and (min-width: 1441px) {
-
 }
