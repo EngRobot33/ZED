@@ -7,7 +7,7 @@ class RateLimiterMiddleware:
 
     def __call__(self,request) -> None:
 
-        response = RateLimiterHandler.do_handler(request)
+        response = RateLimiterHandler.do_handler(request,allowed_paths=[])
 
         if response is not None:
             return response

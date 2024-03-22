@@ -1,3 +1,5 @@
+from typing import Optional,List
+
 from datetime import datetime
 from django.http.response import HttpResponse
 
@@ -22,7 +24,10 @@ class RateLimiterHandler:
     EACH_SECONDS:int = 60
 
     @classmethod
-    def do_handler(cls,request) -> None | HttpResponse:
+    def do_handler(cls,request,allowed_paths:Optional[List[str]] = None) -> None | HttpResponse:
+
+        if (allowed_paths is not None) and (request.path not in allowed_paths):
+            return None
 
         client_ip:str = cls.__get_client_ip(request)
         try:
@@ -53,7 +58,7 @@ class RateLimiterHandler:
                 redis_context.redis_client.set(cls.USER_INFO_KEY.format(client_ip),client_ip)
                 redis_context.redis_client.set(cls.USER_REQUEST_COUNT.format(client_ip),0)
                 redis_context.redis_client.set(cls.USER_LAST_REQUEST_TIME.format(client_ip),str(datetime.now()))
-        except ConnectionError:
+        except:
             ...
     @classmethod
     def __check_time(cls,now:datetime,set_time:datetime) -> bool:
