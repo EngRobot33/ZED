@@ -26,6 +26,8 @@ urlpatterns = [
     path('', include('engagement.urls')),
     path('', include('relation.urls')),
     path('', include('user.urls')),
+
+    path('__debug__/', include('debug_toolbar.urls')),
 ]
 
 if settings.DEBUG:

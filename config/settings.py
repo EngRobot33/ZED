@@ -27,11 +27,6 @@ DEBUG = config('DEBUG', False)
 
 ALLOWED_HOSTS = []
 
-
-CUSTOM_MIDDLEWARES = [
-    "config.middlewares.rate_limiter.RateLimiterMiddleware",
-]
-
 # Application definition
 
 DJANGO_APPS = [
@@ -41,6 +36,11 @@ DJANGO_APPS = [
     'user.apps.UserConfig',
 ]
 
+THIRD_PARTY_PACKAGES = [
+    'debug_toolbar',
+]
+
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -49,6 +49,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     *DJANGO_APPS,
+    *THIRD_PARTY_PACKAGES,
+]
+
+CUSTOM_MIDDLEWARES = [
+    "config.middlewares.rate_limiter.RateLimiterMiddleware",
+]
+
+THIRD_PARTY_PACKAGES_MIDDLEWARES = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 MIDDLEWARE = [
@@ -60,6 +69,11 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     *CUSTOM_MIDDLEWARES,
+    *THIRD_PARTY_PACKAGES_MIDDLEWARES,
+]
+
+INTERNAL_IPS = [
+    '127.0.0.1',
 ]
 
 ROOT_URLCONF = 'config.urls'

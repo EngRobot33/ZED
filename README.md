@@ -1,6 +1,6 @@
 # ZED
 
-A minimal clone of X (Twiiter) with most of the features of the original service.
+A minimal clone of X (Twitter) with most of the features of the original service.
 
 ## Screenshots
 
@@ -55,6 +55,10 @@ DEBUG = 'Project debug status'
 * After that, migration:
 ```
 python3 manage.py migrate
+```
+* Then make sure that Redis is actually running on your machine:
+```
+redis-server
 ```
 * That's finished! Now you can run the project:
 ```
