@@ -1,6 +1,6 @@
 # ZED
 
-A minimal clone of X (Twiiter) with most of the features of the original service.
+A minimal clone of X (Twitter) with most of the features of the original service.
 
 ## Screenshots
 
