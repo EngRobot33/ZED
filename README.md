@@ -60,6 +60,10 @@ python3 manage.py migrate
 ```
 redis-server
 ```
+* Now you should install all the packages in `package.json` file. Just make sure npm is installed:
+```
+npm install
+```
 * That's finished! Now you can run the project:
 ```
 python3 manage.py runserver
