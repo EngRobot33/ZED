@@ -2,7 +2,7 @@ from django.http import JsonResponse
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.pagination import PageNumberPagination
-from .serialize import UserSerialized, PostSerialized, FollowerListSerialized, FollowingListSerialized, TopicSerialized
+from .serializers import UserSerialized, PostSerialized, FollowerListSerialized, FollowingListSerialized, TopicSerialized
 from relation.models import Relation
 from utils.base_utils import get_random_topics
 from user.models import User
