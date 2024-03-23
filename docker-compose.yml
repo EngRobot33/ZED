@@ -1,0 +1,9 @@
+services:
+  zed:
+    build: .
+    volumes:
+      - db:/app/db.sqlite3
+    ports:
+      - "8000:8000"
+volumes:
+  db:
