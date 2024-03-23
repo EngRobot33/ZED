@@ -26,6 +26,7 @@ urlpatterns = [
     path('', include('engagement.urls')),
     path('', include('relation.urls')),
     path('', include('user.urls')),
+    path('api/v1/',include('api_v1.urls')),
 
     path('__debug__/', include('debug_toolbar.urls')),
 ]
