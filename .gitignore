@@ -358,3 +358,7 @@ node_modules/
 pyrightconfig.json
 
 # End of https://www.toptal.com/developers/gitignore/api/python,django,pycharm+all
+
+#postgres environment docker
+zed_data/
+zed_data/*

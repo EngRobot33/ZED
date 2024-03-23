@@ -1,9 +1,46 @@
 services:
   zed:
     build: .
+    container_name: zed_web
+    command: bash ./bashes/RunBash.sh
+    restart: always
     volumes:
-      - db:/app/db.sqlite3
+      - .:/code
     ports:
       - "8000:8000"
+    environment:
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+    env_file:
+      - ./.env
+    depends_on:
+      - redis
+      - postgres_db
+    networks:
+      - zed_network
+  
+  postgres_db:
+    image: postgres:15-alpine
+    container_name: zed_db
+    environment:
+      - POSTGRES_DB=zed
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - ./zed_data:/var/lib/postgresql/data
+    networks:
+      - zed_network
+
+  redis:
+    image: redis:latest
+    restart: always  
+    networks:
+      - zed_network
+
+networks:
+  zed_network:
+    driver: bridge
+
 volumes:
-  db:
+  postgres_data:
+

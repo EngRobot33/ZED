@@ -1,7 +1,8 @@
 FROM python:3.10-slim
 run apt-get update -y && apt-get install npm  -y 
 
-expose 8000
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
 
 WORKDIR /code
 
@@ -13,6 +14,6 @@ run npm install
 
 copy . . 
 
-entrypoint ["/bin/sh","-c", "python3 manage.py migrate && python3 manage.py runserver 0.0.0.0:8000"]
+
 
 

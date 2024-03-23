@@ -1,0 +1,17 @@
+# Exclude temporary files and directories
+*~
+.DS_Store
+.vscode/
+
+# Exclude development-specific files and directories
+.env
+.git
+node_modules/
+venv/
+__pycache__/
+
+# Exclude log files
+*.log
+
+zed_data/
+zed_data/*
