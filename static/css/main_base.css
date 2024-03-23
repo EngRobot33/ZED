@@ -431,6 +431,9 @@ body {
 }
 
 #who-to-follow-profile-photo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 45px;
   width: 45px;
   background-color: lightgrey;
