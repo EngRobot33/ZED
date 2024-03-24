@@ -55,7 +55,7 @@
       {% if current_user.profile_photo  %}
         <div id="profile-photo-left-nav" style="background-image: url('{{ current_user.profile_photo.url }}');"></div>
       {% else %}
-        <div id="profile-photo-left-nav"></div>
+        <div id="profile-photo-left-nav"><i class="ri-user-3-line" style="font-size: 30px; color: #ebeef0"></i></div>
       {% endif %}
 
 
@@ -124,7 +124,7 @@
       {% if current_user.profile_photo  %}
       <div id="profile-photo-mobile-left-nav-opener" style="background-image: url('{{ current_user.profile_photo.url }}');"></div>
       {% else %}
-        <div id="profile-photo-mobile-left-nav-opener"></div>
+        <div id="profile-photo-mobile-left-nav-opener"><i class="ri-user-3-line" style="font-size: 18px; color: #ebeef0"></i></div>
       {% endif %}
 
       <div id="temporary-top-mobile-nav-logo">
@@ -221,7 +221,7 @@
                 {% if user.profile_photo %}
                   <div id="who-to-follow-profile-photo" style="background-image: url('{{ user.profile_photo.url }}');"></div>
                 {% else %}
-                <div id="who-to-follow-profile-photo"></div>
+                <div id="who-to-follow-profile-photo"><i class="ri-user-3-line" style="font-size: 30px; color: #ebeef0"></i></div>
                 {% endif %}
               </div>
               <div id="who-to-follow-cell-center-part">

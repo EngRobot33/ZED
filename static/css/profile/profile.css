@@ -61,6 +61,9 @@
 }
 
 #profile-photo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: lightgrey;
   height: 150px;
   width: 150px;
@@ -290,6 +293,9 @@
   }
 
   #profile-photo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 100px;
     width: 100px;
     margin-top: -40px;
@@ -310,6 +316,9 @@
   }
 
   #profile-photo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 100px;
     width: 100px;
     margin-top: -40px;
@@ -330,6 +339,9 @@
   }
 
   #profile-photo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 100px;
     width: 100px;
     margin-top: -40px;

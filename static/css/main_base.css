@@ -76,6 +76,9 @@ body {
 }
 
 #profile-photo-left-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 45px;
   width: 45px;
   background-color: lightgrey;
@@ -431,6 +434,9 @@ body {
 }
 
 #who-to-follow-profile-photo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 45px;
   width: 45px;
   background-color: lightgrey;
@@ -570,11 +576,14 @@ body {
 }
 
 #profile-photo-mobile-left-nav-opener {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 30px;
   width: 30px;
   background-color: lightgrey;
   border-radius: 50%;
-  display: inline-block;
+  /* display: inline-block; */
   vertical-align: middle;
   margin-left: 5%;
   margin-top: 11px;
