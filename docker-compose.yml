@@ -32,7 +32,7 @@ services:
       - zed_network
 
   redis:
-    image: redis:latest
+    image: redis:7.2.4-alpine
     restart: always  
     networks:
       - zed_network
@@ -42,5 +42,5 @@ networks:
     driver: bridge
 
 volumes:
-  postgres_data:
+  zed_data:
 

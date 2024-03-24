@@ -14,6 +14,7 @@ run npm install
 
 copy . . 
 
+EXPOSE 8000
 
 
 
