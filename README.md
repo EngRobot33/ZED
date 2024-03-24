@@ -88,9 +88,18 @@ DB_USER=zed
 DB_PASSWORD=zed1234
 ```
 
-* That's finished! Now you can run the project:
+* Now you can run the project:
 ```
 docker compose up -d 
+```
+
+* For migrations, you should run zed container:
+```
+docker exec -it zed_web bash
+```
+then run migrate:
+```
+python3 manage.py migrate
 ```
 
 ## Contributing
