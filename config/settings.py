@@ -21,13 +21,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY', False)
+SECRET_KEY = config('SECRET_KEY', True)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', False)
+DEBUG = config('DEBUG', True)
 
-ALLOWED_HOSTS_STR = config('ALLOWED_HOSTS')
-ALLOWED_HOSTS = [host.strip() for host in ALLOWED_HOSTS_STR.split(',')]
+# ALLOWED_HOSTS_STR = config('ALLOWED_HOSTS')
+# ALLOWED_HOSTS = [host.strip() for host in ALLOWED_HOSTS_STR.split(',')]
+ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -36,14 +37,16 @@ DJANGO_APPS = [
     'engagement.apps.EngagementConfig',
     'relation.apps.RelationConfig',
     'user.apps.UserConfig',
+    "chat.apps.ChatConfig",
 ]
 
 THIRD_PARTY_PACKAGES = [
-    'debug_toolbar',
+    # 'debug_toolbar',
 ]
 
 
 INSTALLED_APPS = [
+    "daphne",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
