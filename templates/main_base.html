@@ -188,7 +188,7 @@
       <div id="right-nav-search-container">
           <form action="{% url 'content:home' page %}" method="POST">
             {% csrf_token %}
-            <input name="right_nav_search_submit_btn" id="search-submit-btn" type="submit" value="&#128269;" />
+            <button id="search-submit-btn" type="button"><i class="ri-search-line" style="font-size: 16px; color: lightgray"></i></button>
             <input name="search_input" id="search-text-input" type="text" placeholder="Search ZED" />
           </form>
       </div>

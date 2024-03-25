@@ -37,7 +37,8 @@ def home(request, page):
 
     random_topics = get_random_topics()
 
-    if request.POST.get('right_nav_search_submit_btn'):
+    # if request.POST.get('right_nav_search_submit_btn'):
+    if request.POST.get('search_input'):
         search_input = request.POST.get('search_input')
         return HttpResponseRedirect('/search/' + str(search_input) + '/')
 
