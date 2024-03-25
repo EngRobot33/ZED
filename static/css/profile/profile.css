@@ -191,6 +191,9 @@
 }
 
 #post-cell-left-part-profile-photo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 45px;
   width: 45px;
   background-color: lightgrey;
