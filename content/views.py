@@ -272,8 +272,8 @@ def other_user_profile(request, other_user_username):
 
 
     follow_current_user = Relation.objects.filter(
-        following=other_user,
-        follower=current_user,
+        following=current_user,
+        follower=other_user,
     ).exists()
     already_follower = False
 
