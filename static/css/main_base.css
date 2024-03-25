@@ -196,6 +196,9 @@ body {
 }
 
 #profile-photo-hidden-panel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 45px;
   width: 45px;
   background-color: lightgrey;
@@ -301,6 +304,7 @@ body {
 }
 
 #right-nav-search-container form {
+  display: flex;
 }
 
 #right-nav-search-container input {
@@ -313,7 +317,7 @@ body {
   border-radius: 25px 0px 0px 25px;
   border: 2px solid #ebeef0;
   background-color: #ebeef0;
-  padding: 9px 7px;
+  padding: 10px;
 }
 
 #search-text-input {

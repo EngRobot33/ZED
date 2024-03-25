@@ -10,8 +10,10 @@ from content.models import Post, Comment, Topic
 from engagement.models import LikedPost, LikeNotification
 from relation.models import Relation
 from utils.base_utils import left_nav_post_form_processing, mobile_post_form_processing, get_random_topics, \
-    get_random_follow_suggestions, toggle_like_post, toggle_like_comment
+    get_random_follow_suggestions, toggle_like_post, toggle_like_comment, format_date
 from utils.session_utils import get_current_user
+from urllib.parse import unquote
+
 
 User = get_user_model()
 
@@ -37,7 +39,8 @@ def home(request, page):
 
     random_topics = get_random_topics()
 
-    if request.POST.get('right_nav_search_submit_btn'):
+    # if request.POST.get('right_nav_search_submit_btn'):
+    if request.POST.get('search_input'):
         search_input = request.POST.get('search_input')
         return HttpResponseRedirect('/search/' + str(search_input) + '/')
 
@@ -93,6 +96,8 @@ def home(request, page):
         for post in posts:
             for following in followings:
                 if post.author == following.following:
+                    is_liked = LikedPost.objects.filter(post=post, liker=current_user).exists()
+                    post.is_liked = is_liked
                     post_feed.append(post)
 
     post_feed = post_feed[post_records_starting_point:post_records_ending_point]
@@ -151,6 +156,8 @@ def single_post(request, post_id):
 
     current_post_comments = Comment.objects.filter(post=current_post).order_by('-created_time')
 
+    is_liked_by_current_user = LikedPost.objects.filter(post=current_post, liker=current_user).exists()
+
     if request.POST.get('single_post_like_submit_btn'):
         toggle_like_post(current_user, current_post)
 
@@ -186,6 +193,7 @@ def single_post(request, post_id):
         'current_post_likes': current_post_likes,
         'current_post_likes_count': len(current_post_likes),
         'current_post_comments': current_post_comments,
+        'is_liked_by_current_user': is_liked_by_current_user,
     }
 
     return render(request, 'home/single_post.html', data)
@@ -205,6 +213,14 @@ def profile(request):
     followers = Relation.objects.filter(following=current_user)
     followings = Relation.objects.filter(follower=current_user)
 
+    date_joined = format_date(current_user.date_joined)
+
+    for post in posts:
+        post.is_liked = LikedPost.objects.filter(post=post, liker=current_user).exists()
+
+    
+
+
     if request.POST.get('profile_post_comment_submit_btn'):
         current_post_id = request.POST.get('hidden_post_id')
         return HttpResponseRedirect('/post/' + str(current_post_id) + '/')
@@ -219,12 +235,14 @@ def profile(request):
 
     data = {
         'current_user': current_user,
+        'date_joined': date_joined,
         'random_follow_suggestions': random_follow_suggestions,
         'random_topics': random_topics,
         'posts': posts,
         'posts_count': len(posts),
         'followers_count': len(followers),
-        'followings_count': len(followings)
+        'followings_count': len(followings),
+    
     }
 
     return render(request, 'profile/profile.html', data)
@@ -249,7 +267,17 @@ def other_user_profile(request, other_user_username):
     followers = Relation.objects.filter(following=other_user)
     followings = Relation.objects.filter(follower=other_user)
 
+    for post in posts:
+        post.is_liked = LikedPost.objects.filter(post=post, liker=current_user).exists()
+
+
+    follow_current_user = Relation.objects.filter(
+        following=current_user,
+        follower=other_user,
+    ).exists()
     already_follower = False
+
+    date_joined = format_date(other_user.date_joined)
 
     if request.POST.get('other_user_profile_follow_submit_btn'):
         is_follower = Relation.objects.filter(
@@ -280,6 +308,7 @@ def other_user_profile(request, other_user_username):
     data = {
         'current_user': current_user,
         'other_user': other_user,
+        'date_joined': date_joined,
         'random_follow_suggestions': random_follow_suggestions,
         'random_topics': random_topics,
         'posts': posts,
@@ -287,6 +316,7 @@ def other_user_profile(request, other_user_username):
         'followers_count': len(followers),
         'followings_count': len(followings),
         'already_follower': already_follower,
+        'follow_current_user': follow_current_user,
     }
 
     return render(request, 'profile/other_profile.html', data)
@@ -392,6 +422,8 @@ def explore(request):
 
     for topic in random_topics:
         topics_post_query = Post.objects.filter(topic=topic)[:10]
+        for post in topics_post_query:
+            post.is_liked = LikedPost.objects.filter(post=post, liker=current_user).exists()
         topics_posts[topic.id] = topics_post_query
 
     data = {
@@ -408,6 +440,8 @@ def explore(request):
 def topic_explore(request, topic, page):
     current_user = get_current_user(request)
 
+    decoded_topic = unquote(topic)
+
     if current_user is None:
         return HttpResponseRedirect('/auth/signup/')
 
@@ -416,7 +450,7 @@ def topic_explore(request, topic, page):
     random_follow_suggestions = get_random_follow_suggestions(current_user)
 
     try:
-        current_topic = Topic.objects.get(name=topic)
+        current_topic = Topic.objects.get(name=decoded_topic)
     except ObjectDoesNotExist:
         current_topic = None
 

@@ -23,7 +23,7 @@
       {% if current_post.author.profile_photo %}
         <div id="single-post-content-top-profile-photo" style="background-image:url('{{ current_post.author.profile_photo.url }}')"></div>
       {% else %}
-        <div id="single-post-content-top-profile-photo"></div>
+        <div id="single-post-content-top-profile-photo"><i class="ri-user-3-line" style="font-size: 30px; color: #ebeef0"></i></div>
       {% endif %}
     </div>
     <div id="single-post-content-container-top-right-box">
@@ -48,12 +48,21 @@
 
 <!-- post operations -->
 <div id="single-post-operations">
+  
   <form method="POST" action="{% url 'content:single_post' current_post.id %}">
     {% csrf_token %}
-    <input type="submit" value="&#128156;" name="single_post_like_submit_btn" />
+    {% if is_liked_by_current_user %}
+      <button type="submit" id="liked"><i class="ri-heart-fill" style="color: black"></i></button><p>{{ current_post_likes_count }}</p>
+    {% else %}
+      <button type="submit"><i class="ri-heart-3-line" ></i></button><p>{{ current_post_likes_count }}</p>
+    {% endif %}
+     <input type="hidden" value="&#128156;" name="single_post_like_submit_btn" />
   </form>
 
-  <button id="hidden-panel-open-btn"><span class="fa fa-comment"></span></button>
+  <div id="post-comments">
+    <button id="hidden-panel-open-btn"><i class="ri-chat-3-line"></i></button>
+    <p id="comment-count">{{ current_post.comment_count }}</p>
+  </div>
 
 </div>
 
@@ -64,7 +73,12 @@
   </div>
   <div id="hidden-single-post-comment-form-container">
     <div id="hidden-single-post-comment-form-container-left-box">
-      <div id="hidden-single-post-comment-form-container-profile-photo" style="background-image:url('{% static 'test/test.jpg' %}')"></div>
+      {% if current_user.profile_photo %}
+        <div id="hidden-single-post-comment-form-container-profile-photo" style="background-image:url('{{ current_user.profile_photo.url }}')"></div>
+      {% else %}
+        <div id="hidden-single-post-comment-form-container-profile-photo"><i class="ri-user-3-line" style="font-size: 30px; color: #ebeef0"></i></div>
+      {% endif %}
+      <!-- <div id="hidden-single-post-comment-form-container-profile-photo" style="background-image:url('{% static 'test/test.jpg' %}')"></div> -->
     </div>
     <div id="hidden-single-post-comment-form-container-right-box">
       <form method="POST" action="{% url 'content:single_post' current_post.id %}">
@@ -102,7 +116,7 @@
         {% if comment.commenter.profile_photo %}
           <div id="post-comment-cell-left-profile-photo" style="background-image:url('{{ comment.commentor.profile_photo.url }}')"></div>
         {% else %}
-          <div id="post-comment-cell-left-profile-photo" ></div>
+          <div id="post-comment-cell-left-profile-photo" ><i class="ri-user-3-line" style="font-size: 30px; color: #ebeef0"></i></div>
         {% endif %}
       </div>
       <div id="post-comment-cell-right">
@@ -113,9 +127,10 @@
           <form action="{% url 'content:single_post' current_post.id %}" method="POST">
             {% csrf_token %}
             <input type="hidden" value="{{ comment.id }}" name="comment_id" />
-            <input type="submit" value="&#128156;" name="single_post_comment_like_submit_btn" />
+            <button type="submit"><i class="ri-heart-3-line"></i></button><p id="comment-like-count">{{ comment.like_count }}</p>
+            <input type="hidden" value="&#128156;" name="single_post_comment_like_submit_btn" />
           </form>
-          <p id="comment-like-count">{{ comment.like_count }}</p>
+          
         </div>
       </div>
     </div><!--/cell-->

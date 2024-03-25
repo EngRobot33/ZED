@@ -48,7 +48,7 @@
         {% if post.author.profile_photo %}
           <div id="post-cell-left-part-profile-photo" style="background-image:url('{{ post.author.profile_photo.url }}')"></div>
         {% else %}
-          <div id="post-cell-left-part-profile-photo"></div>
+          <div id="post-cell-left-part-profile-photo"><i class="ri-user-3-line" style="font-size: 30px; color: #ebeef0"></i></div>
         {% endif %}
       </div>
       <div id="post-cell-right-part">
@@ -63,15 +63,21 @@
           <form id="post-cell-comment-form" action="{% url 'content:home' page %}" method="POST">
             {% csrf_token %}
             <input type="hidden" value="{{ post.id }}" name="hidden_post_id" />
-            <input type="submit" value="&#128262;" name="post_cell_comment_submit_btn"/>
+            <button type="submit"><i class="ri-chat-3-line"></i></button>
+            <input type="hidden" value="&#128262;" name="post_cell_comment_submit_btn"/>
             <p>{{ post.comment_count }}</p>
           </form>
 
           <form id="post-cell-like-form" action="{% url 'content:home' page %}" method="POST">
             {% csrf_token %}
             <input type="hidden" value="{{ post.id }}" name="hidden_post_id" />
-            <input type="submit" value="&#128156;" name="post_cell_like_submit_btn" />
-            <p>{{ post.like_count }}</p>
+            {% if post.is_liked %}
+            <button type="submit"><i class="ri-heart-fill" style="color: black"></i></button><p>{{ post.like_count }}</p>
+            {% else %}
+            <button type="submit"><i class="ri-heart-3-line" ></i></button><p>{{ post.like_count }}</p>
+            {% endif %}
+            <input type="hidden" value="&#128156;" name="post_cell_like_submit_btn" />
+            
           </form>
         </div>
       </div><!-- /right-part -->

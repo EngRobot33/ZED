@@ -135,14 +135,24 @@
   border-radius: 25px;
 
 }
+#post-cell-right-part-bottom-links form button {
+  display: inline-block;
+  background-color: transparent;
+  border: 1px solid transparent;
+  font-size: 16px;
+  color: grey;
+  /* padding: 5px 5px; */
+  padding-left: 9px !important;
+
+}
 
 #post-cell-right-part-bottom-links form p {
   display: inline-block;
-  margin-top: 10px;
+  /* margin-top: 10px; */
   color: grey;
   position: absolute;
   font-size: 14px;
-  margin-left: 3px;
+  /* margin-left: 3px; */
 }
 
 #pagination-container {

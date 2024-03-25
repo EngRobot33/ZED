@@ -24,6 +24,8 @@
 
 }
 
+
+
 #profile-banner {
   background-color: #EBEEF0;
   width: 100%;
@@ -43,6 +45,7 @@
   margin-top: 10px;
   margin-right: 10px;
 }
+
 
 #follow-submit-btn {
   color: black;
@@ -101,9 +104,12 @@
 
 /* ----- bio ----*/
 #profile-bio {
+  
   width: 94%;
   margin: 0 auto;
   margin-top: 40px;
+  
+  
 }
 
 #profile-bio-other-user {
@@ -121,6 +127,7 @@
 #bio-username {
   color: grey;
   margin: 0px;
+  font-size: 12px;
 }
 
 #bio-bio {
@@ -130,9 +137,23 @@
 }
 
 #bio-date {
+  display: flex;
   margin: 0px;
   color: grey;
   margin-bottom: 15px;
+  font-size: 12px;
+}
+
+#bio-date i {
+  margin-right: 4px;
+
+}
+#bio-follow-you {
+  background-color: lightgray;
+  color: gray;
+  padding: 2px 3px;
+  border-radius: 4px;
+  font-size: 12px;
 }
 
 #bio-followers {
@@ -191,6 +212,9 @@
 }
 
 #post-cell-left-part-profile-photo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 45px;
   width: 45px;
   background-color: lightgrey;
@@ -254,6 +278,23 @@
   width: 28%;
 }
 
+#post-cell-right-part-bottom-links form button {
+  background-color: transparent;
+  border: 1px solid transparent;
+  font-size: 22px;
+  position: relative;
+  padding: 8px 10px;
+  color: #BDC3C7;
+  margin-left: 12%;
+  border-radius: 25px;
+}
+
+#post-cell-right-part-bottom-links button:hover {
+  transition: 0.1s;
+  cursor: pointer;
+}
+
+
 #post-cell-right-part-bottom-links form input {
   display: inline-block;
   background-color: transparent;
@@ -277,7 +318,7 @@
   color: grey;
   position: absolute;
   font-size: 14px;
-  margin-left: 3px;
+  /* margin-left: 3px; */
 }
 
 

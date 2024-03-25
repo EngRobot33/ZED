@@ -133,6 +133,9 @@
 }
 
 #post-cell-left-part-profile-photo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 45px;
   width: 45px;
   background-color: lightgrey;
@@ -213,13 +216,31 @@
 
 }
 
+#post-cell-right-part-bottom-links button {
+  background-color: transparent;
+  border: 1px solid transparent;
+  font-size: 22px;
+  position: relative;
+  padding: 8px 10px;
+  color: #BDC3C7;
+  margin-left: 12%;
+  border-radius: 25px;
+}
+
+#post-cell-right-part-bottom-links button:hover {
+  transition: 0.1s;
+  cursor: pointer;
+}
+
+
+
 #post-cell-right-part-bottom-links form p {
   display: inline-block;
   margin-top: 10px;
   color: grey;
   position: absolute;
   font-size: 14px;
-  margin-left: 3px;
+  /* margin-left: 3px; */
 }
 
 #reposted-link {
