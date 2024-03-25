@@ -94,6 +94,8 @@ def home(request, page):
         for post in posts:
             for following in followings:
                 if post.author == following.following:
+                    is_liked = LikedPost.objects.filter(post=post, liker=current_user).exists()
+                    post.is_liked = is_liked
                     post_feed.append(post)
 
     post_feed = post_feed[post_records_starting_point:post_records_ending_point]
