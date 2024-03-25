@@ -152,6 +152,8 @@ def single_post(request, post_id):
 
     current_post_comments = Comment.objects.filter(post=current_post).order_by('-created_time')
 
+    is_liked_by_current_user = LikedPost.objects.filter(post=current_post, liker=current_user).exists()
+
     if request.POST.get('single_post_like_submit_btn'):
         toggle_like_post(current_user, current_post)
 
@@ -187,6 +189,7 @@ def single_post(request, post_id):
         'current_post_likes': current_post_likes,
         'current_post_likes_count': len(current_post_likes),
         'current_post_comments': current_post_comments,
+        'is_liked_by_current_user': is_liked_by_current_user,
     }
 
     return render(request, 'home/single_post.html', data)

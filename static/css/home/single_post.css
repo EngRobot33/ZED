@@ -227,6 +227,9 @@
 }
 
 #hidden-single-post-comment-form-container-profile-photo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 50px;
   width: 50px;
   background-color: lightgrey;
@@ -296,6 +299,9 @@
 }
 
 #post-comment-cell-left-profile-photo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 45px;
   width: 45px;
   background-color: lightgrey;
