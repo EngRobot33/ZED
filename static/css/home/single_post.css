@@ -124,25 +124,28 @@
 
 /* -------------------- post operations  ---------------------------- */
 #single-post-operations {
-  width: 95%;
-  height: auto;
-  margin: 0 auto;
-  border-bottom: 1px solid #EBEEF0;
-  padding-bottom: 5px;
-  margin-top: -15px;
+display: flex;
+align-items: center;
+}
+
+#post-comments{
+  display:  flex;
+  align-items: center;
 }
 
 #single-post-operations form {
-  display: inline-block;
-  vertical-align: middle;
+ display: flex;
+ margin:0;
 }
 
+
 #single-post-operations form input {
+  display: inline-block;
   background-color: transparent;
   border: 1px solid transparent;
-  font-size: 20px;
+  font-size: 16px;
   border-radius: 25px;
-  padding: 5px 10px;
+  /* padding: 5px 5px; */
 }
 
 #single-post-operations form input:hover {
@@ -364,14 +367,11 @@
 }
 
 #post-comment-cell-right-bottom {
-  padding: 0px !important;
-  margin-top: -10px;
-  height: auto;
+  display: flex;
 }
 
 #post-comment-cell-right-bottom form {
-  display: inline-block;
-  vertical-align: middle;
+  display: flex;
 }
 
 #post-comment-cell-right-bottom form input {
@@ -386,6 +386,16 @@
 #post-comment-cell-right-bottom form input:hover {
   cursor: pointer;
   transition: 0.2s;
+}
+#post-comment-cell-right-bottom form button {
+  background-color: transparent;
+  border: 1px solid transparent;
+  font-size: 20px;
+  position: relative;
+  padding: 8px 10px;
+  color: #BDC3C7;
+  margin-left: 12%;
+  border-radius: 25px;
 }
 
 #comment-like-count {

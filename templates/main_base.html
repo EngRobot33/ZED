@@ -202,7 +202,7 @@
 
       {% for topic in random_topics %}
         {% with topic_name=topic.name|slugify %}
-          <a href="{% url 'content:topic_explore' topic_name page %}">
+          <a href="{% url 'content:topic_explore' topic=topic.name|urlencode page=0 %}">
               <div id="topics-to-follow-cell">
                   <h4>#{{ topic_name }}</h4>
                   <p>Popular right now</p>

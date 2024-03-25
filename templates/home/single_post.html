@@ -48,19 +48,21 @@
 
 <!-- post operations -->
 <div id="single-post-operations">
+  
   <form method="POST" action="{% url 'content:single_post' current_post.id %}">
     {% csrf_token %}
     {% if is_liked_by_current_user %}
-      <button type="submit" id="liked"><i class="ri-heart-fill" style="color: black"></i></button>
+      <button type="submit" id="liked"><i class="ri-heart-fill" style="color: black"></i></button><p>{{ current_post_likes_count }}</p>
     {% else %}
-      <button type="submit"><i class="ri-heart-3-line" ></i></button>
+      <button type="submit"><i class="ri-heart-3-line" ></i></button><p>{{ current_post_likes_count }}</p>
     {% endif %}
-    <!-- <button type="submit"><i class="ri-heart-3-line"></i></button> -->
-    <input type="hidden" value="&#128156;" name="single_post_like_submit_btn" />
+     <input type="hidden" value="&#128156;" name="single_post_like_submit_btn" />
   </form>
 
-  <!-- <button id="hidden-panel-open-btn"><span class="fa fa-comment"></span></button> -->
-  <button id="hidden-panel-open-btn"><i class="ri-chat-3-line"></i></button>
+  <div id="post-comments">
+    <button id="hidden-panel-open-btn"><i class="ri-chat-3-line"></i></button>
+    <p id="comment-count">{{ current_post.comment_count }}</p>
+  </div>
 
 </div>
 
@@ -125,9 +127,10 @@
           <form action="{% url 'content:single_post' current_post.id %}" method="POST">
             {% csrf_token %}
             <input type="hidden" value="{{ comment.id }}" name="comment_id" />
-            <input type="submit" value="&#128156;" name="single_post_comment_like_submit_btn" />
+            <button type="submit"><i class="ri-heart-3-line"></i></button><p id="comment-like-count">{{ comment.like_count }}</p>
+            <input type="hidden" value="&#128156;" name="single_post_comment_like_submit_btn" />
           </form>
-          <p id="comment-like-count">{{ comment.like_count }}</p>
+          
         </div>
       </div>
     </div><!--/cell-->

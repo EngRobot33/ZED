@@ -48,7 +48,10 @@
   {% endif %}
   
 
-  <p id="bio-date">{{ current_user.created_time }}</p>
+  
+
+  <p id="bio-date"><i class="ri-calendar-line"></i> Joined {{ date_joined }}</p>
+
 
   <p id="bio-followers"><b>{{followings_count}}</b>Following <span id="right-space"></span> <b>{{followers_count}}</b>Followers</p>
 </div>
@@ -83,15 +86,21 @@
       <form id="post-cell-comment-form" method="POST" action="{% url 'content:profile' %}" >
         {% csrf_token %}
         <input type="hidden" value="{{ post.id }}" name="hidden_post_id" />
-        <input type="submit" value="&#128262;" name="profile_post_comment_submit_btn"/>
-        <p>{{ post.comment_count }}</p>
+        <button type="submit"><i class="ri-chat-3-line"></i></button><p>{{ post.comment_count }}</p>
+        <input type="hidden" value="&#128262;" name="profile_post_comment_submit_btn"/>
+        
       </form>
 
       <form id="post-cell-like-form" method="POST" action="{% url 'content:profile' %}">
         {% csrf_token %}
         <input type="hidden" value="{{ post.id }}" name="hidden_post_id" />
-        <input type="submit" value="&#128156;" name="profile_post_like_submit_btn" />
-        <p>{{ post.like_count }}</p>
+        {% if post.is_liked %}
+        <button type="submit"><i class="ri-heart-fill" style="color: black"></i></button> <p>{{ post.like_count }}</p>
+        {% else %}
+        <button type="submit"><i class="ri-heart-3-line" ></i></button> <p>{{ post.like_count }}</p>
+        {% endif %}
+        <input type="hidden" value="&#128156;" name="profile_post_like_submit_btn" />
+       
       </form>
     </div>
 

@@ -76,3 +76,7 @@ def toggle_like_comment(current_user, current_comment):
         )
         current_comment.like_count += 1
     current_comment.save()
+
+
+def format_date(date):
+    return date.strftime('%b %Y')

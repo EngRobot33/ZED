@@ -26,7 +26,7 @@
       {% if other_user.profile_photo %}
         <div id="profile-photo" style="background-image:url('{{ other_user.profile_photo.url }}')"></div>
       {% else %}
-        <div id="profile-photo"></div>
+        <div id="profile-photo"><i class="ri-user-3-line" style="font-size: 96px; color: #ebeef0"></i></div>
       {% endif %}
 
       <div id="clear"></div>
@@ -46,11 +46,20 @@
 <!-- bio -->
 <div id="profile-bio">
   <h3>{{ other_user.first_name }} {{ other_user.last_name }}</h3>
-  <p id="bio-username">@{{ other_user.username }}</p>
+  <p id="bio-username">@{{ other_user.username }}
+    {% if follow_current_user %}
+      <span id="bio-follow-you">Followes you</span>
+    {% endif %}
+  </p>
 
-  <p id="bio-bio">{{ other_user.bio }}</p>
+  {% if other_user.bio %}
+    <p id="bio-bio">{{ other_user.bio }}</p>
+  {% else %}
+    <p id="bio-bio"></p>
+  {% endif %}
+  
 
-  <p id="bio-date">{{ other_user.created_time }}</p>
+  <p id="bio-date"><i class="ri-calendar-line"></i> Joined {{ date_joined }}</p>
 
   <p id="bio-followers"><b>{{followings_count}}</b>Following <span id="right-space"></span> <b>{{followers_count}}</b>Followers</p>
 </div>
@@ -70,7 +79,7 @@
       {% if post.author.profile_photo %}
         <div id="post-cell-left-part-profile-photo" style="background-image:url('{{ post.author.profile_photo.url }}')"></div>
       {% else %}
-        <div id="post-cell-left-part-profile-photo"></div>
+        <div id="post-cell-left-part-profile-photo"><i class="ri-user-3-line" style="font-size: 30px; color: #ebeef0"></i></div>
       {% endif %}
     </div>
 
@@ -86,15 +95,22 @@
         <form id="post-cell-comment-form" method="POST" action="{% url 'content:other_user_profile' other_user.username %}" >
           {% csrf_token %}
           <input type="hidden" value="{{ post.id }}" name="hidden_post_id" />
-          <input type="submit" value="&#128262;" name="other_profile_post_comment_form_submit_btn"/>
+          <button type="submit"><i class="ri-chat-3-line"></i></button>
           <p>{{ post.comment_count }}</p>
+          <input type="hidden" value="&#128262;" name="other_profile_post_comment_form_submit_btn"/>
+          
         </form>
 
         <form id="post-cell-like-form" method="POST">
           {% csrf_token %}
           <input type="hidden" value="{{ post.id }}" name="hidden_post_id" />
-          <input type="submit" value="&#128156;" name="other_profile_post_like_form_submit_btn" />
-          <p>{{ post.like_count }}</p>
+          {% if post.is_liked %}
+          <button type="submit"><i class="ri-heart-fill" style="color: black"></i></button><p>{{ post.like_count }}</p>
+          {% else %}
+          <button type="submit"><i class="ri-heart-3-line" ></i></button><p>{{ post.like_count }}</p>
+          {% endif %}
+          <input type="hidden" value="&#128156;" name="other_profile_post_like_form_submit_btn" />
+          
         </form>
       </div>
 
