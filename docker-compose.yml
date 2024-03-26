@@ -1,6 +1,10 @@
 services:
   zed:
     build: .
+    restart: on-failure
+    command: /code/run.sh
+    container_name: zed
+    hostname: zed
     volumes:
       - db:/app/db.sqlite3
     ports:
