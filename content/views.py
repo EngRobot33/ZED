@@ -1,3 +1,5 @@
+from urllib.parse import unquote
+
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
@@ -7,13 +9,11 @@ from django.shortcuts import render, get_object_or_404
 from django.views import View
 
 from content.models import Post, Comment, Topic
-from engagement.models import LikedPost, LikeNotification
+from engagement.models import LikedPost
 from relation.models import Relation
 from utils.base_utils import left_nav_post_form_processing, mobile_post_form_processing, get_random_topics, \
     get_random_follow_suggestions, toggle_like_post, toggle_like_comment, format_date
 from utils.session_utils import get_current_user
-from urllib.parse import unquote
-
 
 User = get_user_model()
 
@@ -218,9 +218,6 @@ def profile(request):
     for post in posts:
         post.is_liked = LikedPost.objects.filter(post=post, liker=current_user).exists()
 
-    
-
-
     if request.POST.get('profile_post_comment_submit_btn'):
         current_post_id = request.POST.get('hidden_post_id')
         return HttpResponseRedirect('/post/' + str(current_post_id) + '/')
@@ -242,7 +239,7 @@ def profile(request):
         'posts_count': len(posts),
         'followers_count': len(followers),
         'followings_count': len(followings),
-    
+
     }
 
     return render(request, 'profile/profile.html', data)
@@ -269,7 +266,6 @@ def other_user_profile(request, other_user_username):
 
     for post in posts:
         post.is_liked = LikedPost.objects.filter(post=post, liker=current_user).exists()
-
 
     follow_current_user = Relation.objects.filter(
         following=current_user,

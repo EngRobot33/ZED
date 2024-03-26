@@ -1,4 +1,5 @@
 from django.contrib import admin
+
 from .models import Topic, Post, Comment, Repost
 
 admin.site.register(Topic)

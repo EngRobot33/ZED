@@ -1,6 +1,6 @@
-from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
+from django.shortcuts import render, redirect
 from django.views import View
 
 from .models import User
@@ -22,7 +22,8 @@ class SignupView(View):
         if User.objects.filter(username=username).exists() or User.objects.filter(email=email).exists():
             return render(request, self.template_name, {'credentials_taken': True})
 
-        user = User.objects.create_user(username=username, email=email, password=password, first_name=first_name, last_name=last_name)
+        user = User.objects.create_user(username=username, email=email, password=password, first_name=first_name,
+                                        last_name=last_name)
         login(request, user)
         return redirect('/')
 
