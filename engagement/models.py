@@ -11,7 +11,6 @@ User = get_user_model()
 
 
 class LikedPost(BaseModel):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     like_count = models.IntegerField(verbose_name=_('post like count'), default=0)
     post = models.ForeignKey(
         Post,
@@ -40,7 +39,6 @@ class LikedPost(BaseModel):
 
 
 class LikedComment(BaseModel):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     like_count = models.IntegerField(verbose_name=_('comment like count'), default=0)
     comment = models.ForeignKey(
         Comment,
@@ -69,7 +67,6 @@ class LikedComment(BaseModel):
 
 
 class LikeNotification(BaseModel):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     notified = models.ForeignKey(
         User,
         verbose_name=_('notified user'),
