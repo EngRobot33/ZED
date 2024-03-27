@@ -1,11 +1,10 @@
-from typing import Optional,List
-
+import json
 from datetime import datetime
+from typing import Optional, List
+
 from django.http.response import HttpResponse
 
 from .redis_manager import RedisHandler
-
-import json
 
 redis_context = RedisHandler("localhost", 6379, 0)
 redis_context.connect()
@@ -24,7 +23,7 @@ class RateLimiterHandler:
     EACH_SECONDS: int = 60
 
     @classmethod
-    def do_handler(cls,request,allowed_paths:Optional[List[str]] = None) -> None | HttpResponse:
+    def do_handler(cls, request, allowed_paths: Optional[List[str]] = None) -> None | HttpResponse:
 
         if (allowed_paths is not None) and (request.path not in allowed_paths):
             return None
@@ -55,9 +54,9 @@ class RateLimiterHandler:
                     redis_context.redis_client.delete(cls.USER_REQUEST_COUNT.format(client_ip))
                     redis_context.redis_client.delete(cls.USER_LAST_REQUEST_TIME.format(client_ip))
             else:
-                redis_context.redis_client.set(cls.USER_INFO_KEY.format(client_ip),client_ip)
-                redis_context.redis_client.set(cls.USER_REQUEST_COUNT.format(client_ip),0)
-                redis_context.redis_client.set(cls.USER_LAST_REQUEST_TIME.format(client_ip),str(datetime.now()))
+                redis_context.redis_client.set(cls.USER_INFO_KEY.format(client_ip), client_ip)
+                redis_context.redis_client.set(cls.USER_REQUEST_COUNT.format(client_ip), 0)
+                redis_context.redis_client.set(cls.USER_LAST_REQUEST_TIME.format(client_ip), str(datetime.now()))
         except ConnectionError:
             ...
 

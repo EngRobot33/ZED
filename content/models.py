@@ -3,7 +3,6 @@ import uuid
 
 from django.contrib.auth import get_user_model
 from django.db import models
-from django.db.models import Q
 from django.utils.translation import gettext_lazy as _
 
 from utils.models import BaseModel
@@ -12,7 +11,6 @@ User = get_user_model()
 
 
 class Topic(BaseModel):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=32, verbose_name=_('topic name'))
 
     class Meta:
@@ -29,7 +27,6 @@ class Topic(BaseModel):
 
 
 class Post(BaseModel):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     content = models.TextField(verbose_name=_('post content'))
     image = models.ImageField(verbose_name=_('post image'), upload_to="post_photos/", blank=True, null=True)
     like_count = models.IntegerField(verbose_name=_('post like count'), default=0)
@@ -75,7 +72,6 @@ class Post(BaseModel):
 
 
 class Comment(BaseModel):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     content = models.TextField(verbose_name=_('comment content'))
     like_count = models.IntegerField(verbose_name=_('comment like count'), default=0)
     commenter = models.ForeignKey(
@@ -107,7 +103,6 @@ class Comment(BaseModel):
 
 
 class Repost(BaseModel):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     post = models.ForeignKey(
         Post,
         verbose_name=_('reposted post'),

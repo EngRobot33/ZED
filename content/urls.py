@@ -2,7 +2,6 @@ from django.urls import path
 
 from .views import *
 
-
 app_name = 'content'
 
 urlpatterns = [
@@ -15,5 +14,5 @@ urlpatterns = [
     path('profile/<str:other_user_username>/', other_user_profile, name='other_user_profile'),
     path('settings/', settings, name='settings'),
     path('search/<str:query>/', search, name='search'),
-    path("unfollow/<str:followed_user_username>/",ActionUnFollowView.as_view(),name="actionunfollow"),
+    path("unfollow/<str:followed_user_username>/", ActionUnFollowView.as_view(), name="actionunfollow"),
 ]
