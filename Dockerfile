@@ -17,6 +17,10 @@ RUN npm install
 
 COPY . . 
 
-ENTRYPOINT ["/bin/sh","-c", "python3 manage.py migrate && python3 manage.py runserver 0.0.0.0:8000"]
+RUN chmod +x run.sh
+
+STOPSIGNAL SIGTERM
+ENTRYPOINT [ "/bin/bash", "-l", "-c" ]
+CMD ["/bin/bash"]
 
 
