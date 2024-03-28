@@ -24,7 +24,11 @@ source venv/bin/activate
 ```
 pip install -r requirements.txt
 ```
-
+* You should install PostgreSQL and its dependecies:
+  ```shell
+  sudo apt update
+  sudo apt install python3-pip python3-dev libpq-dev postgresql postgresql-contrib
+  ```
 * Now setup your database in PostgreSQL shell:
   * Open PostgreSQL shell:
     ```shell
