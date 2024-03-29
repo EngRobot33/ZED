@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.db import models
+from django.core.exceptions import ValidationError
 from django.utils.translation import gettext_lazy as _
 
 from utils.models import BaseModel
@@ -14,7 +15,7 @@ class Relation(BaseModel):
         on_delete=models.CASCADE,
         blank=True,
         null=True,
-        related_name='following'
+        related_name='followers'
     )
     follower = models.ForeignKey(
         User,
@@ -22,7 +23,7 @@ class Relation(BaseModel):
         on_delete=models.CASCADE,
         blank=True,
         null=True,
-        related_name='follower'
+        related_name='followings'
     )
 
     class Meta:
@@ -32,3 +33,7 @@ class Relation(BaseModel):
 
     def __str__(self):
         return f'{self.follower} -> {self.following}'
+    
+    def clean(self):
+        if self.following == self.follower:
+            raise ValidationError("A user cannot follow themselves.")
