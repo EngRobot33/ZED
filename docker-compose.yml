@@ -1,13 +1,31 @@
 services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    container_name: zed_db
+    environment:
+      - POSTGRES_USER=zed_user
+      - POSTGRES_PASSWORD=zed_password
+      - POSTGRES_DB=zed_database
+    volumes:
+      - "zed_data:/var/lib/postgresql/data/"
+    ports:
+      - "5432:5432"
   zed:
     build: .
     restart: on-failure
     command: /code/run.sh
     container_name: zed
     hostname: zed
-    volumes:
-      - db:/app/db.sqlite3
     ports:
       - "8000:8000"
+    depends_on:
+      - "db"
+  adminer:
+    image: adminer
+    restart: unless-stopped
+    container_name: adminer
+    ports:
+      - 8080:8080
 volumes:
-  db:
+  zed_data:
