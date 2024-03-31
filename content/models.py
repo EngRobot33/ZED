@@ -1,5 +1,4 @@
 import re
-import uuid
 
 from django.contrib.auth import get_user_model
 from django.db import models
@@ -25,31 +24,27 @@ class Topic(BaseModel):
         self.name = str(self.name).lower().replace(' ', '-')
         super().save(*args, **kwargs)
 
-
-class Post(BaseModel):
-    content = models.TextField(verbose_name=_('post content'))
-    image = models.ImageField(verbose_name=_('post image'), upload_to="post_photos/", blank=True, null=True)
-    like_count = models.IntegerField(verbose_name=_('post like count'), default=0)
-    comment_count = models.IntegerField(verbose_name=_('post comment count'), default=0)
+class AbstractPost(BaseModel):
+    content = models.TextField(verbose_name=_('content'))
+    image = models.ImageField(verbose_name=_('image'), upload_to="post_photos/", blank=True, null=True)
+    like_count = models.IntegerField(verbose_name=_('like count'), default=0)
+    comment_count = models.IntegerField(verbose_name=_('comment count'), default=0)
     author = models.ForeignKey(
         User,
-        verbose_name=_('post author'),
+        verbose_name=_('author'),
         on_delete=models.CASCADE,
         blank=True,
         null=True,
-        related_name='posts',
+        related_name='%(class)ss',
+        related_query_name='%(class)s'
     )
     topic = models.ManyToManyField(
         Topic,
         verbose_name=_('post topic'),
         blank=True,
-        related_name='posts',
+        related_name='%(class)ss',
+        related_query_name='%(class)s'
     )
-
-    class Meta:
-        verbose_name = _("Post")
-        verbose_name_plural = _("Posts")
-        db_table = "post"
 
     def __str__(self):
         content = str(self.content).split()[:5]
@@ -58,7 +53,6 @@ class Post(BaseModel):
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
-
         hashtags = re.findall(r'#\w+', str(self.content))
 
         for hashtag in hashtags:
@@ -68,62 +62,41 @@ class Post(BaseModel):
                 self.topic.add(*topic_queryset)
             else:
                 new_topic = Topic.objects.create(name=hashtag)
-                self.topic.add(new_topic)
+                self.topic.add(new_topic)    
+    class Meta:
+        abstract = True
 
-
-class Comment(BaseModel):
-    content = models.TextField(verbose_name=_('comment content'))
-    like_count = models.IntegerField(verbose_name=_('comment like count'), default=0)
-    commenter = models.ForeignKey(
-        User,
-        verbose_name=_('commenter'),
-        on_delete=models.CASCADE,
+class Post(AbstractPost):
+    is_repost = models.BooleanField(default=False)
+    original_post = models.ForeignKey(
+        'self',
         blank=True,
         null=True,
-        related_name='comments',
+        related_name="quotes",
+        on_delete=models.CASCADE
     )
+    class Meta:
+        verbose_name = _("Post")
+        verbose_name_plural = _("Posts")
+        db_table = "post"
+
+class Comment(AbstractPost):
     post = models.ForeignKey(
         Post,
-        verbose_name=_('comment post'),
+        verbose_name=_('post'),
         on_delete=models.CASCADE,
         blank=True,
         null=True,
         related_name='comments',
     )
-
+    parent_comment = models.ForeignKey(
+        'self',
+        blank=True,
+        null=True,
+        related_name="child_comments",
+        on_delete=models.CASCADE
+    )
     class Meta:
         verbose_name = _("Comment")
         verbose_name_plural = _("Comments")
         db_table = "comment"
-
-    def __str__(self):
-        content = str(self.content).split()[:5]
-        content = ' '.join(content)
-        return f'{self.commenter} | {content}'
-
-
-class Repost(BaseModel):
-    post = models.ForeignKey(
-        Post,
-        verbose_name=_('reposted post'),
-        on_delete=models.CASCADE,
-        blank=True,
-        null=True,
-        related_name='reposts',
-    )
-    reposter = models.ForeignKey(
-        User,
-        verbose_name=_('reposter'),
-        on_delete=models.CASCADE,
-        blank=True,
-        null=True,
-        related_name='reposts',
-    )
-
-    class Meta:
-        verbose_name = _("Repost")
-        verbose_name_plural = _("Reposts")
-        db_table = "repost"
-
-    def __str__(self):
-        return f'{self.reposter} -> {self.post}'

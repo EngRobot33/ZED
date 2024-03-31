@@ -171,7 +171,7 @@ def single_post(request, post_id):
             Comment.objects.create(
                 post=current_post,
                 content=reply_content,
-                commenter=current_user,
+                author=current_user,
             )
             current_post.comment_count += 1
             current_post.save()

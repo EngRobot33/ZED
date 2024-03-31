@@ -113,14 +113,14 @@
   {% for comment in current_post_comments %}
     <div id="post-comment-cell">
       <div id="post-comment-cell-left">
-        {% if comment.commenter.profile_photo %}
+        {% if comment.author.profile_photo %}
           <div id="post-comment-cell-left-profile-photo" style="background-image:url('{{ comment.commentor.profile_photo.url }}')"></div>
         {% else %}
           <div id="post-comment-cell-left-profile-photo" ><i class="ri-user-3-line" style="font-size: 30px; color: #ebeef0"></i></div>
         {% endif %}
       </div>
       <div id="post-comment-cell-right">
-        <p id="post-comment-cell-header-p"><a href="{% url 'content:other_user_profile' comment.commenter.username %}">{{ comment.commenter.first_name }} {{ comment.commenter.last_name }}</a> <span class="post-comment-header-p-date">@{{ comment.commenter.username }} · {{ comment.created_time }}</span></p>
+        <p id="post-comment-cell-header-p"><a href="{% url 'content:other_user_profile' comment.author.username %}">{{ comment.author.first_name }} {{ comment.author.last_name }}</a> <span class="post-comment-header-p-date">@{{ comment.author.username }} · {{ comment.created_time }}</span></p>
         <p id="post-comment-cell-header-reply-p">Replying to <a href="{% url 'content:other_user_profile' current_post.author.username %}">@{{ current_post.author.username }}</a></p>
         <p id="post-comment-cell-content-p">{{ comment.content|linebreaks }}</p>
         <div id="post-comment-cell-right-bottom">
