@@ -21,6 +21,12 @@ services:
       - "9000:9000"
     depends_on:
       - "db"
+    environment:
+      - DB_NAME=zed_database
+      - DB_USER=zed_user
+      - DB_PASS=zed_password
+      - DB_HOST=db
+      - DB_PORT=5432
   adminer:
     image: adminer
     restart: unless-stopped
