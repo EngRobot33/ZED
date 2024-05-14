@@ -114,7 +114,7 @@
     <div id="post-comment-cell">
       <div id="post-comment-cell-left">
         {% if comment.commenter.profile_photo %}
-          <div id="post-comment-cell-left-profile-photo" style="background-image:url('{{ comment.commentor.profile_photo.url }}')"></div>
+          <div id="post-comment-cell-left-profile-photo" style="background-image:url('{{ comment.commenter.profile_photo.url }}')"></div>
         {% else %}
           <div id="post-comment-cell-left-profile-photo" ><i class="ri-user-3-line" style="font-size: 30px; color: #ebeef0"></i></div>
         {% endif %}
