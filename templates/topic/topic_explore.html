@@ -69,15 +69,15 @@
 
 
 <!-- pagination -->
-<div id="pagination-container">
-  {% if current_page <= 0 %}
-    <a href="{% url 'content:topic_explore' current_topic.name next_page %}"><span class="fa fa-caret-right"></span></a>
-  {% elif current_page > 0%}
-    <a href="{% url 'content:topic_explore' current_topic.name previous_page %}"><span class="fa fa-caret-left"></span></a>
-    <a href="{% url 'content:topic_explore' current_topic.name next_page %}"><span class="fa fa-caret-right"></span></a>
-  {% endif %}
+<!--<div id="pagination-container">-->
+<!--  {% if current_page <= 0 %}-->
+<!--    <a href="{% url 'content:topic_explore' current_topic.name next_page %}"><span class="fa fa-caret-right"></span></a>-->
+<!--  {% elif current_page > 0%}-->
+<!--    <a href="{% url 'content:topic_explore' current_topic.name previous_page %}"><span class="fa fa-caret-left"></span></a>-->
+<!--    <a href="{% url 'content:topic_explore' current_topic.name next_page %}"><span class="fa fa-caret-right"></span></a>-->
+<!--  {% endif %}-->
 
-</div>
+<!--</div>-->
 
 
 {% endwith %}
