@@ -5,7 +5,7 @@ ENV PYTHONUNBUFFERED 1
 
 RUN apt-get update -y && apt-get install npm  -y 
 
-EXPOSE 8000
+EXPOSE 9000
 
 WORKDIR /code
 
