@@ -26,6 +26,6 @@ services:
     restart: unless-stopped
     container_name: adminer
     ports:
-      - 8888:8080
+      - 8888:8888
 volumes:
   zed_data:
