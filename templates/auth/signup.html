@@ -1,156 +1,105 @@
-{% extends 'vanilla_base.html' %} {% load static %} {% block content %}
+{% extends 'vanilla_base.html' %} {% load static %} {% block css_link %}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/auth/signup.css' %}"
+/>
+{% endblock %} {% block content %}
+<!-- left part-->
+<div id="left-box"></div>
 
-<div class="w-screen h-screen flex flex-row-reverse bg-[url('./auth/landing_img.jpg')] bg-contain">
-  <div class="basis-1/2 p-16 bg-white relative">
-    <div class="w-24 h-24">
-      <img src="{% static 'branding/logo.png' %}" alt="logo" />
-    </div>
-    <h1 class="text-6xl font-extrabold my-12">Happening now</h1>
-    <h3 class="text-4xl font-extrabold my-9">Join ZED today.</h3>
-    <button
-      id="signup-btn"
-      class="block relative w-3/5 py-3 mb-2 overflow-hidden rounded-full text-white text-center text-lg font-semibold border border-black bg-black transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-gray-900 before:transition-all before:duration-500 hover:before:left-0 hover:before:w-full"
-    >
-      <span class="relative z-10">Sign up</span>
-    </button>
-    <a
-      href="{% url 'user:login' %}"
-      class="block relative w-3/5 py-3 overflow-hidden rounded-full text-black text-center text-lg font-semibold border border-black bg-white transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-black before:transition-all before:duration-500 hover:text-white hover:before:left-0 hover:before:w-full"
-    >
-      <button class="relative z-10">Log in</button>
-    </a>
+<!-- right part -->
+<div id="right-box">
+  <img
+    src="{% static 'branding/logo.png' %}"
+    alt="logo"
+    style="width: 100px; height: 100px"
+  />
+  <h1>Happening now</h1>
+  <h3>Join ZED today.</h3>
+  <button id="signup-button">Sign up</button>
+  <button id="login-button"><a href="{% url 'user:login' %}">Log in</a></button>
+  <form action="{% url 'user:signup' %}" method="POST">{% csrf_token %}</form>
 
-    <p id="" class="fixed bottom-16 text-xs text-gray-500">
-      ZED is a registered trademark of
-      <a
-        href="https://www.github.com/EngRobot33/"
-        class="text-black font-semibold relative before:absolute before:content-[''] before:w-0 before:hover:w-full before:h-px before:bottom-0 before:bg-black before:transition-all before:duration-100"
-      >
-        Hamed Khosravi</a
-      >
-    </p>
-  </div>
+  <p id="footer">
+    ZED is a registered trademark of
+    <a href="https://www.github.com/EngRobot33/">Hamed Khosravi</a>.
+  </p>
 </div>
 
 {% if invalid_credentials == True %}
 <script>
-  alert('Invalid Credentials!');
+  alert("Invalid Credentials!");
 </script>
 {% elif credentials_taken == True %}
 <script>
-  alert('Credentials are already taken!');
+  alert("Credentials are already taken!");
 </script>
 {% elif contains_space_in_credentials == True %}
 <script>
-  alert('Signup input cannot contain spaces!');
+  alert("Signup input cannot contain spaces!");
 </script>
 {% endif %}
 
 <!-- hidden signup form -->
-<div class="w-screen h-screen bg-black/50 absolute z-20 top-0 left-0 hidden" id="signup-modal">
-  <div class="w-full h-full flex justify-center items-center">
-    <div id="signup-form" class="w-1/3 flex flex-col items-center bg-white p-8 rounded-md relative">
-      <button id="close-btn" class="absolute top-4 right-4 text-xl"><i class="ri-close-line"></i></button>
-      <div id="img-container">
-        <img src="{% static 'branding/logo.png' %}" alt="logo" style="width: 75px; height: 75px" />
-      </div>
-      <form
-        action="{% url 'user:signup' %}"
-        method="POST"
-        class="w-4/5 flex flex-col justify-center items-center m-0 mt-8"
-      >
-        {% csrf_token %}
-        <div class="w-full">
-          <label for="email" class="block font-semibold my-1.5">What's your email?</label>
-          <input
-            class="w-full border-2 border-black p-1 rounded-md outline-none"
-            type="text"
-            placeholder="Enter your email."
-            name="email"
-            id="email"
-          />
-        </div>
-        <div class="w-full">
-          <label for="first_name" class="block font-semibold my-1.5">What is your first name?</label>
-          <input
-            class="w-full border-2 border-black p-1 rounded-md outline-none"
-            type="text"
-            placeholder="Enter your first name."
-            name="first_name"
-            id="first_name"
-          />
-        </div>
-        <div class="w-full">
-          <label for="last_name" class="block font-semibold my-1.5">What is your last name?</label>
-          <input
-            class="w-full border-2 border-black p-1 rounded-md outline-none"
-            type="text"
-            placeholder="Enter your last name."
-            name="last_name"
-            id="last_name"
-          />
-        </div>
-        <div class="w-full">
-          <label for="username" class="block font-semibold my-1.5">Create a username</label>
-          <input
-            class="w-full border-2 border-black p-1 rounded-md outline-none"
-            type="text"
-            placeholder="Create a username."
-            name="username"
-            id="username"
-          />
-        </div>
-        <div class="w-full">
-          <label for="password" class="block font-semibold my-1.5">Create a password</label>
-          <input
-            class="w-full border-2 border-black p-1 rounded-md outline-none"
-            type="password"
-            placeholder="Create a password."
-            name="password"
-            id="password"
-          />
-        </div>
-        <div class="w-full">
-          <label for="password_again" class="block font-semibold my-1.5">Confirm your password</label>
-          <input
-            class="w-full border-2 border-black p-1 rounded-md outline-none"
-            type="password"
-            placeholder="Enter your password again."
-            name="password_again"
-            id="password_again"
-          />
-        </div>
-
-        <button
-          class="w-full relative py-3 mt-8 overflow-hidden rounded-full text-white text-center text-lg font-semibold border border-black bg-black transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-gray-900 before:transition-all before:duration-500 hover:before:left-0 hover:before:w-full"
-        >
-          <span class="relative z-10">Sign up</span>
-        </button>
-      </form>
-    </div>
+<div id="hidden-signup-bg-grey"></div>
+<div id="hidden-signup-form">
+  <button id="close-btn"><i class="ri-close-line"></i></button>
+  <div id="img-container">
+    <img
+      src="{% static 'branding/logo.png' %}"
+      alt="logo"
+      style="width: 75px; height: 75px"
+    />
   </div>
+  <form action="{% url 'user:signup' %}" method="POST">
+    {% csrf_token %}
+
+    <label>What's your email?</label>
+    <input type="text" placeholder="Enter your email." name="email" />
+
+    <label>What is your first name?</label>
+    <input type="text" placeholder="Enter your first name." name="first_name" />
+
+    <label>What is your last name?</label>
+    <input type="text" placeholder="Enter your last name." name="last_name" />
+
+    <label>Create a username</label>
+    <input type="text" placeholder="Create a username." name="username" />
+
+    <label>Create a password</label>
+    <input type="password" placeholder="Create a password." name="password" />
+
+    <label>Confirm your password</label>
+    <input
+      type="password"
+      placeholder="Enter your password again."
+      name="password_again"
+    />
+
+    <input
+      id="signup-submit-btn"
+      type="submit"
+      value="Sign up"
+      name="signup_submit_button"
+    />
+  </form>
 </div>
 
 <script>
-  const open_signup_btn = document.getElementById('signup-btn');
-  const close_signup_btn = document.getElementById('close-btn');
-  const signup_panel = document.getElementById('signup-form');
-  const signup_modal = document.getElementById('signup-modal');
+  var open_signup_panel_btn = document.getElementById("signup-button");
+  var close_signup_panel_btn = document.getElementById("close-btn");
+  var signup_panel = document.getElementById("hidden-signup-form");
+  var signup_panel_bg = document.getElementById("hidden-signup-bg-grey");
 
-  open_signup_btn.addEventListener('click', () => {
-    signup_modal.classList.add('!block');
-  });
+  open_signup_panel_btn.onclick = function () {
+    signup_panel.style.display = "block";
+    signup_panel_bg.style.display = "block";
+  };
 
-  close_signup_btn.addEventListener('click', () => {
-    signup_modal.classList.remove('!block');
-  });
-
-  signup_modal.addEventListener('click', () => {
-    signup_modal.classList.remove('!block');
-  });
-
-  signup_panel.addEventListener('click', (e) => {
-    e.stopPropagation();
-  });
+  close_signup_panel_btn.onclick = function () {
+    signup_panel.style.display = "none";
+    signup_panel_bg.style.display = "none";
+  };
 </script>
 {% endblock %}

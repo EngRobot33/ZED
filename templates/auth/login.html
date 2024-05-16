@@ -1,39 +1,32 @@
-{% extends 'vanilla_base.html' %} {% load static %} {% block content %}
+{% extends 'vanilla_base.html' %} {% load static %} {% block css_link %}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/auth/login.css' %}"
+/>
+{% endblock %} {% block content %}
 
-<div class="flex justify-center mt-20">
-  <div class="w-1/4">
-    <div class="w-24 h-24">
-      <img src="{% static 'branding/logo.png' %}" alt="logo" />
-    </div>
-    <h1 class="text-4xl font-extrabold my-4">Log in to ZED</h1>
-
-    {% if invalid_credentials == True %}
-    <p class="text-red-500 mb-2">Invalid Credentials!</p>
-    {% endif %}
-
-    <form action="{% url 'user:login' %}" method="POST">
-      {% csrf_token %}
-      <input
-        class="block border border-gray-400 outline-black p-3 rounded-md w-full mb-3"
-        type="text"
-        placeholder="Username"
-        name="username"
-      />
-      <input
-        class="block border border-gray-400 outline-black p-3 rounded-md w-full mb-3"
-        type="password"
-        placeholder="Password"
-        name="password"
-      />
-      <button
-        class="w-full relative py-3 mt-4 overflow-hidden rounded-full text-white text-center text-lg font-semibold border border-black bg-black transition-all before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-gray-900 before:transition-all before:duration-500 hover:before:left-0 hover:before:w-full"
-      >
-        <span class="relative z-10">Log in</span>
-      </button>
-    </form>
-
-    <a href="{% url 'user:signup' %}" class="relative before:absolute before:content-[''] before:w-0 before:hover:w-full before:h-px before:-bottom-0.5 before:bg-black before:transition-all before:duration-100">Sign up for ZED</a>
-  </div>
+<div id="login-container">
+  <img
+    src="{% static 'branding/logo.png' %}"
+    alt="logo"
+    style="width: 75px; height: 75px"
+  />
+  <h1>Log in to ZED</h1>
+  {% if invalid_credentials == True %}
+  <p style="color: red">Invalid Credentials!</p>
+  {% endif %}
+  <form action="{% url 'user:login' %}" method="POST">
+    {% csrf_token %}
+    <input type="text" placeholder="Username" name="username" />
+    <input type="password" placeholder="Password" name="password" />
+    <input
+      type="submit"
+      value="Log in"
+      id="login-submit-btn"
+      name="login_form_submit_btn"
+    />
+  </form>
+  <p><a href="{% url 'user:signup' %}">Sign up for ZED</a></p>
 </div>
-
 {% endblock %}
